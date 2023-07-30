@@ -8,6 +8,7 @@ public class VendingMachineController{
     private VendingMachineGUI vendingMachineGUI;
     private StartingMenuController startingMenuController;
     private CreateVendingMachineController createVendingMachineController;
+    private ItemSlotInputController itemSlotInputController;
 
     public VendingMachineController(VendingMachineFactory vendingMachineFactory, VendingMachineGUI vendingMachineGUI) {
         this.vendingMachineFactory = vendingMachineFactory;
@@ -15,6 +16,7 @@ public class VendingMachineController{
 
         startingMenuController = new StartingMenuController(vendingMachineGUI.getStartingMenuPanel());
         createVendingMachineController = new CreateVendingMachineController(vendingMachineGUI.getCreateVendingMachinePanel());
+        itemSlotInputController = new ItemSlotInputController(vendingMachineGUI.getItemSlotInputPanel());
     }
 
 

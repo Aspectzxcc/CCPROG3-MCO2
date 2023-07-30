@@ -1,7 +1,6 @@
 package Controller;
 
 import View.CreateVendingMachinePanel;
-import View.ItemSlotInputPanel;
 
 public class CreateVendingMachineController {
     private CreateVendingMachinePanel createVendingMachinePanel;

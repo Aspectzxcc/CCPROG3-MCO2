@@ -2,7 +2,6 @@ package View;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ItemSlotInputPanel extends JPanel {
@@ -11,33 +10,57 @@ public class ItemSlotInputPanel extends JPanel {
     private JLabel titleLabel;
     private JLabel slotsLabel;
     private JTextField slotsTextField;
-    private JButton continueButton;
+    private JButton continueBtn;
 
     public ItemSlotInputPanel(CardLayout cardLayout, JPanel mainPanel) {
         this.cardLayout = cardLayout;
         this.mainPanel = mainPanel;
 
         setLayout(new BorderLayout());
+        setBackground(Color.WHITE);
 
         titleLabel = new JLabel("Vending Machine Configuration");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        titleLabel.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0));
         add(titleLabel, BorderLayout.NORTH);
 
         JPanel inputPanel = new JPanel();
-        inputPanel.setLayout(new GridLayout(2, 2));
+        inputPanel.setLayout(new GridLayout(2, 2, 10, 10));
 
         slotsLabel = new JLabel("Number of Slots:");
+        slotsLabel.setFont(new Font("Arial", Font.PLAIN, 18));
         slotsTextField = new JTextField();
-        continueButton = new JButton("Continue");
+        slotsTextField.setFont(new Font("Arial", Font.PLAIN, 18));
+        slotsTextField.setHorizontalAlignment(SwingConstants.CENTER); // Center the text in the box
+        continueBtn = new JButton("Continue");
+        continueBtn.setFont(new Font("Arial", Font.PLAIN, 18));
 
         inputPanel.add(slotsLabel);
         inputPanel.add(slotsTextField);
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.add(continueButton);
+        buttonPanel.add(continueBtn);
 
         add(inputPanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
+        setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
     }
+
+    public CardLayout getCardLayout() {
+        return cardLayout;
+    }
+
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+
+    public JTextField getSlotsTextField() {
+        return slotsTextField;
+    }
+
+    public void addContinueBtnListener(ActionListener listener) {
+        continueBtn.addActionListener(listener);
+    }
+
 }
