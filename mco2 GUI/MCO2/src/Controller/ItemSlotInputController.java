@@ -25,7 +25,7 @@ public class ItemSlotInputController {
 
         if (slotCount >= 8) {
             // Proceed to create vending machine panel
-            itemSlotInputPanel.getCardLayout().show(itemSlotInputPanel.getMainPanel(), "CreateRegularVendingMachine");
+            itemSlotInputPanel.getCardLayout().show(itemSlotInputPanel.getMainPanel(), "ItemCheckBoxes");
         } else {
             JOptionPane.showMessageDialog(itemSlotInputPanel, "Please enter at least 8 slots.");
         }

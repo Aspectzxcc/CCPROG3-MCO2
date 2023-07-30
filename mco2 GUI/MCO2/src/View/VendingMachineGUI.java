@@ -11,6 +11,7 @@ public class VendingMachineGUI extends JFrame {
     private StartingMenuPanel startingMenuPanel;
     private CreateVendingMachinePanel createVendingMachinePanel;
     private ItemSlotInputPanel itemSlotInputPanel;
+    private ItemCheckBoxesPanel itemCheckBoxesPanel;
     private CreateRegularVendingMachinePanel createRegularVendingMachinePanel;
     private CreateSpecialVendingMachinePanel createSpecialVendingMachinePanel;
     private TestVendingMachinePanel testVendingMachinePanel;
@@ -28,6 +29,7 @@ public class VendingMachineGUI extends JFrame {
         startingMenuPanel = new StartingMenuPanel(cardLayout, mainPanel);
         createVendingMachinePanel = new CreateVendingMachinePanel(cardLayout, mainPanel);
         itemSlotInputPanel = new ItemSlotInputPanel(cardLayout, mainPanel);
+        itemCheckBoxesPanel = new ItemCheckBoxesPanel(cardLayout, mainPanel);
         createRegularVendingMachinePanel = new CreateRegularVendingMachinePanel(cardLayout, mainPanel);
         createSpecialVendingMachinePanel = new CreateSpecialVendingMachinePanel(cardLayout, mainPanel);
         testVendingMachinePanel = new TestVendingMachinePanel(cardLayout, mainPanel);
@@ -36,6 +38,7 @@ public class VendingMachineGUI extends JFrame {
         mainPanel.add(startingMenuPanel, "StartingMenu");
         mainPanel.add(createVendingMachinePanel, "CreateVendingMachine");
         mainPanel.add(itemSlotInputPanel, "ItemSlotInput");
+        mainPanel.add(itemCheckBoxesPanel, "ItemCheckBoxes");
         mainPanel.add(createRegularVendingMachinePanel, "CreateRegularVendingMachine");
         mainPanel.add(createSpecialVendingMachinePanel, "CreateSpecialVendingMachine");
         mainPanel.add(testVendingMachinePanel, "TestVendingMachine");
@@ -57,6 +60,10 @@ public class VendingMachineGUI extends JFrame {
         return itemSlotInputPanel;
     }
 
+    public ItemCheckBoxesPanel getItemCheckBoxesPanel() {
+        return itemCheckBoxesPanel;
+    }
+
     public CreateRegularVendingMachinePanel getCreateRegularVendingMachinePanel() {
         return createRegularVendingMachinePanel;
     }
@@ -72,8 +79,4 @@ public class VendingMachineGUI extends JFrame {
     public void setController(VendingMachineController controller) {
         this.controller = controller;
     }
-
-
-
-    // Add more methods for updating the GUI based on the interactions with the VendingMachineController
 }
