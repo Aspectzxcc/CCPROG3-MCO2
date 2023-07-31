@@ -36,7 +36,9 @@ public class ItemCheckBoxesController {
         int slotCount = Integer.parseInt(itemSlotInputPanel.getSlotsTextField().getText());
 
         if (selectedItemCount == slotCount) {
-            //createRegularVendingMachinePanel.setSelectedItems(getSelectedItems());
+            createRegularVendingMachinePanel.setSelectedItems(getSelectedItems());
+            createRegularVendingMachinePanel.createQuantityInputFields();
+            
             itemCheckBoxesPanel.getCardLayout().show(itemCheckBoxesPanel.getMainPanel(), "CreateRegularVendingMachine");
         } else if (selectedItemCount > slotCount) {
             // Show an error message that the user has selected more items than available slots

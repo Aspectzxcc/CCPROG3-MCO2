@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.VendingMachineFactory;
+import View.CreateRegularVendingMachinePanel;
 import View.VendingMachineGUI;
 
 public class VendingMachineController{
@@ -10,6 +11,7 @@ public class VendingMachineController{
     private CreateVendingMachineController createVendingMachineController;
     private ItemSlotInputController itemSlotInputController;
     private ItemCheckBoxesController itemCheckBoxesController;
+    private CreateRegularVendingMachineController createRegularVendingMachineController;
 
     public VendingMachineController(VendingMachineFactory vendingMachineFactory, VendingMachineGUI vendingMachineGUI) {
         this.vendingMachineFactory = vendingMachineFactory;
@@ -20,6 +22,5 @@ public class VendingMachineController{
         itemSlotInputController = new ItemSlotInputController(vendingMachineGUI.getItemSlotInputPanel());
         itemCheckBoxesController = new ItemCheckBoxesController(vendingMachineGUI.getItemSlotInputPanel(), 
         vendingMachineGUI.getItemCheckBoxesPanel(), vendingMachineGUI.getCreateRegularVendingMachinePanel());
-
     }
 }
