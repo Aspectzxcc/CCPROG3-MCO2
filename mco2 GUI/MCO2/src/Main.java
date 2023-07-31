@@ -7,6 +7,6 @@ public class Main {
         // Create instances of the Model, View, and Controller
         VendingMachineFactory vendingMachineFactory = new VendingMachineFactory();
         VendingMachineGUI vendingMachineGUI = new VendingMachineGUI();
-        VendingMachineController vendingMachineController = new VendingMachineController(vendingMachineFactory, vendingMachineGUI);
+        new VendingMachineController(vendingMachineFactory, vendingMachineGUI);
     }
 }

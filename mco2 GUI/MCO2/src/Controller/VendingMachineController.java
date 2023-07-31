@@ -6,25 +6,17 @@ import View.VendingMachineGUI;
 public class VendingMachineController{
     private VendingMachineFactory vendingMachineFactory;
     private VendingMachineGUI vendingMachineGUI;
-    private StartingMenuController startingMenuController;
-    private CreateVendingMachineController createVendingMachineController;
-    private ItemSlotInputController itemSlotInputController;
-    private ItemCheckBoxesController itemCheckBoxesController;
-    private SpecialItemCheckBoxesController specialItemCheckBoxesController;
-    private CreateRegularVendingMachineController createRegularVendingMachineController;
 
     public VendingMachineController(VendingMachineFactory vendingMachineFactory, VendingMachineGUI vendingMachineGUI) {
         this.vendingMachineFactory = vendingMachineFactory;
         this.vendingMachineGUI = vendingMachineGUI;
 
-        startingMenuController = new StartingMenuController(vendingMachineGUI.getStartingMenuPanel(), vendingMachineGUI);
-        createVendingMachineController = new CreateVendingMachineController(vendingMachineGUI.getCreateVendingMachinePanel());
-        itemSlotInputController = new ItemSlotInputController(vendingMachineGUI.getItemSlotInputPanel());
-        itemCheckBoxesController = new ItemCheckBoxesController(vendingMachineGUI.getCreateVendingMachinePanel(), 
-        vendingMachineGUI.getItemSlotInputPanel(), vendingMachineGUI.getItemCheckBoxesPanel(), 
-        vendingMachineGUI.getCreateRegularVendingMachinePanel());
-        specialItemCheckBoxesController = new SpecialItemCheckBoxesController(vendingMachineGUI.getSpecialItemCheckBoxesPanel());
-        createRegularVendingMachineController = new CreateRegularVendingMachineController(vendingMachineGUI.getCreateRegularVendingMachinePanel(), 
-        vendingMachineFactory);
+        new StartingMenuController(vendingMachineGUI.getStartingMenuPanel(), vendingMachineGUI, vendingMachineFactory);
+        new CreateVendingMachineController(vendingMachineGUI.getCreateVendingMachinePanel());
+        new ItemSlotInputController(vendingMachineGUI.getItemSlotInputPanel());
+        new ItemCheckBoxesController(vendingMachineGUI.getItemSlotInputPanel(), vendingMachineGUI.getItemCheckBoxesPanel(), vendingMachineGUI.getItemQuantityInputPanel());
+        new ItemQuantityInputController(vendingMachineGUI.getCreateVendingMachinePanel(), vendingMachineGUI.getItemQuantityInputPanel(), vendingMachineFactory);
+        new SpecialItemRadioButtonsController(vendingMachineGUI.getSpecialItemRadioButtonsPanel(), vendingMachineGUI.getSpecialItemQuantityInputPanel());
+        new SpecialItemQuantityInputController(vendingMachineGUI.getSpecialItemQuantityInputPanel(), vendingMachineFactory);
     }
 }

@@ -5,18 +5,17 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class CreateRegularVendingMachinePanel extends JPanel {
+public class ItemQuantityInputPanel extends JPanel {
     private CardLayout cardLayout;
     private JPanel mainPanel;
     private JPanel inputPanel;
     private JLabel titleLabel;
-    private JLabel quantityLabel;
     private JButton submitButton;
     private JTextField[] quantityTextFields;
     private ArrayList<String> selectedItems;
     private ArrayList<Integer> itemQuantities;
 
-    public CreateRegularVendingMachinePanel(CardLayout cardLayout, JPanel mainPanel) {
+    public ItemQuantityInputPanel(CardLayout cardLayout, JPanel mainPanel) {
         this.cardLayout = cardLayout;
         this.mainPanel = mainPanel;
         this.selectedItems = new ArrayList<>();
@@ -61,6 +60,10 @@ public class CreateRegularVendingMachinePanel extends JPanel {
         return itemQuantities;
     }
 
+    public void setSelectedItems(ArrayList<String> selectedItems) {
+        this.selectedItems = selectedItems;
+    }
+
     public void setItemQuantities(ArrayList<Integer> itemQuantities) {
         this.itemQuantities = itemQuantities;
     }
@@ -89,7 +92,11 @@ public class CreateRegularVendingMachinePanel extends JPanel {
         repaint();
     }
 
-    public void setSelectedItems(ArrayList<String> selectedItems) {
-        this.selectedItems = selectedItems;
+    public void reset() {
+        selectedItems.clear();
+        itemQuantities.clear();
+        inputPanel.removeAll();
+        revalidate();
+        repaint();
     }
 }

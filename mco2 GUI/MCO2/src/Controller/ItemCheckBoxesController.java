@@ -3,24 +3,20 @@ package Controller;
 import View.ItemCheckBoxesPanel;
 import View.ItemSlotInputPanel;
 import javax.swing.JOptionPane;
-import View.CreateRegularVendingMachinePanel;
-import View.CreateVendingMachinePanel;
+import View.ItemQuantityInputPanel;
 
 import java.util.ArrayList;
 
 public class ItemCheckBoxesController {
-    private CreateVendingMachinePanel createVendingMachinePanel;
     private ItemSlotInputPanel itemSlotInputPanel;
     private ItemCheckBoxesPanel itemCheckBoxesPanel;
-    private CreateRegularVendingMachinePanel createRegularVendingMachinePanel;
+    private ItemQuantityInputPanel itemQuantityInputPanel;
 
-    public ItemCheckBoxesController(CreateVendingMachinePanel createVendingMachinePanel,
-    ItemSlotInputPanel itemSlotInputPanel, ItemCheckBoxesPanel itemCheckBoxesPanel, CreateRegularVendingMachinePanel 
-    createRegularVendingMachinePanel) {
-        this.createVendingMachinePanel = createVendingMachinePanel;
+    public ItemCheckBoxesController(ItemSlotInputPanel itemSlotInputPanel, ItemCheckBoxesPanel itemCheckBoxesPanel, ItemQuantityInputPanel 
+    itemQuantityInputPanel) {
         this.itemSlotInputPanel = itemSlotInputPanel;
         this.itemCheckBoxesPanel = itemCheckBoxesPanel;
-        this.createRegularVendingMachinePanel = createRegularVendingMachinePanel;
+        this.itemQuantityInputPanel = itemQuantityInputPanel;
 
         this.itemCheckBoxesPanel.addBackButtonListener(e -> backButtonActionPerformed());
         this.itemCheckBoxesPanel.addContinueButtonListener(e -> continueActionPerformed());
@@ -46,14 +42,10 @@ public class ItemCheckBoxesController {
         int slotCount = Integer.parseInt(itemSlotInputPanel.getSlotsTextField().getText());
 
         if (selectedItemCount == slotCount) {
-            if (createVendingMachinePanel.getIsSpecial() == false) {
-                createRegularVendingMachinePanel.setSelectedItems(getSelectedItems());
-                createRegularVendingMachinePanel.createQuantityInputFields();
+            itemQuantityInputPanel.setSelectedItems(getSelectedItems());
+            itemQuantityInputPanel.createQuantityInputFields();
                 
-                itemCheckBoxesPanel.getCardLayout().show(itemCheckBoxesPanel.getMainPanel(), "CreateRegularVendingMachine");
-            } else {
-                itemCheckBoxesPanel.getCardLayout().show(itemCheckBoxesPanel.getMainPanel(), "SpecialItemCheckBoxes");
-            }
+            itemCheckBoxesPanel.getCardLayout().show(itemCheckBoxesPanel.getMainPanel(), "ItemQuantityInput");
         } else if (selectedItemCount > slotCount) {
             // Show an error message that the user has selected more items than available slots
             JOptionPane.showMessageDialog(itemCheckBoxesPanel, "You have selected more items than available slots.");

@@ -2,6 +2,7 @@ package Model;
 
 public class VendingMachineFactory {
     private VendingMachine normalVM;
+    private SpecialVendingMachine specialVM;
     private boolean isCreated;
 
     public VendingMachineFactory() {
@@ -21,7 +22,15 @@ public class VendingMachineFactory {
         return normalVM;
     } 
 
+    public SpecialVendingMachine getSpecialVM() {
+        return specialVM;
+    }
+
     public void setNormalVM(VendingMachine normalVM) {
         this.normalVM = normalVM;
+    }
+
+    public void setSpecialVM(SpecialVendingMachine specialVM) {
+        this.specialVM = specialVM;
     }
 }
