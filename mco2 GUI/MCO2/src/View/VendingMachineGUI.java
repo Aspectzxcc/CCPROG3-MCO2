@@ -2,11 +2,9 @@ package View;
 
 import javax.swing.*;
 import java.awt.*;
-import Controller.VendingMachineController;
 
 public class VendingMachineGUI extends JFrame {
     private CardLayout cardLayout;
-    private VendingMachineController controller;
     private JPanel mainPanel;
     private StartingMenuPanel startingMenuPanel;
     private CreateVendingMachinePanel createVendingMachinePanel;
@@ -74,9 +72,5 @@ public class VendingMachineGUI extends JFrame {
 
     public TestVendingMachinePanel getTestVendingMachinePanel() {
         return testVendingMachinePanel;
-    }
-
-    public void setController(VendingMachineController controller) {
-        this.controller = controller;
     }
 }

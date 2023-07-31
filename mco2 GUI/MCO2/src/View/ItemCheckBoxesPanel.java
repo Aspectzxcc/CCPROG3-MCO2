@@ -72,6 +72,50 @@ public class ItemCheckBoxesPanel extends JPanel {
         return mainPanel;
     }
 
+    public JButton getContinueButton() {
+        return continueButton;
+    }
+
+    public JCheckBox getClassicBLTCheckBox() {
+        return classicBLTCheckBox;
+    }
+
+    public JCheckBox getTurkeyClubCheckBox() {
+        return turkeyClubCheckBox;
+    }
+
+    public JCheckBox getHamAndCheeseCheckBox() {
+        return hamAndCheeseCheckBox;
+    }
+
+    public JCheckBox getChickenSaladCheckBox() {
+        return chickenSaladCheckBox;
+    }
+
+    public JCheckBox getTunaSaladCheckBox() {
+        return tunaSaladCheckBox;
+    }
+
+    public JCheckBox getVeggieDelightCheckBox() {
+        return veggieDelightCheckBox;
+    }
+
+    public JCheckBox getItalianSubCheckBox() {
+        return italianSubCheckBox;
+    }
+
+    public JCheckBox getGrilledChickenPaniniCheckBox() {
+        return grilledChickenPaniniCheckBox;
+    }
+
+    public JCheckBox getEggSaladCheckBox() {
+        return eggSaladCheckBox;
+    }
+
+    public JCheckBox getRoastBeefAndCheddarCheckBox() {
+        return roastBeefAndCheddarCheckBox;
+    }
+
     public void addContinueButtonListener(ActionListener listener) {
         continueButton.addActionListener(listener);
     }
