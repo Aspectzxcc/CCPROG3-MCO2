@@ -2,7 +2,6 @@ package View;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
@@ -13,8 +12,8 @@ public class CreateRegularVendingMachinePanel extends JPanel {
     private JLabel titleLabel;
     private JLabel quantityLabel;
     private JButton submitButton;
-    private ArrayList<String> selectedItems;
     private JTextField[] quantityTextFields;
+    private ArrayList<String> selectedItems;
     private ArrayList<Integer> itemQuantities;
 
     public CreateRegularVendingMachinePanel(CardLayout cardLayout, JPanel mainPanel) {
@@ -39,46 +38,34 @@ public class CreateRegularVendingMachinePanel extends JPanel {
 
         add(inputPanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
+    }
 
-        submitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (validateQuantities()) {
-                    for (int i = 0; i < quantityTextFields.length; i++) {
-                        String quantityText = quantityTextFields[i].getText();
-                        int quantity = Integer.parseInt(quantityText);
-                        itemQuantities.add(quantity);
-                     }
+    public CardLayout getCardLayout() {
+        return cardLayout;
+    }
 
-                }
-            }
-        });
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+
+    public ArrayList<String> getSelectedItems() {
+        return selectedItems;
+    }
+
+    public JTextField[] getQuantityTextFields() {
+        return quantityTextFields;
     }
 
     public ArrayList<Integer> getItemQuantities() {
         return itemQuantities;
     }
 
+    public void setItemQuantities(ArrayList<Integer> itemQuantities) {
+        this.itemQuantities = itemQuantities;
+    }
+
     public void addSubmitButtonListener(ActionListener listener) {
         submitButton.addActionListener(listener);
-    }
-    
-
-    private boolean validateQuantities() {
-        for (int i = 0; i < quantityTextFields.length; i++) {
-            String quantityText = quantityTextFields[i].getText();
-            try {
-                int quantity = Integer.parseInt(quantityText);
-                if (quantity < 10) {
-                    JOptionPane.showMessageDialog(this, "Quantity for " + selectedItems.get(i) + " must be 10 or more.");
-                    return false;
-                }
-            } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "Invalid quantity for " + selectedItems.get(i) + ".");
-                return false;
-            }
-        }
-        return true;
     }
 
     public void createQuantityInputFields() {

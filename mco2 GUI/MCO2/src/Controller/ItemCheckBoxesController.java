@@ -4,15 +4,20 @@ import View.ItemCheckBoxesPanel;
 import View.ItemSlotInputPanel;
 import javax.swing.JOptionPane;
 import View.CreateRegularVendingMachinePanel;
+import View.CreateVendingMachinePanel;
+
 import java.util.ArrayList;
 
 public class ItemCheckBoxesController {
+    private CreateVendingMachinePanel createVendingMachinePanel;
     private ItemSlotInputPanel itemSlotInputPanel;
     private ItemCheckBoxesPanel itemCheckBoxesPanel;
     private CreateRegularVendingMachinePanel createRegularVendingMachinePanel;
 
-    public ItemCheckBoxesController(ItemSlotInputPanel itemSlotInputPanel, ItemCheckBoxesPanel itemCheckBoxesPanel,
-                                     CreateRegularVendingMachinePanel createRegularVendingMachinePanel) {
+    public ItemCheckBoxesController(CreateVendingMachinePanel createVendingMachinePanel,
+    ItemSlotInputPanel itemSlotInputPanel, ItemCheckBoxesPanel itemCheckBoxesPanel, CreateRegularVendingMachinePanel 
+    createRegularVendingMachinePanel) {
+        this.createVendingMachinePanel = createVendingMachinePanel;
         this.itemSlotInputPanel = itemSlotInputPanel;
         this.itemCheckBoxesPanel = itemCheckBoxesPanel;
         this.createRegularVendingMachinePanel = createRegularVendingMachinePanel;
@@ -36,10 +41,14 @@ public class ItemCheckBoxesController {
         int slotCount = Integer.parseInt(itemSlotInputPanel.getSlotsTextField().getText());
 
         if (selectedItemCount == slotCount) {
-            createRegularVendingMachinePanel.setSelectedItems(getSelectedItems());
-            createRegularVendingMachinePanel.createQuantityInputFields();
-            
-            itemCheckBoxesPanel.getCardLayout().show(itemCheckBoxesPanel.getMainPanel(), "CreateRegularVendingMachine");
+            if (createVendingMachinePanel.getIsSpecial()) {
+                createRegularVendingMachinePanel.setSelectedItems(getSelectedItems());
+                createRegularVendingMachinePanel.createQuantityInputFields();
+                
+                itemCheckBoxesPanel.getCardLayout().show(itemCheckBoxesPanel.getMainPanel(), "CreateRegularVendingMachine");
+            } else {
+                itemCheckBoxesPanel.getCardLayout().show(itemCheckBoxesPanel.getMainPanel(), "CreateSpecialVendingMachine");
+            }
         } else if (selectedItemCount > slotCount) {
             // Show an error message that the user has selected more items than available slots
             JOptionPane.showMessageDialog(itemCheckBoxesPanel, "You have selected more items than available slots.");

@@ -13,10 +13,12 @@ public class CreateVendingMachineController {
     }
 
     private void createRegularActionPerformed() {
+        createVendingMachinePanel.setIsSpecial(false);
         createVendingMachinePanel.getCardLayout().show(createVendingMachinePanel.getMainPanel(), "ItemSlotInput");
     }
 
     private void createSpecialActionPerformed() {
+        createVendingMachinePanel.setIsSpecial(true);
         createVendingMachinePanel.getCardLayout().show(createVendingMachinePanel.getMainPanel(), "ItemSlotInput");
     }
 }

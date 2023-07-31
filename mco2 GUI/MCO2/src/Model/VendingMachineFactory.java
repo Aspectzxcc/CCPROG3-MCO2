@@ -6,6 +6,7 @@ public class VendingMachineFactory {
 
     public VendingMachineFactory() {
         normalVM = new VendingMachine();
+        isCreated = false;
     }
 
     public boolean isCreated() {
@@ -18,7 +19,7 @@ public class VendingMachineFactory {
 
     public VendingMachine getNormalVM() {
         return normalVM;
-    }
+    } 
 
     public void setNormalVM(VendingMachine normalVM) {
         this.normalVM = normalVM;
