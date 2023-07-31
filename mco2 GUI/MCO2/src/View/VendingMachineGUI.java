@@ -10,8 +10,9 @@ public class VendingMachineGUI extends JFrame {
     private CreateVendingMachinePanel createVendingMachinePanel;
     private ItemSlotInputPanel itemSlotInputPanel;
     private ItemCheckBoxesPanel itemCheckBoxesPanel;
+    private SpecialItemCheckBoxesPanel specialItemCheckBoxesPanel;
     private CreateRegularVendingMachinePanel createRegularVendingMachinePanel;
-    private CreateSpecialVendingMachinePanel createSpecialVendingMachinePanel;
+    private SpecialItemCheckBoxesPanel createSpecialVendingMachinePanel;
     private TestVendingMachinePanel testVendingMachinePanel;
 
     public VendingMachineGUI() {
@@ -28,8 +29,9 @@ public class VendingMachineGUI extends JFrame {
         createVendingMachinePanel = new CreateVendingMachinePanel(cardLayout, mainPanel);
         itemSlotInputPanel = new ItemSlotInputPanel(cardLayout, mainPanel);
         itemCheckBoxesPanel = new ItemCheckBoxesPanel(cardLayout, mainPanel);
+        specialItemCheckBoxesPanel = new SpecialItemCheckBoxesPanel(cardLayout, mainPanel); 
         createRegularVendingMachinePanel = new CreateRegularVendingMachinePanel(cardLayout, mainPanel);
-        createSpecialVendingMachinePanel = new CreateSpecialVendingMachinePanel(cardLayout, mainPanel);
+        //createSpecialVendingMachinePanel = new createSpecialVendingMachinePanel(cardLayout, mainPanel);
         testVendingMachinePanel = new TestVendingMachinePanel(cardLayout, mainPanel);
 
         // Add panels to the main panel with unique names to identify them
@@ -37,8 +39,9 @@ public class VendingMachineGUI extends JFrame {
         mainPanel.add(createVendingMachinePanel, "CreateVendingMachine");
         mainPanel.add(itemSlotInputPanel, "ItemSlotInput");
         mainPanel.add(itemCheckBoxesPanel, "ItemCheckBoxes");
+        mainPanel.add(specialItemCheckBoxesPanel, "SpecialItemCheckBoxes"); 
         mainPanel.add(createRegularVendingMachinePanel, "CreateRegularVendingMachine");
-        mainPanel.add(createSpecialVendingMachinePanel, "CreateSpecialVendingMachine");
+        //mainPanel.add(createSpecialVendingMachinePanel, "CreateSpecialVendingMachine");
         mainPanel.add(testVendingMachinePanel, "TestVendingMachine");
 
         add(mainPanel);
@@ -62,11 +65,15 @@ public class VendingMachineGUI extends JFrame {
         return itemCheckBoxesPanel;
     }
 
+    public SpecialItemCheckBoxesPanel getSpecialItemCheckBoxesPanel() {
+        return specialItemCheckBoxesPanel;
+    }
+
     public CreateRegularVendingMachinePanel getCreateRegularVendingMachinePanel() {
         return createRegularVendingMachinePanel;
     }
 
-    public CreateSpecialVendingMachinePanel getCreateSpecialVendingMachinePanel() {
+    public SpecialItemCheckBoxesPanel getCreateSpecialVendingMachinePanel() {
         return createSpecialVendingMachinePanel;
     }
 

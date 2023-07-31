@@ -9,7 +9,7 @@ public class StartingMenuPanel extends JPanel {
     private JPanel mainPanel;
     private JButton createVendingMachineBtn;
     private JButton testVendingMachineBtn;
-    private JButton exitBtn;
+    private JButton exitButton;
 
     public StartingMenuPanel(CardLayout cardLayout, JPanel mainPanel) {
         this.cardLayout = cardLayout;
@@ -19,11 +19,11 @@ public class StartingMenuPanel extends JPanel {
 
         createVendingMachineBtn = new JButton("Create Vending Machine");
         testVendingMachineBtn = new JButton("Test Vending Machine");
-        exitBtn = new JButton("Exit");
+        exitButton = new JButton("Exit");
 
         add(createVendingMachineBtn);
         add(testVendingMachineBtn);
-        add(exitBtn);
+        add(exitButton);
     }
 
     public CardLayout getCardLayout() {
@@ -34,16 +34,15 @@ public class StartingMenuPanel extends JPanel {
         return mainPanel;
     }
 
-    public void addCreateVendingMachineBtnListener(ActionListener listener) {
+    public void addCreateVendingMachineButtonListener(ActionListener listener) {
         createVendingMachineBtn.addActionListener(listener);
     }
 
-    public void addTestVendingMachineBtnListener(ActionListener listener) {
+    public void addTestVendingMachineButtonListener(ActionListener listener) {
         testVendingMachineBtn.addActionListener(listener);
     }
 
-    public void addExitBtnListener(ActionListener listener) {
-        exitBtn.addActionListener(listener);
+    public void addExitButtonListener(ActionListener listener) {
+        exitButton.addActionListener(listener);
     }
-
 }

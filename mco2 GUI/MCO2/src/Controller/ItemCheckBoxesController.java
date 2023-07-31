@@ -22,7 +22,12 @@ public class ItemCheckBoxesController {
         this.itemCheckBoxesPanel = itemCheckBoxesPanel;
         this.createRegularVendingMachinePanel = createRegularVendingMachinePanel;
 
-        this.itemCheckBoxesPanel.getContinueButton().addActionListener(e -> continueActionPerformed());
+        this.itemCheckBoxesPanel.addBackButtonListener(e -> backButtonActionPerformed());
+        this.itemCheckBoxesPanel.addContinueButtonListener(e -> continueActionPerformed());
+    }
+
+    private void backButtonActionPerformed() {
+        itemCheckBoxesPanel.getCardLayout().show(itemCheckBoxesPanel.getMainPanel(), "StartingMenu");
     }
 
     private void continueActionPerformed() {
@@ -41,13 +46,13 @@ public class ItemCheckBoxesController {
         int slotCount = Integer.parseInt(itemSlotInputPanel.getSlotsTextField().getText());
 
         if (selectedItemCount == slotCount) {
-            if (createVendingMachinePanel.getIsSpecial()) {
+            if (createVendingMachinePanel.getIsSpecial() == false) {
                 createRegularVendingMachinePanel.setSelectedItems(getSelectedItems());
                 createRegularVendingMachinePanel.createQuantityInputFields();
                 
                 itemCheckBoxesPanel.getCardLayout().show(itemCheckBoxesPanel.getMainPanel(), "CreateRegularVendingMachine");
             } else {
-                itemCheckBoxesPanel.getCardLayout().show(itemCheckBoxesPanel.getMainPanel(), "CreateSpecialVendingMachine");
+                itemCheckBoxesPanel.getCardLayout().show(itemCheckBoxesPanel.getMainPanel(), "SpecialItemCheckBoxes");
             }
         } else if (selectedItemCount > slotCount) {
             // Show an error message that the user has selected more items than available slots

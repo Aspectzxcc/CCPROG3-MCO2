@@ -2,8 +2,8 @@ package Model;
 
 public class Item {
 	// Attributes
-	private String itemName;
-	private double price, calories;
+	protected String itemName;
+	protected double price, calories;
 	
 	/**
 	 * Constructor:
@@ -38,55 +38,56 @@ public class Item {
 	}
 
 	public void generateItemPreset() {
-		if (itemName == "Classic BLT") {
+		if ("Classic BLT".equals(itemName)) {
 			this.calories = 450;
 			this.price = 150;
 		}
-
-		if (itemName == "Turkey Club") {
+	
+		if ("Turkey Club".equals(itemName)) {
 			this.calories = 580;
 			this.price = 200;
 		}
-
-		if (itemName == "Ham and Cheese") {
+	
+		if ("Ham and Cheese".equals(itemName)) {
 			this.calories = 520;
 			this.price = 175;
 		}
-
-		if (itemName == "Chicken Salad") {
+	
+		if ("Chicken Salad".equals(itemName)) {
 			this.calories = 390;
 			this.price = 180;
 		}
-
-		if (itemName == "Tuna Salad") {
+	
+		if ("Tuna Salad".equals(itemName)) {
 			this.calories = 420;
 			this.price = 190;
 		}
-
-		if (itemName == "Veggie Delight") {
+	
+		if ("Veggie Delight".equals(itemName)) {
 			this.calories = 320;
 			this.price = 135;
 		}
-
-		if (itemName == "Italian Sub") {
+	
+		if ("Italian Sub".equals(itemName)) {
 			this.calories = 620;
 			this.price = 230;
 		}
-
-		if (itemName == "Grilled Chicken Panini") {
+	
+		if ("Grilled Chicken Panini".equals(itemName)) {
 			this.calories = 540;
 			this.price = 250;
 		}
-
-		if (itemName == "Egg Salad") {
+	
+		if ("Egg Salad".equals(itemName)) {
 			this.calories = 380;
 			this.price = 130;
 		}
-
-		if (itemName == "Roast Beef and Cheddar") {
+	
+		if ("Roast Beef and Cheddar".equals(itemName)) {
 			this.calories = 590;
 			this.price = 210;
 		}
 	}
+	
 
 }

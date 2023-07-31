@@ -7,8 +7,8 @@ import java.awt.event.ActionListener;
 public class CreateVendingMachinePanel extends JPanel {
     private CardLayout cardLayout;
     private JPanel mainPanel;
-    private JButton regularVendingMachineBtn;
-    private JButton specialVendingMachineBtn;
+    private JButton regularVendingMachineButton;
+    private JButton specialVendingMachineButton;
     private Boolean isSpecial;
 
     public CreateVendingMachinePanel(CardLayout cardLayout, JPanel mainPanel) {
@@ -27,11 +27,11 @@ public class CreateVendingMachinePanel extends JPanel {
         JPanel chooseTypePanel = new JPanel();
         chooseTypePanel.setLayout(new GridLayout(1, 2));
 
-        regularVendingMachineBtn = new JButton("Regular Vending Machine");
-        specialVendingMachineBtn = new JButton("Special Vending Machine");
+        regularVendingMachineButton = new JButton("Regular Vending Machine");
+        specialVendingMachineButton = new JButton("Special Vending Machine");
 
-        chooseTypePanel.add(regularVendingMachineBtn);
-        chooseTypePanel.add(specialVendingMachineBtn);
+        chooseTypePanel.add(regularVendingMachineButton);
+        chooseTypePanel.add(specialVendingMachineButton);
 
         add(chooseTypePanel, BorderLayout.CENTER);
     }
@@ -52,11 +52,11 @@ public class CreateVendingMachinePanel extends JPanel {
         this.isSpecial = isSpecial;
     }
 
-    public void addRegularVendingMachineBtnListener(ActionListener listener) {
-        regularVendingMachineBtn.addActionListener(listener);
+    public void addRegularVendingMachineButtonListener(ActionListener listener) {
+        regularVendingMachineButton.addActionListener(listener);
     }
 
-    public void addSpecialVendingMachineBtnListener(ActionListener listener) {
-        specialVendingMachineBtn.addActionListener(listener);
+    public void addSpecialVendingMachineButtonListener(ActionListener listener) {
+        specialVendingMachineButton.addActionListener(listener);
     }
 }

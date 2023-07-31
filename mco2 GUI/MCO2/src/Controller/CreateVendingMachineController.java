@@ -8,8 +8,8 @@ public class CreateVendingMachineController {
     public CreateVendingMachineController(CreateVendingMachinePanel createVendingMachinePanel) {
         this.createVendingMachinePanel = createVendingMachinePanel;
 
-        this.createVendingMachinePanel.addRegularVendingMachineBtnListener(e -> createRegularActionPerformed());
-        this.createVendingMachinePanel.addSpecialVendingMachineBtnListener(e -> createSpecialActionPerformed());
+        this.createVendingMachinePanel.addRegularVendingMachineButtonListener(e -> createRegularActionPerformed());
+        this.createVendingMachinePanel.addSpecialVendingMachineButtonListener(e -> createSpecialActionPerformed());
     }
 
     private void createRegularActionPerformed() {

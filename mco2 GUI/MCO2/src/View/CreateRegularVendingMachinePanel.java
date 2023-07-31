@@ -21,6 +21,7 @@ public class CreateRegularVendingMachinePanel extends JPanel {
         this.mainPanel = mainPanel;
         this.selectedItems = new ArrayList<>();
         this.itemQuantities = new ArrayList<>();
+        quantityTextFields = new JTextField[selectedItems.size()];
 
         setLayout(new BorderLayout());
 
@@ -87,7 +88,6 @@ public class CreateRegularVendingMachinePanel extends JPanel {
         revalidate();
         repaint();
     }
-    
 
     public void setSelectedItems(ArrayList<String> selectedItems) {
         this.selectedItems = selectedItems;

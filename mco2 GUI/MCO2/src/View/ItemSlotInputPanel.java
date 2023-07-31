@@ -10,7 +10,7 @@ public class ItemSlotInputPanel extends JPanel {
     private JLabel titleLabel;
     private JLabel slotsLabel;
     private JTextField slotsTextField;
-    private JButton continueBtn;
+    private JButton continueButton;
 
     public ItemSlotInputPanel(CardLayout cardLayout, JPanel mainPanel) {
         this.cardLayout = cardLayout;
@@ -33,14 +33,14 @@ public class ItemSlotInputPanel extends JPanel {
         slotsTextField = new JTextField();
         slotsTextField.setFont(new Font("Arial", Font.PLAIN, 18));
         slotsTextField.setHorizontalAlignment(SwingConstants.CENTER); // Center the text in the box
-        continueBtn = new JButton("Continue");
-        continueBtn.setFont(new Font("Arial", Font.PLAIN, 18));
+        continueButton = new JButton("Continue");
+        continueButton.setFont(new Font("Arial", Font.PLAIN, 18));
 
         inputPanel.add(slotsLabel);
         inputPanel.add(slotsTextField);
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.add(continueBtn);
+        buttonPanel.add(continueButton);
 
         add(inputPanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
@@ -59,8 +59,7 @@ public class ItemSlotInputPanel extends JPanel {
         return slotsTextField;
     }
 
-    public void addContinueBtnListener(ActionListener listener) {
-        continueBtn.addActionListener(listener);
+    public void addContinueButtonListener(ActionListener listener) {
+        continueButton.addActionListener(listener);
     }
-
 }

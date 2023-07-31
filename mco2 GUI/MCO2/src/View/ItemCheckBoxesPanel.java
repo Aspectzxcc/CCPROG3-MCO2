@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 public class ItemCheckBoxesPanel extends JPanel {
     private CardLayout cardLayout;
     private JPanel mainPanel;
+    private JButton backButton;
     private JLabel titleLabel;
     private JCheckBox classicBLTCheckBox;
     private JCheckBox turkeyClubCheckBox;
@@ -26,10 +27,14 @@ public class ItemCheckBoxesPanel extends JPanel {
 
         setLayout(new BorderLayout());
 
+        // Back button
+        backButton = new JButton("Back");
+        add(backButton, BorderLayout.NORTH);
+
         titleLabel = new JLabel("Select Items for the Vending Machine");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        add(titleLabel, BorderLayout.NORTH);
+        add(titleLabel, BorderLayout.CENTER);
 
         JPanel checkBoxPanel = new JPanel();
         checkBoxPanel.setLayout(new GridLayout(5, 2));
@@ -70,6 +75,10 @@ public class ItemCheckBoxesPanel extends JPanel {
 
     public JPanel getMainPanel() {
         return mainPanel;
+    }
+
+    public JButton getBackButton() {
+        return backButton;
     }
 
     public JButton getContinueButton() {
@@ -116,7 +125,24 @@ public class ItemCheckBoxesPanel extends JPanel {
         return roastBeefAndCheddarCheckBox;
     }
 
+    public void resetCheckBoxes() {
+        classicBLTCheckBox.setSelected(false);
+        turkeyClubCheckBox.setSelected(false);
+        hamAndCheeseCheckBox.setSelected(false);
+        chickenSaladCheckBox.setSelected(false);
+        tunaSaladCheckBox.setSelected(false);
+        veggieDelightCheckBox.setSelected(false);
+        italianSubCheckBox.setSelected(false);
+        grilledChickenPaniniCheckBox.setSelected(false);
+        eggSaladCheckBox.setSelected(false);
+        roastBeefAndCheddarCheckBox.setSelected(false);
+    }
+
     public void addContinueButtonListener(ActionListener listener) {
         continueButton.addActionListener(listener);
+    }
+
+    public void addBackButtonListener(ActionListener listener) {
+        backButton.addActionListener(listener);
     }
 }

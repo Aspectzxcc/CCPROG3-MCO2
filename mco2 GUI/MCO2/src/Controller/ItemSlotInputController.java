@@ -9,7 +9,7 @@ public class ItemSlotInputController {
     public ItemSlotInputController(ItemSlotInputPanel itemSlotInputPanel) {
         this.itemSlotInputPanel = itemSlotInputPanel;
 
-        this.itemSlotInputPanel.addContinueBtnListener(e -> continueActionPerformed());
+        this.itemSlotInputPanel.addContinueButtonListener(e -> continueActionPerformed());
     }
 
     private void continueActionPerformed() {
