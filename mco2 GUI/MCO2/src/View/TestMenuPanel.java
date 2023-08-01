@@ -27,6 +27,14 @@ public class TestMenuPanel extends JPanel {
         add(exitButton);
     }
 
+    public CardLayout getCardLayout() {
+        return cardLayout;
+    }
+
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+
     public void addVendingButtonListener(ActionListener listener) {
         vendingButton.addActionListener(listener);
     }

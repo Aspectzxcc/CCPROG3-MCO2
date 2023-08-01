@@ -21,6 +21,6 @@ public class VendingMachineController{
         new SpecialItemQuantityInputController(vendingMachineGUI.getSpecialItemQuantityInputPanel(), vendingMachineFactory);
 
         // Test Controllers
-        //new TestMenuController(vendingMachineGUI.getTestMenuPanel());
+        new TestMenuController(vendingMachineGUI.getTestMenuPanel());
     }
 }
