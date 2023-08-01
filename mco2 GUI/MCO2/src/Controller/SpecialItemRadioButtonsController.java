@@ -28,17 +28,8 @@ public class SpecialItemRadioButtonsController {
 
     private void createActionPerformed() {
         ArrayList<String> selectedItems;
-        
-        try {
-            selectedItems = getSelectedSpecialItems();
-        } catch (NullPointerException ex) {
-            // Show an error message if any of the radio buttons are not selected
-            JOptionPane.showMessageDialog(specialItemRadioButtonsPanel,
-                    "Please select an option for each category.",
-                    "Selection Error",
-                    JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+
+        selectedItems = getSelectedSpecialItems();
 
         specialItemQuantityInputPanel.setSelectedSpecialItems(selectedItems);
         specialItemQuantityInputPanel.createQuantityInputFields();
@@ -48,21 +39,37 @@ public class SpecialItemRadioButtonsController {
 
     public ArrayList<String> getSelectedSpecialItems() {
         ArrayList<String> selectedItems = new ArrayList<>();
-
+    
         ButtonGroup breadButtonGroup = specialItemRadioButtonsPanel.getBreadButtonGroup();
         ButtonGroup meatButtonGroup = specialItemRadioButtonsPanel.getMeatButtonGroup();
         ButtonGroup cheeseButtonGroup = specialItemRadioButtonsPanel.getCheeseButtonGroup();
         ButtonGroup vegetableButtonGroup = specialItemRadioButtonsPanel.getVegetableButtonGroup();
         ButtonGroup sauceButtonGroup = specialItemRadioButtonsPanel.getSauceButtonGroup();
-        
-        selectedItems.add(getSelectedButtonText(breadButtonGroup));
-        selectedItems.add(getSelectedButtonText(meatButtonGroup));
-        selectedItems.add(getSelectedButtonText(cheeseButtonGroup));
-        selectedItems.add(getSelectedButtonText(vegetableButtonGroup));
-        selectedItems.add(getSelectedButtonText(sauceButtonGroup));
-
+    
+        // Explicitly check for null values and handle the case where no button is selected
+        String bread = getSelectedButtonText(breadButtonGroup);
+        String meat = getSelectedButtonText(meatButtonGroup);
+        String cheese = getSelectedButtonText(cheeseButtonGroup);
+        String vegetable = getSelectedButtonText(vegetableButtonGroup);
+        String sauce = getSelectedButtonText(sauceButtonGroup);
+    
+        if (bread == null || meat == null || cheese == null || vegetable == null || sauce == null) {
+            // Show an error message if any of the radio buttons are not selected
+            JOptionPane.showMessageDialog(specialItemRadioButtonsPanel,
+                    "Please select an option for each category.",
+                    "Selection Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    
+        selectedItems.add(bread);
+        selectedItems.add(meat);
+        selectedItems.add(cheese);
+        selectedItems.add(vegetable);
+        selectedItems.add(sauce);
+    
         return selectedItems;
     }
+    
     
     private String getSelectedButtonText(ButtonGroup buttonGroup) {
         for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {

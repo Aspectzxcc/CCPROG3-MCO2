@@ -19,7 +19,6 @@ public class VendingFeaturesPanel extends JPanel {
     private JButton customizeSandwichButton;
     private JButton exitButton;
     private JLabel insertedMoneyLabel;
-    private JLabel totalCaloriesLabel;
     private JPanel southPanel;
 
     public VendingFeaturesPanel(CardLayout cardLayout, JPanel mainPanel) {
@@ -49,14 +48,10 @@ public class VendingFeaturesPanel extends JPanel {
         // Initialize the inserted money label
         insertedMoneyLabel = new JLabel("Inserted Money: 0 PHP");
 
-        // Initialize the total calories label
-        totalCaloriesLabel = new JLabel("Total Calories: 0");
-
-        // Initialize the South panel and add labels to it
+        // Initialize the South panel and add the label to it
         southPanel = new JPanel();
         southPanel.setLayout(new FlowLayout(FlowLayout.LEFT)); // Arrange components left-to-right
         southPanel.add(insertedMoneyLabel);
-        southPanel.add(totalCaloriesLabel);
 
         // Add the South panel to the VendingFeaturesPanel
         add(southPanel, BorderLayout.SOUTH);
@@ -114,11 +109,6 @@ public class VendingFeaturesPanel extends JPanel {
     // Method to update the inserted money label
     public void updateInsertedMoney(int insertedMoney) {
         insertedMoneyLabel.setText("Inserted Money: " + insertedMoney + " PHP");
-    }
-
-    // Method to update the total calories label
-    public void updateTotalCalories(int totalCalories) {
-        totalCaloriesLabel.setText("Total Calories: " + totalCalories);
     }
 
     // Method to add action listener for the currency buttons

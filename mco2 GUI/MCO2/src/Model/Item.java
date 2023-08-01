@@ -11,7 +11,6 @@ public class Item {
 	 * @param itemName
 	 * @param price
 	 * @param calories
-	 * @param quantity
 	 */
 
 	public Item(String itemName) {

@@ -4,6 +4,8 @@ import Model.*;
 import View.VendingFeaturesPanel;
 
 import java.awt.event.ActionEvent;
+import java.util.Map;
+
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
@@ -19,7 +21,7 @@ public class VendingFeaturesController {
         this.vendingFeaturesPanel.addCurrencyButtonListener(e -> currencyActionPerformed(e));
         this.vendingFeaturesPanel.addBuyItemButtonListener(e -> buyItemActionPerformed());
         this.vendingFeaturesPanel.addCustomizeSandwichButtonListener(e -> customizeSandwichActionPerformed());
-        this.vendingFeaturesPanel.addExitButtonListener(e -> exitActionPerformed());
+        this.vendingFeaturesPanel.addExitButtonListener(e -> exitActionPerformed(e));
     }
 
     // Method to handle currency button click
@@ -39,7 +41,7 @@ public class VendingFeaturesController {
         cashRegister.addInsertedBills(denomination, 1);
 
         // Calculate the total inserted money
-        int totalInsertedMoney = cashRegister.calculateTotalInsertedMoney();
+        int totalInsertedMoney = cashRegister.getInsertedAmount();
         
         // Update the inserted money label in the VendingFeaturesPanel
         vendingFeaturesPanel.updateInsertedMoney(totalInsertedMoney);
@@ -82,7 +84,7 @@ public class VendingFeaturesController {
         int itemPrice = itemToBuy.getPrice();
     
         // Get the total inserted money from the cash register
-        int totalInsertedMoney = getCurrentCashRegister().calculateTotalInsertedMoney();
+        int totalInsertedMoney = getCurrentCashRegister().getInsertedAmount();
     
         // Check if the total inserted money is enough to buy the item
         if (totalInsertedMoney < itemPrice) {
@@ -90,30 +92,37 @@ public class VendingFeaturesController {
             return;
         }
     
-        // Get the denomination of the bill to be used for the transaction
-        int billDenomination = getBillDenominationForTransaction(itemPrice);
-    
-        // Check if the cash register has enough bills of the selected denomination
-        if (!getCurrentCashRegister().hasEnoughMoney(billDenomination)) {
+        // Check if the cash register has enough bills for the price of the item
+        if (!getCurrentCashRegister().hasEnoughMoney(itemPrice)) {
             JOptionPane.showMessageDialog(vendingFeaturesPanel, "Unable to provide change.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
     
-        // Update the cash register by removing the bill used for the transaction
-        getCurrentCashRegister().removeMoney(billDenomination, 1);
+        // Get the new amount of the inserted money
+        int newInsertedMoney = totalInsertedMoney - itemPrice;
+
+        // Remove the bills from the cash register
+        getCurrentCashRegister().removeBillsForItemPrice(itemPrice);
     
-        // Remove the bought item from the itemSlot
-        itemSlot.removeItemFromList(itemToBuy);
+        // Reduce the inserted amount and update the cash register
+        getCurrentCashRegister().setInsertedAmount(newInsertedMoney);
     
         // Update the item table in the vendingFeaturesPanel with the updated itemSlot data
-        vendingFeaturesPanel.setItemData(vendingMachineFactory.getNormalVM().getItemSlots());
+        itemSlot.removeItemFromList(itemToBuy);
+        if (!vendingMachineFactory.isSpecial()) {
+            vendingFeaturesPanel.setItemData(vendingMachineFactory.getNormalVM().getItemSlots());
+        } else {
+            vendingFeaturesPanel.setItemData(vendingMachineFactory.getSpecialVM().getItemSlots());
+        }
     
         // Update the inserted money label in the VendingFeaturesPanel
-        vendingFeaturesPanel.updateInsertedMoney(getCurrentCashRegister().calculateTotalInsertedMoney());
+        vendingFeaturesPanel.updateInsertedMoney(getCurrentCashRegister().getInsertedAmount());
     
         // Show a success message
         JOptionPane.showMessageDialog(vendingFeaturesPanel, "Item bought successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
     }
+    
+
 
     // Method to handle customize sandwich button click
     private void customizeSandwichActionPerformed() {
@@ -121,8 +130,36 @@ public class VendingFeaturesController {
     }
 
     // Method to handle exit button click
-    private void exitActionPerformed() {
-        vendingFeaturesPanel.getCardLayout().show(vendingFeaturesPanel.getMainPanel(), "TestVendingMachine");
+    private void exitActionPerformed(ActionEvent e) {
+        int insertedMoney = getCurrentCashRegister().getInsertedAmount();
+        if (insertedMoney == 0) {
+            // If no money is inserted, simply close the application
+            vendingFeaturesPanel.getCardLayout().show(vendingFeaturesPanel.getMainPanel(), "TestVendingMachine");
+        } else {
+            // Calculate the change to be given
+            int changeAmount = insertedMoney;
+
+            // Get the change denominations and quantities from the cash register
+            // Assuming cashRegister.calculateChange(changeAmount) returns a Map<Integer, Integer> representing the change
+            // You can replace this with your actual logic to calculate change
+            // For now, let's assume we have a method called calculateChange that returns the change.
+            Map<Integer, Integer> change = getCurrentCashRegister().calculateChange(changeAmount);
+
+            // Display the change as a JOptionPane message
+            StringBuilder changeMessage = new StringBuilder("Your Change Received Is: \n");
+            for (Map.Entry<Integer, Integer> entry : change.entrySet()) {
+                int denomination = entry.getKey();
+                int quantity = entry.getValue();
+                changeMessage.append("₱").append(denomination).append(": ").append(quantity).append("\n");
+            }
+            JOptionPane.showMessageDialog(vendingFeaturesPanel, changeMessage.toString(), "Change Amount", JOptionPane.INFORMATION_MESSAGE);
+
+            // Reset the inserted money to zero
+            getCurrentCashRegister().setInsertedAmount(0);
+            vendingFeaturesPanel.updateInsertedMoney(0);
+
+            vendingFeaturesPanel.getCardLayout().show(vendingFeaturesPanel.getMainPanel(), "TestVendingMachine");
+        }
     }
 
     // Helper method to get the current CashRegister based on whether the vending machine is normal or special
@@ -136,25 +173,24 @@ public class VendingFeaturesController {
 
     // Helper method to find the ItemSlot that contains the item with the given name
     private ItemSlot findItemSlotByItemName(String itemName) {
-        for (ItemSlot itemSlot : vendingMachineFactory.getNormalVM().getItemSlots()) {
-            for (Item item : itemSlot.getItemList()) {
-                if (item.getItemName().equals(itemName)) {
-                    return itemSlot;
+        if (!vendingMachineFactory.isSpecial()) {
+            for (ItemSlot itemSlot : vendingMachineFactory.getNormalVM().getItemSlots()) {
+                for (Item item : itemSlot.getItemList()) {
+                    if (item.getItemName().equals(itemName)) {
+                        return itemSlot;
+                    }
                 }
-            }
+             }   
+        } else {
+            for (ItemSlot itemSlot : vendingMachineFactory.getSpecialVM().getItemSlots()) {
+                for (Item item : itemSlot.getItemList()) {
+                    if (item.getItemName().equals(itemName)) {
+                        return itemSlot;
+                    }
+                }
+             }
         }
+        
         return null;
-    }
-    
-    // Helper method to get the denomination of the bill to be used for the transaction
-    private int getBillDenominationForTransaction(int itemPrice) {
-        int[] denominations = Money.getValidDenominations();
-        for (int denomination : denominations) {
-            if (denomination <= itemPrice) {
-                return denomination;
-            }
-        }
-        // If there's no bill of suitable denomination, return 0 (error case)
-        return 0;
     }
 }
