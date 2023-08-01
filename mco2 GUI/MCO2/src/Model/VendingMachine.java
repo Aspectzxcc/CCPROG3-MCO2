@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class VendingMachine {
 	private ArrayList<ItemSlot> itemSlots;
+	private CashRegister cashRegister;
 	
 	public VendingMachine() {
 		itemSlots = new ArrayList<ItemSlot>(8);

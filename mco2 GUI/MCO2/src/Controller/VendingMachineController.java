@@ -11,6 +11,7 @@ public class VendingMachineController{
         this.vendingMachineFactory = vendingMachineFactory;
         this.vendingMachineGUI = vendingMachineGUI;
 
+        // Create Controllers
         new StartingMenuController(vendingMachineGUI.getStartingMenuPanel(), vendingMachineGUI, vendingMachineFactory);
         new CreateVendingMachineController(vendingMachineGUI.getCreateVendingMachinePanel());
         new ItemSlotInputController(vendingMachineGUI.getItemSlotInputPanel());
@@ -18,5 +19,8 @@ public class VendingMachineController{
         new ItemQuantityInputController(vendingMachineGUI.getCreateVendingMachinePanel(), vendingMachineGUI.getItemQuantityInputPanel(), vendingMachineFactory);
         new SpecialItemRadioButtonsController(vendingMachineGUI.getSpecialItemRadioButtonsPanel(), vendingMachineGUI.getSpecialItemQuantityInputPanel());
         new SpecialItemQuantityInputController(vendingMachineGUI.getSpecialItemQuantityInputPanel(), vendingMachineFactory);
+
+        // Test Controllers
+        //new TestMenuController(vendingMachineGUI.getTestMenuPanel());
     }
 }

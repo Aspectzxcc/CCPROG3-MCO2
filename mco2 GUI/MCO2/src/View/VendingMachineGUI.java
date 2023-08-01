@@ -13,7 +13,7 @@ public class VendingMachineGUI extends JFrame {
     private SpecialItemRadioButtonsPanel specialItemRadioButtonsPanel;
     private ItemQuantityInputPanel itemQuantityInputPanel;
     private SpecialItemQuantityInputPanel specialItemQuantityInputPanel;
-    private TestVendingMachinePanel testVendingMachinePanel;
+    private TestMenuPanel testMenuPanel;
 
     public VendingMachineGUI() {
         setTitle("Vending Machine Factory Simulator");
@@ -32,7 +32,7 @@ public class VendingMachineGUI extends JFrame {
         itemQuantityInputPanel = new ItemQuantityInputPanel(cardLayout, mainPanel);
         specialItemRadioButtonsPanel = new SpecialItemRadioButtonsPanel(cardLayout, mainPanel); 
         specialItemQuantityInputPanel = new SpecialItemQuantityInputPanel(cardLayout, mainPanel);
-        testVendingMachinePanel = new TestVendingMachinePanel(cardLayout, mainPanel);
+        testMenuPanel = new TestMenuPanel(cardLayout, mainPanel);
 
         // Add panels to the main panel with unique names to identify them
         mainPanel.add(startingMenuPanel, "StartingMenu");
@@ -42,7 +42,7 @@ public class VendingMachineGUI extends JFrame {
         mainPanel.add(itemQuantityInputPanel, "ItemQuantityInput");
         mainPanel.add(specialItemRadioButtonsPanel, "SpecialItemRadioButtons"); 
         mainPanel.add(specialItemQuantityInputPanel, "SpecialItemQuantityInput");
-        mainPanel.add(testVendingMachinePanel, "TestVendingMachine");
+        mainPanel.add(testMenuPanel, "TestVendingMachine");
 
         add(mainPanel);
 
@@ -78,7 +78,7 @@ public class VendingMachineGUI extends JFrame {
         return specialItemQuantityInputPanel;
     }
 
-    public TestVendingMachinePanel getTestVendingMachinePanel() {
-        return testVendingMachinePanel;
+    public TestMenuPanel getTestMenuPanel() {
+        return testMenuPanel;
     }
 }

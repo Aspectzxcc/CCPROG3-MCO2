@@ -3,7 +3,7 @@ package Model;
 public class Item {
 	// Attributes
 	protected String itemName;
-	protected double price, calories;
+	protected int price, calories;
 	
 	/**
 	 * Constructor:
@@ -24,15 +24,16 @@ public class Item {
 	public String getItemName() {
 		return itemName;
 	}
-		public double getPrice() {
+
+	public int getPrice() {
 		return price;
 	}
-	public double getCalories() {
+	public int getCalories() {
 		return calories;
 	}
 	
 	//Set the price (MAINTENANCE FEATURE)
-	public void setPrice(double price)
+	public void setPrice(int price)
 	{
 		this.price = price;
 	}

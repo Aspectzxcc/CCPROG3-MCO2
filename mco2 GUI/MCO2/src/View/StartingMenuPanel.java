@@ -15,7 +15,8 @@ public class StartingMenuPanel extends JPanel {
         this.cardLayout = cardLayout;
         this.mainPanel = mainPanel;
 
-        setLayout(new GridLayout(3, 1));
+        setLayout(new GridLayout(3, 1, 10, 10));
+        setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20))  ;
 
         createVendingMachineBtn = new JButton("Create Vending Machine");
         testVendingMachineBtn = new JButton("Test Vending Machine");

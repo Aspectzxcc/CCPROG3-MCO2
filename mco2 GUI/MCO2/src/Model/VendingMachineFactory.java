@@ -7,7 +7,7 @@ public class VendingMachineFactory {
 
     public VendingMachineFactory() {
         normalVM = new VendingMachine();
-        isCreated = false;
+        isCreated = true; // auto set to true for debugging purposes
     }
 
     public boolean isCreated() {
