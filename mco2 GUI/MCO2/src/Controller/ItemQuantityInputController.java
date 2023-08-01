@@ -66,7 +66,7 @@ public class ItemQuantityInputController {
                     itemQuantityInputPanel.getCardLayout().show(itemQuantityInputPanel.getMainPanel(), "StartingMenu");
                     JOptionPane.showMessageDialog(itemQuantityInputPanel, "Vending machine created successfully! Redirecting you to Starting Menu.");
                 } else {
-                    itemQuantityInputPanel.getCardLayout().show(itemQuantityInputPanel.getMainPanel(), "SpecialItemRadioButtons");
+                    itemQuantityInputPanel.getCardLayout().show(itemQuantityInputPanel.getMainPanel(), "SpecialItemCheckBoxes");
                     JOptionPane.showMessageDialog(itemQuantityInputPanel, "Vending machine created successfully! Please Choose your Special Items.");
                 }
                 

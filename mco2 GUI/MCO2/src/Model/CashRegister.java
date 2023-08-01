@@ -4,20 +4,28 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CashRegister {
+    private static int[] validDenominations = {1000, 500, 200, 100, 50, 20, 10, 5, 1};
+
     private Map<Integer, Integer> cashRegister;
     private Map<Integer, Integer> paymentReceived;
     private int insertedAmount;
 
     public CashRegister() {
         cashRegister = new HashMap<>();
+        paymentReceived = new HashMap<>();
         insertedAmount = 0;
         initializeDenominations();
     }
 
+    public static int[] getValidDenominations(){
+        return validDenominations;
+    }
+
     private void initializeDenominations() {
         // Initialize the cash register with all denominations set to 0
-        for (int denomination : Money.getValidDenominations()) {
+        for (int denomination : validDenominations) {
             cashRegister.put(denomination, 100);
+            paymentReceived.put(denomination, 0);
         }
     }
 
@@ -37,7 +45,7 @@ public class CashRegister {
     // Check if the cash register has enough money
     public boolean hasEnoughMoney(int amount) {
         // Greedy algorithm to check if there is enough money to provide change
-        for (int denomination : Money.getValidDenominations()) {
+        for (int denomination : validDenominations) {
             int quantity = cashRegister.getOrDefault(denomination, 0);
             while (amount >= denomination && quantity > 0) {
                 amount -= denomination;
@@ -64,6 +72,15 @@ public class CashRegister {
         return insertedAmount;
     }
 
+    // Get total payment received
+    public int getTotalPaymentReceived() {
+        int total = 0;
+        for (int denomination : validDenominations) {
+            total += denomination * paymentReceived.getOrDefault(denomination, 0);
+        }
+        return total;
+    }
+
     public void setInsertedAmount(int insertedAmount) {
         this.insertedAmount = insertedAmount;
     }
@@ -87,7 +104,7 @@ public class CashRegister {
         int remainingChangeAmount = itemPrice;
 
         // Iterate through the denominations from highest to lowest
-        for (int denomination : Money.getValidDenominations()) {
+        for (int denomination : validDenominations) {
             int quantityInRegister = cashRegister.getOrDefault(denomination, 0);
             int billsToRemove = Math.min(quantityInRegister, remainingChangeAmount / denomination);
             remainingChangeAmount -= denomination * billsToRemove;
@@ -100,10 +117,43 @@ public class CashRegister {
         }
     }
 
+    public void transferBillsToPaymentReceived(int amount) {
+        int[] denominations = validDenominations;
+        
+        // Iterate through the denominations from the highest to the lowest
+        for (int denomination : denominations) {
+            // Get the quantity of the current denomination in the cash register
+            int quantityInRegister = cashRegister.getOrDefault(denomination, 0);
+    
+            // Calculate the number of bills of the current denomination needed for the transfer
+            int billsToTransfer = Math.min(amount / denomination, quantityInRegister);
+    
+            // Reduce the remaining amount by the value of the bills of the current denomination
+            amount -= denomination * billsToTransfer;
+    
+            // If there are bills of the current denomination to transfer, update the hashmaps
+            if (billsToTransfer > 0) {
+                // Update the cashRegister by removing the transferred bills
+                int newQuantity = Math.max(0, quantityInRegister - billsToTransfer);
+                cashRegister.put(denomination, newQuantity);
+                
+                // Update the paymentReceived by adding the transferred bills
+                int currentReceived = paymentReceived.getOrDefault(denomination, 0);
+                paymentReceived.put(denomination, currentReceived + billsToTransfer);
+            }
+    
+            // If the remaining amount becomes zero, no further calculations are needed
+            if (amount == 0) {
+                break;
+            }
+        }
+    }
+    
+
         // Method to calculate the change to be given
     public Map<Integer, Integer> calculateChange(int changeAmount) {
         Map<Integer, Integer> change = new HashMap<>();
-        int[] denominations = Money.getValidDenominations();
+        int[] denominations = validDenominations;
 
         // Iterate through the denominations from the lowest to the highest
         for (int denomination : denominations) {
@@ -149,9 +199,10 @@ public class CashRegister {
     // Print a summary of transactions
     public void printTransactionSummary() {
         System.out.println("Transaction Summary:");
-        for (int denomination : Money.getValidDenominations()) {
+        for (int denomination : validDenominations) {
             int quantity = cashRegister.getOrDefault(denomination, 0);
             System.out.println("Denomination: " + denomination + " - Quantity: " + quantity);
         }
     }
 }
+

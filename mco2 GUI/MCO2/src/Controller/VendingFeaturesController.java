@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.*;
+import View.SpecialVendingFeaturesPanel;
 import View.VendingFeaturesPanel;
 
 import java.awt.event.ActionEvent;
@@ -11,17 +12,19 @@ import javax.swing.JOptionPane;
 
 public class VendingFeaturesController {
     private VendingFeaturesPanel vendingFeaturesPanel;
+    private SpecialVendingFeaturesPanel specialVendingFeaturesPanel;
     private VendingMachineFactory vendingMachineFactory;
 
-    public VendingFeaturesController(VendingFeaturesPanel vendingFeaturesPanel, VendingMachineFactory vendingMachineFactory) {
+    public VendingFeaturesController(VendingFeaturesPanel vendingFeaturesPanel, SpecialVendingFeaturesPanel specialVendingFeaturesPanel, VendingMachineFactory vendingMachineFactory) {
         this.vendingFeaturesPanel = vendingFeaturesPanel;
+        this.specialVendingFeaturesPanel = specialVendingFeaturesPanel;
         this.vendingMachineFactory = vendingMachineFactory;
 
         // Add action listeners for the buttons in the VendingFeaturesPanel using lambda expressions
         this.vendingFeaturesPanel.addCurrencyButtonListener(e -> currencyActionPerformed(e));
         this.vendingFeaturesPanel.addBuyItemButtonListener(e -> buyItemActionPerformed());
         this.vendingFeaturesPanel.addCustomizeSandwichButtonListener(e -> customizeSandwichActionPerformed());
-        this.vendingFeaturesPanel.addExitButtonListener(e -> exitActionPerformed(e));
+        this.vendingFeaturesPanel.addExitButtonListener(e -> exitActionPerformed());
     }
 
     // Method to handle currency button click
@@ -37,7 +40,7 @@ public class VendingFeaturesController {
         // Extract the denomination from the button text and convert it to an integer
         int denomination = Integer.parseInt(buttonText.replace("₱", ""));
 
-        // Increment the quantity of the inserted bills in the cash register for the corresponding denomination
+        // Increment the quantity of the inserted bills in the cash register for the corresponding denomination 
         cashRegister.addInsertedBills(denomination, 1);
 
         // Calculate the total inserted money
@@ -100,10 +103,10 @@ public class VendingFeaturesController {
     
         // Get the new amount of the inserted money
         int newInsertedMoney = totalInsertedMoney - itemPrice;
-
-        // Remove the bills from the cash register
-        getCurrentCashRegister().removeBillsForItemPrice(itemPrice);
     
+        // Transfer the payment from cash register to payment received
+        getCurrentCashRegister().transferBillsToPaymentReceived(itemPrice);
+
         // Reduce the inserted amount and update the cash register
         getCurrentCashRegister().setInsertedAmount(newInsertedMoney);
     
@@ -126,11 +129,21 @@ public class VendingFeaturesController {
 
     // Method to handle customize sandwich button click
     private void customizeSandwichActionPerformed() {
-        // Implement the action for customizing a sandwich here
+        // Check if the current vending machine is special
+        if (!vendingMachineFactory.isSpecial()) {
+            JOptionPane.showMessageDialog(vendingFeaturesPanel, "This feature is only available for Special Vending Machines.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        specialVendingFeaturesPanel.setItemData(vendingMachineFactory.getSpecialVM().getSpecialItems());
+
+        // If it's a special vending machine, show the SpecialVendingFeatures menu
+        vendingFeaturesPanel.getCardLayout().show(vendingFeaturesPanel.getMainPanel(), "SpecialVendingFeatures");
     }
 
+
     // Method to handle exit button click
-    private void exitActionPerformed(ActionEvent e) {
+    private void exitActionPerformed() {
         int insertedMoney = getCurrentCashRegister().getInsertedAmount();
         if (insertedMoney == 0) {
             // If no money is inserted, simply close the application

@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class SpecialItemRadioButtonsPanel extends JPanel {
+public class SpecialItemCheckBoxesPanel extends JPanel {
     private CardLayout cardLayout;
     private JPanel mainPanel;
     private JButton backButton;
@@ -14,18 +14,13 @@ public class SpecialItemRadioButtonsPanel extends JPanel {
     private JLabel cheeseLabel;
     private JLabel vegetableLabel;
     private JLabel sauceLabel;
-    private JRadioButton[] breadOptionsRadioButtons;
-    private JRadioButton[] meatOptionsRadioButtons;
-    private JRadioButton[] cheeseOptionsRadioButtons;
-    private JRadioButton[] vegetableOptionsRadioButtons;
-    private JRadioButton[] sauceOptionsRadioButtons;
-    private ButtonGroup breadButtonGroup;
-    private ButtonGroup meatButtonGroup;
-    private ButtonGroup cheeseButtonGroup;
-    private ButtonGroup vegetableButtonGroup;
-    private ButtonGroup sauceButtonGroup;
+    private JCheckBox[] breadCheckBoxes;
+    private JCheckBox[] meatCheckBoxes;
+    private JCheckBox[] cheeseCheckBoxes;
+    private JCheckBox[] vegetableCheckBoxes;
+    private JCheckBox[] sauceCheckBoxes;
 
-    public SpecialItemRadioButtonsPanel(CardLayout cardLayout, JPanel mainPanel) {
+    public SpecialItemCheckBoxesPanel(CardLayout cardLayout, JPanel mainPanel) {
         this.cardLayout = cardLayout;
         this.mainPanel = mainPanel;
 
@@ -47,89 +42,79 @@ public class SpecialItemRadioButtonsPanel extends JPanel {
         gbc.anchor = GridBagConstraints.LINE_START;
         gbc.insets = new Insets(5, 10, 5, 10); // Add some padding to the components
 
-        // Radio buttons for bread options
+        // Checkboxes for bread options
         JPanel breadPanel = new JPanel();
         breadPanel.setLayout(new BoxLayout(breadPanel, BoxLayout.Y_AXIS));
         breadLabel = new JLabel("Bread Options:");
         breadPanel.add(breadLabel);
 
         String[] breadOptions = {"White Bread", "Whole Wheat Bread", "Multigrain Bread", "Rye Bread", "Baguette", "Ciabatta", "Wrap"};
-        breadOptionsRadioButtons = new JRadioButton[breadOptions.length];
-        breadButtonGroup = new ButtonGroup();
+        breadCheckBoxes = new JCheckBox[breadOptions.length];
         for (int i = 0; i < breadOptions.length; i++) {
-            breadOptionsRadioButtons[i] = new JRadioButton(breadOptions[i]);
-            breadPanel.add(breadOptionsRadioButtons[i]);
-            breadButtonGroup.add(breadOptionsRadioButtons[i]);
+            breadCheckBoxes[i] = new JCheckBox(breadOptions[i]);
+            breadPanel.add(breadCheckBoxes[i]);
         }
         optionsPanel.add(breadPanel, gbc);
 
-        // Radio buttons for meat options
+        // Checkboxes for meat options
         JPanel meatPanel = new JPanel();
         meatPanel.setLayout(new BoxLayout(meatPanel, BoxLayout.Y_AXIS));
         meatLabel = new JLabel("Meat Options:");
         meatPanel.add(meatLabel);
 
         String[] meatOptions = {"Roast Beef", "Turkey", "Ham", "Chicken", "Tuna", "Bacon", "Salami"};
-        meatOptionsRadioButtons = new JRadioButton[meatOptions.length];
-        meatButtonGroup = new ButtonGroup();
+        meatCheckBoxes = new JCheckBox[meatOptions.length];
         for (int i = 0; i < meatOptions.length; i++) {
-            meatOptionsRadioButtons[i] = new JRadioButton(meatOptions[i]);
-            meatPanel.add(meatOptionsRadioButtons[i]);
-            meatButtonGroup.add(meatOptionsRadioButtons[i]);
+            meatCheckBoxes[i] = new JCheckBox(meatOptions[i]);
+            meatPanel.add(meatCheckBoxes[i]);
         }
         gbc.gridx++; // Move to the next column
         gbc.gridy = 0; // Reset the row to the top
         optionsPanel.add(meatPanel, gbc);
 
-        // Radio buttons for cheese options
+        // Checkboxes for cheese options
         JPanel cheesePanel = new JPanel();
         cheesePanel.setLayout(new BoxLayout(cheesePanel, BoxLayout.Y_AXIS));
         cheeseLabel = new JLabel("Cheese Options:");
         cheesePanel.add(cheeseLabel);
 
         String[] cheeseOptions = {"Cheddar Cheese", "Swiss Cheese", "Provolone Cheese", "Pepper Jack Cheese", "Mozzarella Cheese", "Gouda Cheese", "Blue Cheese"};
-        cheeseOptionsRadioButtons = new JRadioButton[cheeseOptions.length];
-        cheeseButtonGroup = new ButtonGroup();
+        cheeseCheckBoxes = new JCheckBox[cheeseOptions.length];
         for (int i = 0; i < cheeseOptions.length; i++) {
-            cheeseOptionsRadioButtons[i] = new JRadioButton(cheeseOptions[i]);
-            cheesePanel.add(cheeseOptionsRadioButtons[i]);
-            cheeseButtonGroup.add(cheeseOptionsRadioButtons[i]);
+            cheeseCheckBoxes[i] = new JCheckBox(cheeseOptions[i]);
+            cheesePanel.add(cheeseCheckBoxes[i]);
         }
         gbc.gridx++; // Move to the next column
         gbc.gridy = 0; // Reset the row to the top
         optionsPanel.add(cheesePanel, gbc);
 
-        // Radio buttons for vegetable options
+        // Checkboxes for vegetable options
         JPanel vegetablePanel = new JPanel();
         vegetablePanel.setLayout(new BoxLayout(vegetablePanel, BoxLayout.Y_AXIS));
         vegetableLabel = new JLabel("Vegetable Options:");
         vegetablePanel.add(vegetableLabel);
 
         String[] vegetableOptions = {"Lettuce", "Tomato", "Cucumber", "Onion", "Bell Pepper", "Spinach", "Pickles"};
-        vegetableOptionsRadioButtons = new JRadioButton[vegetableOptions.length];
-        vegetableButtonGroup = new ButtonGroup();
+        vegetableCheckBoxes = new JCheckBox[vegetableOptions.length];
         for (int i = 0; i < vegetableOptions.length; i++) {
-            vegetableOptionsRadioButtons[i] = new JRadioButton(vegetableOptions[i]);
-            vegetablePanel.add(vegetableOptionsRadioButtons[i]);
-            vegetableButtonGroup.add(vegetableOptionsRadioButtons[i]);
+            vegetableCheckBoxes[i] = new JCheckBox(vegetableOptions[i]);
+            vegetablePanel.add(vegetableCheckBoxes[i]);
         }
         gbc.gridx++; // Move to the next column
         gbc.gridy = 0; // Reset the row to the top
         optionsPanel.add(vegetablePanel, gbc);
 
-        // Radio buttons for sauce options
+        // Checkboxes for sauce options
         JPanel saucePanel = new JPanel();
         saucePanel.setLayout(new BoxLayout(saucePanel, BoxLayout.Y_AXIS));
         sauceLabel = new JLabel("Sauce Options:");
         saucePanel.add(sauceLabel);
 
         String[] sauceOptions = {"Mayonnaise", "Mustard", "Ketchup", "Ranch Dressing", "BBQ Sauce", "Pesto", "Hummus"};
-        sauceOptionsRadioButtons = new JRadioButton[sauceOptions.length];
-        sauceButtonGroup = new ButtonGroup();
+        sauceCheckBoxes = new JCheckBox[sauceOptions.length];
         for (int i = 0; i < sauceOptions.length; i++) {
-            sauceOptionsRadioButtons[i] = new JRadioButton(sauceOptions[i]);
-            saucePanel.add(sauceOptionsRadioButtons[i]);
-            sauceButtonGroup.add(sauceOptionsRadioButtons[i]);
+            sauceCheckBoxes[i] = new JCheckBox(sauceOptions[i]);
+            saucePanel.add(sauceCheckBoxes[i]);
         }
         gbc.gridx++; // Move to the next column
         gbc.gridy = 0; // Reset the row to the top
@@ -139,24 +124,12 @@ public class SpecialItemRadioButtonsPanel extends JPanel {
         add(optionsPanel, BorderLayout.CENTER);
     }
 
-    public ButtonGroup getBreadButtonGroup() {
-        return breadButtonGroup;
+    public JButton getCreateButton() {
+        return createButton;
     }
 
-    public ButtonGroup getMeatButtonGroup() {
-        return meatButtonGroup;
-    }
-
-    public ButtonGroup getCheeseButtonGroup() {
-        return cheeseButtonGroup;
-    }
-
-    public ButtonGroup getVegetableButtonGroup() {
-        return vegetableButtonGroup;
-    }
-
-    public ButtonGroup getSauceButtonGroup() {
-        return sauceButtonGroup;
+    public JButton getBackButton() {
+        return backButton;
     }
 
     public CardLayout getCardLayout() {
@@ -167,6 +140,26 @@ public class SpecialItemRadioButtonsPanel extends JPanel {
         return mainPanel;
     }
 
+    public JCheckBox[] getBreadCheckBoxes() {
+        return breadCheckBoxes;
+    }
+
+    public JCheckBox[] getMeatCheckBoxes() {
+        return meatCheckBoxes;
+    }   
+
+    public JCheckBox[] getCheeseCheckBoxes() {
+        return cheeseCheckBoxes;
+    }
+
+    public JCheckBox[] getVegetableCheckBoxes() {
+        return vegetableCheckBoxes;
+    }
+
+    public JCheckBox[] getSauceCheckBoxes() {
+        return sauceCheckBoxes;
+    }
+
     public void addCreateButtonListener(ActionListener listener) {
         createButton.addActionListener(listener);
     }
@@ -174,13 +167,71 @@ public class SpecialItemRadioButtonsPanel extends JPanel {
     public void addBackButtonListener(ActionListener listener) {
         backButton.addActionListener(listener);
     }
-    
-    public void resetRadioButtons() {
-        breadButtonGroup.clearSelection();
-        meatButtonGroup.clearSelection();
-        cheeseButtonGroup.clearSelection();
-        vegetableButtonGroup.clearSelection();
-        sauceButtonGroup.clearSelection();
+
+    public boolean isBreadSelected(String breadOption) {
+        for (JCheckBox checkBox : breadCheckBoxes) {
+            if (checkBox.getText().equals(breadOption) && checkBox.isSelected()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isMeatSelected(String meatOption) {
+        for (JCheckBox checkBox : meatCheckBoxes) {
+            if (checkBox.getText().equals(meatOption) && checkBox.isSelected()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isCheeseSelected(String cheeseOption) {
+        for (JCheckBox checkBox : cheeseCheckBoxes) {
+            if (checkBox.getText().equals(cheeseOption) && checkBox.isSelected()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isVegetableSelected(String vegetableOption) {
+        for (JCheckBox checkBox : vegetableCheckBoxes) {
+            if (checkBox.getText().equals(vegetableOption) && checkBox.isSelected()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isSauceSelected(String sauceOption) {
+        for (JCheckBox checkBox : sauceCheckBoxes) {
+            if (checkBox.getText().equals(sauceOption) && checkBox.isSelected()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void resetCheckBoxes() {
+        for (JCheckBox checkBox : breadCheckBoxes) {
+            checkBox.setSelected(false);
+        }
+
+        for (JCheckBox checkBox : meatCheckBoxes) {
+            checkBox.setSelected(false);
+        }
+
+        for (JCheckBox checkBox : cheeseCheckBoxes) {
+            checkBox.setSelected(false);
+        }
+
+        for (JCheckBox checkBox : vegetableCheckBoxes) {
+            checkBox.setSelected(false);
+        }
+
+        for (JCheckBox checkBox : sauceCheckBoxes) {
+            checkBox.setSelected(false);
+        }
     }
 }
-

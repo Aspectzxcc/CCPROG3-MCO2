@@ -38,7 +38,7 @@ public class StartingMenuController {
         vendingMachineGUI.getItemSlotInputPanel().getSlotsTextField().setText("");
         vendingMachineGUI.getItemQuantityInputPanel().reset();
         vendingMachineGUI.getItemCheckBoxesPanel().resetCheckBoxes();
-        vendingMachineGUI.getSpecialItemRadioButtonsPanel().resetRadioButtons();
+        vendingMachineGUI.getSpecialItemCheckBoxesPanel().resetCheckBoxes();
         vendingMachineGUI.getSpecialItemQuantityInputPanel().reset();
     }
 }

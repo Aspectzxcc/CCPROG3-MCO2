@@ -12,6 +12,10 @@ public class ItemSlot {
 	public ArrayList<Item> getItemList() {
 		return items;
 	}
+
+	public void setItemList(ArrayList<Item> items) {
+		this.items = items;
+	}
 	
 	public void addItemToSlot(Item item) {
 		items.add(item);

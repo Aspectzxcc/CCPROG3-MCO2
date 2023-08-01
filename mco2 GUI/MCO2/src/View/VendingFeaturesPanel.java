@@ -37,7 +37,7 @@ public class VendingFeaturesPanel extends JPanel {
         // Initialize the currency buttons
         JPanel currencyPanel = new JPanel();
         currencyPanel.setLayout(new GridLayout(3, 3, 5, 5));
-        int[] denominations = Money.getValidDenominations();
+        int[] denominations = CashRegister.getValidDenominations();
         currencyButtons = new JButton[denominations.length];
         for (int i = 0; i < denominations.length; i++) {
             int denomination = denominations[i];

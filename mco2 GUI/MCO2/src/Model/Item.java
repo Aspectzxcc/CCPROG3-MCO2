@@ -15,8 +15,13 @@ public class Item {
 
 	public Item(String itemName) {
 		this.itemName = itemName;
-		this.price = 0;
-		this.calories = 0;
+		generateItemPreset();
+	}
+
+	public Item(String itemName, int price, int calories) {
+		this.itemName = itemName;
+		this.price = price;
+		this.calories = calories;
 	}
 	
 	// Getters

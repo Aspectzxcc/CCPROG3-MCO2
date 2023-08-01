@@ -59,12 +59,12 @@ public class SpecialItemQuantityInputController {
 
                 if (specialItem != null) {
                     // Create a new item slot
-                    ArrayList<SpecialItem> SpecialitemList = new ArrayList<>();
+                    ArrayList<SpecialItem> specialItemList = new ArrayList<>();
                     for (int j = 0; j < quantity; j++) {
-                        SpecialitemList.add(specialItem);
+                        specialItemList.add(specialItem);
                     }
                     // Add the item slot to the vending machine
-                    vendingMachineFactory.getSpecialVM().addSpecialItems(SpecialitemList);
+                    vendingMachineFactory.getSpecialVM().addSpecialItems(specialItemList);
                 }
             }
 

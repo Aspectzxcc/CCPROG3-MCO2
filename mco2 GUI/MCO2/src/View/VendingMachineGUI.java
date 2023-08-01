@@ -10,16 +10,18 @@ public class VendingMachineGUI extends JFrame {
     private CreateVendingMachinePanel createVendingMachinePanel;
     private ItemSlotInputPanel itemSlotInputPanel;
     private ItemCheckBoxesPanel itemCheckBoxesPanel;
-    private SpecialItemRadioButtonsPanel specialItemRadioButtonsPanel;
+    private SpecialItemCheckBoxesPanel specialItemCheckBoxesPanel;
     private ItemQuantityInputPanel itemQuantityInputPanel;
     private SpecialItemQuantityInputPanel specialItemQuantityInputPanel;
     private TestMenuPanel testMenuPanel;
     private VendingFeaturesPanel vendingFeaturesPanel;
+    private SpecialVendingFeaturesPanel specialVendingFeaturesPanel;
 
     public VendingMachineGUI() {
         setTitle("Vending Machine Factory Simulator");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
+        setLocationRelativeTo(null);
 
         mainPanel = new JPanel();
         cardLayout = new CardLayout();
@@ -31,10 +33,11 @@ public class VendingMachineGUI extends JFrame {
         itemSlotInputPanel = new ItemSlotInputPanel(cardLayout, mainPanel);
         itemCheckBoxesPanel = new ItemCheckBoxesPanel(cardLayout, mainPanel);
         itemQuantityInputPanel = new ItemQuantityInputPanel(cardLayout, mainPanel);
-        specialItemRadioButtonsPanel = new SpecialItemRadioButtonsPanel(cardLayout, mainPanel); 
+        specialItemCheckBoxesPanel = new SpecialItemCheckBoxesPanel(cardLayout, mainPanel); 
         specialItemQuantityInputPanel = new SpecialItemQuantityInputPanel(cardLayout, mainPanel);
         testMenuPanel = new TestMenuPanel(cardLayout, mainPanel);
         vendingFeaturesPanel = new VendingFeaturesPanel(cardLayout, mainPanel);
+        specialVendingFeaturesPanel = new SpecialVendingFeaturesPanel(cardLayout, mainPanel);
 
         // Add panels to the main panel with unique names to identify them
         mainPanel.add(startingMenuPanel, "StartingMenu");
@@ -42,10 +45,11 @@ public class VendingMachineGUI extends JFrame {
         mainPanel.add(itemSlotInputPanel, "ItemSlotInput");
         mainPanel.add(itemCheckBoxesPanel, "ItemCheckBoxes");
         mainPanel.add(itemQuantityInputPanel, "ItemQuantityInput");
-        mainPanel.add(specialItemRadioButtonsPanel, "SpecialItemRadioButtons"); 
+        mainPanel.add(specialItemCheckBoxesPanel, "SpecialItemCheckBoxes"); 
         mainPanel.add(specialItemQuantityInputPanel, "SpecialItemQuantityInput");
         mainPanel.add(testMenuPanel, "TestVendingMachine");
         mainPanel.add(vendingFeaturesPanel, "VendingFeatures");
+        mainPanel.add(specialVendingFeaturesPanel, "SpecialVendingFeatures");
 
         add(mainPanel);
 
@@ -73,8 +77,8 @@ public class VendingMachineGUI extends JFrame {
         return itemQuantityInputPanel;
     }
 
-    public SpecialItemRadioButtonsPanel getSpecialItemRadioButtonsPanel() {
-        return specialItemRadioButtonsPanel;
+    public SpecialItemCheckBoxesPanel getSpecialItemCheckBoxesPanel() {
+        return specialItemCheckBoxesPanel;
     }
 
     public SpecialItemQuantityInputPanel getSpecialItemQuantityInputPanel() {
@@ -87,5 +91,9 @@ public class VendingMachineGUI extends JFrame {
 
     public VendingFeaturesPanel getVendingFeaturesPanel() {
         return vendingFeaturesPanel;
+    }
+
+    public SpecialVendingFeaturesPanel getSpecialVendingFeaturesPanel() {
+        return specialVendingFeaturesPanel;
     }
 }

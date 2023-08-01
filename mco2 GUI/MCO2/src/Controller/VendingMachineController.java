@@ -17,11 +17,14 @@ public class VendingMachineController{
         new ItemSlotInputController(vendingMachineGUI.getItemSlotInputPanel());
         new ItemCheckBoxesController(vendingMachineGUI.getItemSlotInputPanel(), vendingMachineGUI.getItemCheckBoxesPanel(), vendingMachineGUI.getItemQuantityInputPanel());
         new ItemQuantityInputController(vendingMachineGUI.getItemQuantityInputPanel(), vendingMachineFactory);
-        new SpecialItemRadioButtonsController(vendingMachineGUI.getSpecialItemRadioButtonsPanel(), vendingMachineGUI.getSpecialItemQuantityInputPanel());
+        new SpecialItemCheckBoxesController(vendingMachineGUI.getSpecialItemCheckBoxesPanel(), vendingMachineGUI.getSpecialItemQuantityInputPanel());
         new SpecialItemQuantityInputController(vendingMachineGUI.getSpecialItemQuantityInputPanel(), vendingMachineFactory);
 
         // Test Controllers
         new TestMenuController(vendingMachineGUI.getTestMenuPanel(), vendingMachineGUI.getVendingFeaturesPanel(), vendingMachineFactory);
-        new VendingFeaturesController(vendingMachineGUI.getVendingFeaturesPanel(), vendingMachineFactory);
+        new VendingFeaturesController(vendingMachineGUI.getVendingFeaturesPanel(), vendingMachineGUI.getSpecialVendingFeaturesPanel(), vendingMachineFactory);
+        new SpecialVendingFeaturesController(vendingMachineGUI.getSpecialVendingFeaturesPanel(), vendingMachineFactory);
+        
     }
+
 }
