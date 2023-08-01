@@ -9,12 +9,10 @@ public class CreateVendingMachinePanel extends JPanel {
     private JPanel mainPanel;
     private JButton regularVendingMachineButton;
     private JButton specialVendingMachineButton;
-    private Boolean isSpecial;
 
     public CreateVendingMachinePanel(CardLayout cardLayout, JPanel mainPanel) {
         this.cardLayout = cardLayout;
         this.mainPanel = mainPanel;
-        this.isSpecial = false;
 
         setLayout(new BorderLayout());
 
@@ -42,14 +40,6 @@ public class CreateVendingMachinePanel extends JPanel {
 
     public JPanel getMainPanel() {
         return mainPanel;
-    }
-
-    public Boolean getIsSpecial() {
-        return isSpecial;
-    }
-
-    public void setIsSpecial(Boolean isSpecial) {
-        this.isSpecial = isSpecial;
     }
 
     public void addRegularVendingMachineButtonListener(ActionListener listener) {

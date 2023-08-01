@@ -8,11 +8,16 @@ public class VendingMachine {
 	
 	public VendingMachine() {
 		itemSlots = new ArrayList<ItemSlot>(8);
+		cashRegister = new CashRegister();
 	}
 	
 	// getters
 	public ArrayList<ItemSlot> getItemSlots() {
 		return itemSlots;
+	}
+
+	public CashRegister getCashRegister() {
+		return cashRegister;
 	}
 
 	// setters
@@ -22,5 +27,9 @@ public class VendingMachine {
 	
 	public void removeItemSlot(ItemSlot itemSlot) {
 		itemSlots.remove(itemSlot);
+	}
+
+	public void setCashRegister(CashRegister cashRegister) {
+		this.cashRegister = cashRegister;
 	}
 }

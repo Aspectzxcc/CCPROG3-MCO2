@@ -1,19 +1,15 @@
 package Controller;
 
-import View.CreateVendingMachinePanel;
 import View.ItemQuantityInputPanel;
 import Model.*; 
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 
 public class ItemQuantityInputController {
-    private CreateVendingMachinePanel createVendingMachinePanel;
     private ItemQuantityInputPanel itemQuantityInputPanel;
     private VendingMachineFactory vendingMachineFactory;
 
-    public ItemQuantityInputController(CreateVendingMachinePanel createVendingMachinePanel, ItemQuantityInputPanel itemQuantityInputPanel, 
-    VendingMachineFactory vendingMachineFactory) {
-        this.createVendingMachinePanel = createVendingMachinePanel;
+    public ItemQuantityInputController(ItemQuantityInputPanel itemQuantityInputPanel, VendingMachineFactory vendingMachineFactory) {
         this.itemQuantityInputPanel = itemQuantityInputPanel;
         this.vendingMachineFactory = vendingMachineFactory;
         
@@ -32,7 +28,7 @@ public class ItemQuantityInputController {
                     itemQuantityInputPanel.getItemQuantities().add(quantity);
                 }
 
-                if (createVendingMachinePanel.getIsSpecial() == false) {
+                if (vendingMachineFactory.isSpecial() == false) {
                     vendingMachineFactory.setNormalVM(new VendingMachine());
                 } else {
                     vendingMachineFactory.setSpecialVM(new SpecialVendingMachine());
@@ -58,7 +54,7 @@ public class ItemQuantityInputController {
                             itemSlot.addItemToSlot(item);
                         }
                         // Add the item slot to the vending machine
-                        if (createVendingMachinePanel.getIsSpecial() == false) {
+                        if (vendingMachineFactory.isSpecial() == false) {
                             vendingMachineFactory.getNormalVM().addItemSlot(itemSlot);
                         } else {
                             vendingMachineFactory.getSpecialVM().addItemSlot(itemSlot);
@@ -66,7 +62,7 @@ public class ItemQuantityInputController {
                     }
                 }
                 
-                if (createVendingMachinePanel.getIsSpecial() == false) {
+                if (vendingMachineFactory.isSpecial() == false) {
                     itemQuantityInputPanel.getCardLayout().show(itemQuantityInputPanel.getMainPanel(), "StartingMenu");
                     JOptionPane.showMessageDialog(itemQuantityInputPanel, "Vending machine created successfully! Redirecting you to Starting Menu.");
                 } else {

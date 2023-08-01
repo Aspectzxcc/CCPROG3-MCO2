@@ -35,7 +35,6 @@ public class StartingMenuController {
     }
 
     private void resetCreateInputs() {
-        vendingMachineGUI.getCreateVendingMachinePanel().setIsSpecial(false);
         vendingMachineGUI.getItemSlotInputPanel().getSlotsTextField().setText("");
         vendingMachineGUI.getItemQuantityInputPanel().reset();
         vendingMachineGUI.getItemCheckBoxesPanel().resetCheckBoxes();

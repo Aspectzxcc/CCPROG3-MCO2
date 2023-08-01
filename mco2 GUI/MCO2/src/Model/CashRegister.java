@@ -16,7 +16,7 @@ public class CashRegister {
     private void initializeDenominations() {
         // Initialize the cash register with all denominations set to 0
         for (int denomination : Money.getValidDenominations()) {
-            cashRegister.put(denomination, 0);
+            cashRegister.put(denomination, 100);
             insertedBills.put(denomination, 0);
         }
     }
