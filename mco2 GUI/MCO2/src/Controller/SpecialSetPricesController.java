@@ -52,7 +52,7 @@ public class SpecialSetPricesController {
 
     private void backActionPerformed(ActionEvent e) {
         // Switch back to the main menu
-        specialSetPricesPanel.getCardLayout().show(specialSetPricesPanel.getMainPanel(), "mainMenu");
+        specialSetPricesPanel.getCardLayout().show(specialSetPricesPanel.getMainPanel(), "MaintenanceFeatures");
     }
 
     private void askAndSetPrice(String itemName) {

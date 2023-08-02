@@ -4,7 +4,6 @@ import Model.*;
 import View.*;
 import javax.swing.JOptionPane;
 
-
 public class StartingMenuController {
     private StartingMenuPanel startingMenuPanel;
     private VendingMachineGUI vendingMachineGUI;
@@ -17,6 +16,7 @@ public class StartingMenuController {
 
         this.startingMenuPanel.addCreateVendingMachineButtonListener(e -> createActionPerformed());
         this.startingMenuPanel.addTestVendingMachineButtonListener(e -> testActionPerformed());
+        this.startingMenuPanel.addExitButtonListener(e -> exitActionPerformed());
     }
 
     private void createActionPerformed() {
@@ -32,6 +32,10 @@ public class StartingMenuController {
             startingMenuPanel.getCardLayout().show(startingMenuPanel.getMainPanel(), "TestVendingMachine");
         }
         
+    }
+
+    private void exitActionPerformed() {
+        System.exit(0);
     }
 
     private void resetCreateInputs() {

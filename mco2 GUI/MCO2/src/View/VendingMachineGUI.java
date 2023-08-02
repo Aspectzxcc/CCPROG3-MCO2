@@ -21,6 +21,8 @@ public class VendingMachineGUI extends JFrame {
     private SpecialRestockPanel specialRestockPanel;
     private SetItemPricesPanel setItemPricesPanel;
     private SpecialSetPricesPanel specialSetPricesPanel;
+    private CollectMoneyPanel collectMoneyPanel;
+    private ReplenishMoneyPanel replenishMoneyPanel;
 
     public VendingMachineGUI() {
         setTitle("Vending Machine Factory Simulator");
@@ -48,6 +50,8 @@ public class VendingMachineGUI extends JFrame {
         specialRestockPanel = new SpecialRestockPanel(cardLayout, mainPanel);
         setItemPricesPanel = new SetItemPricesPanel(cardLayout, mainPanel);
         specialSetPricesPanel = new SpecialSetPricesPanel(cardLayout, mainPanel);
+        collectMoneyPanel = new CollectMoneyPanel(cardLayout, mainPanel);
+        replenishMoneyPanel = new ReplenishMoneyPanel(cardLayout, mainPanel);
 
         // Add panels to the main panel with unique names to identify them
         mainPanel.add(startingMenuPanel, "StartingMenu");
@@ -65,6 +69,8 @@ public class VendingMachineGUI extends JFrame {
         mainPanel.add(specialRestockPanel, "SpecialRestock");
         mainPanel.add(setItemPricesPanel, "SetItemPrices");
         mainPanel.add(specialSetPricesPanel, "SpecialSetPrices");
+        mainPanel.add(collectMoneyPanel, "CollectMoney");
+        mainPanel.add(replenishMoneyPanel, "ReplenishMoney");
 
         add(mainPanel);
 
@@ -130,5 +136,13 @@ public class VendingMachineGUI extends JFrame {
 
     public SpecialSetPricesPanel getSpecialSetPricesPanel() {
         return specialSetPricesPanel;
+    }
+
+    public CollectMoneyPanel getCollectMoneyPanel() {
+        return collectMoneyPanel;
+    }
+
+    public ReplenishMoneyPanel getReplenishMoneyPanel() {
+        return replenishMoneyPanel;
     }
 }

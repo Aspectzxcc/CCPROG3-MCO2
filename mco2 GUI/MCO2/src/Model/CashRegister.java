@@ -17,6 +17,10 @@ public class CashRegister {
         initializeDenominations();
     }
 
+    public Map<Integer, Integer> getCashRegister() {
+        return cashRegister;
+    }
+
     public static int[] getValidDenominations(){
         return validDenominations;
     }
@@ -89,15 +93,25 @@ public class CashRegister {
         return paymentReceived;
     }
 
+    // Add money to payment received
     public void addPaymentReceived(int denomination, int quantity) {
         int currentQuantity = paymentReceived.getOrDefault(denomination, 0);
         paymentReceived.put(denomination, currentQuantity + quantity);
     }
 
+    // Remove money from payment received
     public void removePaymentReceived(int denomination, int quantity) {
         int currentQuantity = paymentReceived.getOrDefault(denomination, 0);
         int newQuantity = Math.max(0, currentQuantity - quantity);
         paymentReceived.put(denomination, newQuantity);
+    }
+
+    // Collect money from payment received
+    public int collectPayment(int denomination, int money) {
+        int quantity = paymentReceived.getOrDefault(denomination, 0);
+        int amount = Math.min(money, denomination * quantity);
+        removePaymentReceived(denomination, amount / denomination);
+        return amount;
     }
 
     public void removeBillsForItemPrice(int itemPrice) {

@@ -12,7 +12,7 @@ public class MaintenanceFeaturesPanel extends JPanel {
     private JButton collectMoneyButton;
     private JButton replenishMoneyButton;
     private JButton printTransactionsButton;
-    private JButton backButton; // The back button
+    private JButton backButton; 
 
     public MaintenanceFeaturesPanel(CardLayout cardLayout, JPanel mainPanel) {
         this.cardLayout = cardLayout;

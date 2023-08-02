@@ -48,7 +48,7 @@ public class SpecialRestockController {
 
     private void backButtonActionPerformed() {
         // Return to the main menu
-        specialRestockPanel.getCardLayout().show(specialRestockPanel.getMainPanel(), "main");
+        specialRestockPanel.getCardLayout().show(specialRestockPanel.getMainPanel(), "MaintenanceFeatures");
     }
 
     private void askAndRestock(String itemName) {

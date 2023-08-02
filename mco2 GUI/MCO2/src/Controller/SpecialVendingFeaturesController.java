@@ -178,14 +178,21 @@ public class SpecialVendingFeaturesController {
         specialVendingFeaturesPanel.resetOptionIndicators();
         specialVendingFeaturesPanel.setItemData(vendingMachineFactory.getSpecialVM().getSpecialItems());
 
+        // Reset calorie label
+        specialVendingFeaturesPanel.updateTotalCalories(0);
+
         // Display the custom sandwich name
         JOptionPane.showMessageDialog(specialVendingFeaturesPanel, "Your " + customSandwich.getItemName() + " has been Created!", "Custom Sandwich", JOptionPane.INFORMATION_MESSAGE);
     }
 
     private void backActionPerformed() {
-        // Check if a payment has been received
-        if (vendingMachineFactory.getSpecialVM().getCashRegister().getTotalPaymentReceived() > 0) {
-            JOptionPane.showMessageDialog(specialVendingFeaturesPanel, "You can not return yet since you have already bought an item!", "Error", JOptionPane.ERROR_MESSAGE);
+        // Check if any option indicator is set
+        if (!specialVendingFeaturesPanel.isOptionIndicatorSet("Bread") || 
+        !specialVendingFeaturesPanel.isOptionIndicatorSet("Meat") || 
+        !specialVendingFeaturesPanel.isOptionIndicatorSet("Cheese") ||
+        !specialVendingFeaturesPanel.isOptionIndicatorSet("Vegetable") || 
+        !specialVendingFeaturesPanel.isOptionIndicatorSet("Sauce")) {
+            JOptionPane.showMessageDialog(specialVendingFeaturesPanel, "Can not leave! You have already bought an item.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 

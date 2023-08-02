@@ -1,7 +1,9 @@
 package Controller;
 
 import Model.VendingMachineFactory;
+import View.CollectMoneyPanel;
 import View.MaintenanceFeaturesPanel;
+import View.ReplenishMoneyPanel;
 import View.RestockItemsPanel;
 import View.SetItemPricesPanel;
 import View.SpecialRestockPanel;
@@ -13,16 +15,21 @@ public class MaintenanceFeaturesController {
     private SpecialRestockPanel specialRestockPanel;
     private SetItemPricesPanel setItemPricesPanel;
     private SpecialSetPricesPanel specialSetPricesPanel;
+    private CollectMoneyPanel collectMoneyPanel;
+    private ReplenishMoneyPanel replenishMoneyPanel;
     private VendingMachineFactory vendingMachineFactory;
 
     public MaintenanceFeaturesController(MaintenanceFeaturesPanel maintenanceFeaturesPanel, RestockItemsPanel restockItemsPanel, 
     SpecialRestockPanel specialRestockPanel, SetItemPricesPanel setItemPricesPanel, SpecialSetPricesPanel specialSetPricesPanel,
+    CollectMoneyPanel collectMoneyPanel, ReplenishMoneyPanel replenishMoneyPanel,
     VendingMachineFactory vendingMachineFactory) {
         this.maintenanceFeaturesPanel = maintenanceFeaturesPanel;
         this.restockItemsPanel = restockItemsPanel;
         this.specialRestockPanel = specialRestockPanel;
         this.setItemPricesPanel = setItemPricesPanel;
         this.specialSetPricesPanel = specialSetPricesPanel;
+        this.collectMoneyPanel = collectMoneyPanel;
+        this.replenishMoneyPanel = replenishMoneyPanel;
         this.vendingMachineFactory = vendingMachineFactory;
 
         // Add action listeners to the buttons
@@ -71,13 +78,29 @@ public class MaintenanceFeaturesController {
     // Collect Money button action
     private void collectMoneyActionPerformed() {
         // Move to the CollectMoneyPanel
-        maintenanceFeaturesPanel.getCardLayout().show(maintenanceFeaturesPanel.getMainPanel(), "CollectMoney");
+        if (vendingMachineFactory.isSpecial() == false) {
+            collectMoneyPanel.setPaymentReceivedData(vendingMachineFactory.getNormalVM().getCashRegister().getPaymentReceived());
+            
+            setItemPricesPanel.getCardLayout().show(maintenanceFeaturesPanel.getMainPanel(), "CollectMoney");
+        } else {
+            collectMoneyPanel.setPaymentReceivedData(vendingMachineFactory.getSpecialVM().getCashRegister().getPaymentReceived());
+
+            maintenanceFeaturesPanel.getCardLayout().show(maintenanceFeaturesPanel.getMainPanel(), "CollectMoney");
+        }
     }
 
     // Replenish Money button action
     private void replenishMoneyActionPerformed() {
         // Move to the ReplenishMoneyPanel
-        maintenanceFeaturesPanel.getCardLayout().show(maintenanceFeaturesPanel.getMainPanel(), "ReplenishMoney");
+        if (vendingMachineFactory.isSpecial() == false) {
+            replenishMoneyPanel.updateDenominationsTable(vendingMachineFactory.getNormalVM().getCashRegister().getCashRegister());
+
+            maintenanceFeaturesPanel.getCardLayout().show(maintenanceFeaturesPanel.getMainPanel(), "ReplenishMoney");
+        } else {
+            replenishMoneyPanel.updateDenominationsTable(vendingMachineFactory.getSpecialVM().getCashRegister().getCashRegister());
+
+            maintenanceFeaturesPanel.getCardLayout().show(maintenanceFeaturesPanel.getMainPanel(), "ReplenishMoney");
+        }
     }
 
     // Print Transactions button action

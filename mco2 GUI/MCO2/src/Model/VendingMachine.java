@@ -5,10 +5,12 @@ import java.util.ArrayList;
 public class VendingMachine {
 	private ArrayList<ItemSlot> itemSlots;
 	private CashRegister cashRegister;
+	private Transactions transactions;
 	
 	public VendingMachine() {
 		itemSlots = new ArrayList<ItemSlot>(8);
 		cashRegister = new CashRegister();
+		transactions = new Transactions();
 
 		// Initialize Test ItemSlots
 		ItemSlot itemSlot1 = new ItemSlot();
