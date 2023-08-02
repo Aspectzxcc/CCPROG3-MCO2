@@ -3,6 +3,7 @@ package Controller;
 import Model.VendingMachineFactory;
 import View.CollectMoneyPanel;
 import View.MaintenanceFeaturesPanel;
+import View.PrintTransactionsPanel;
 import View.ReplenishMoneyPanel;
 import View.RestockItemsPanel;
 import View.SetItemPricesPanel;
@@ -17,11 +18,12 @@ public class MaintenanceFeaturesController {
     private SpecialSetPricesPanel specialSetPricesPanel;
     private CollectMoneyPanel collectMoneyPanel;
     private ReplenishMoneyPanel replenishMoneyPanel;
+    private PrintTransactionsPanel printTransactionsPanel;
     private VendingMachineFactory vendingMachineFactory;
 
     public MaintenanceFeaturesController(MaintenanceFeaturesPanel maintenanceFeaturesPanel, RestockItemsPanel restockItemsPanel, 
     SpecialRestockPanel specialRestockPanel, SetItemPricesPanel setItemPricesPanel, SpecialSetPricesPanel specialSetPricesPanel,
-    CollectMoneyPanel collectMoneyPanel, ReplenishMoneyPanel replenishMoneyPanel,
+    CollectMoneyPanel collectMoneyPanel, ReplenishMoneyPanel replenishMoneyPanel, PrintTransactionsPanel printTransactionsPanel,
     VendingMachineFactory vendingMachineFactory) {
         this.maintenanceFeaturesPanel = maintenanceFeaturesPanel;
         this.restockItemsPanel = restockItemsPanel;
@@ -30,6 +32,7 @@ public class MaintenanceFeaturesController {
         this.specialSetPricesPanel = specialSetPricesPanel;
         this.collectMoneyPanel = collectMoneyPanel;
         this.replenishMoneyPanel = replenishMoneyPanel;
+        this.printTransactionsPanel = printTransactionsPanel;
         this.vendingMachineFactory = vendingMachineFactory;
 
         // Add action listeners to the buttons
@@ -106,7 +109,21 @@ public class MaintenanceFeaturesController {
     // Print Transactions button action
     private void printTransactionsActionPerformed() {
         // Move to the PrintTransactionsPanel
-        maintenanceFeaturesPanel.getCardLayout().show(maintenanceFeaturesPanel.getMainPanel(), "PrintTransactions");
+        if (vendingMachineFactory.isSpecial() == false) {
+            printTransactionsPanel.setNormalItems(vendingMachineFactory.getNormalVM().getTransactions().getItemsBought());
+            printTransactionsPanel.setSpecialItems(vendingMachineFactory.getNormalVM().getTransactions().getSpecialItemsBought());
+            printTransactionsPanel.setStartingInventory(vendingMachineFactory.getNormalVM().getTransactions().getStartingInventory());
+            printTransactionsPanel.setEndingInventory(vendingMachineFactory.getNormalVM().getTransactions().getEndingInventory());
+
+            maintenanceFeaturesPanel.getCardLayout().show(maintenanceFeaturesPanel.getMainPanel(), "PrintTransactions");
+        } else {
+            printTransactionsPanel.setNormalItems(vendingMachineFactory.getSpecialVM().getTransactions().getItemsBought());
+            printTransactionsPanel.setSpecialItems(vendingMachineFactory.getSpecialVM().getTransactions().getSpecialItemsBought());
+            printTransactionsPanel.setStartingInventory(vendingMachineFactory.getSpecialVM().getTransactions().getStartingInventory());
+            printTransactionsPanel.setEndingInventory(vendingMachineFactory.getSpecialVM().getTransactions().getEndingInventory());
+
+            maintenanceFeaturesPanel.getCardLayout().show(maintenanceFeaturesPanel.getMainPanel(), "PrintTransactions");
+        }
     }
 
     // Back button action

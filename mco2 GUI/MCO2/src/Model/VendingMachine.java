@@ -88,6 +88,10 @@ public class VendingMachine {
 		return cashRegister;
 	}
 
+	public Transactions getTransactions() {
+		return transactions;
+	}
+
 	// setters
 	public void addItemSlot(ItemSlot itemSlot) {
 		itemSlots.add(itemSlot);
@@ -99,5 +103,9 @@ public class VendingMachine {
 
 	public void setCashRegister(CashRegister cashRegister) {
 		this.cashRegister = cashRegister;
+	}
+
+	public void setTransactions(Transactions transactions) {
+		this.transactions = transactions;
 	}
 }

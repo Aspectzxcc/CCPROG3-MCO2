@@ -25,11 +25,12 @@ public class VendingMachineController{
         new VendingFeaturesController(vendingMachineGUI.getVendingFeaturesPanel(), vendingMachineGUI.getSpecialVendingFeaturesPanel(), vendingMachineFactory);
         new SpecialVendingFeaturesController(vendingMachineGUI.getSpecialVendingFeaturesPanel(), vendingMachineFactory);
 
+        // Maintenance Controllers
         new MaintenanceFeaturesController(vendingMachineGUI.getMaintenanceFeaturesPanel(), 
         vendingMachineGUI.getRestockItemsPanel(), vendingMachineGUI.getSpecialRestockPanel(), 
         vendingMachineGUI.getSetItemPricesPanel(), vendingMachineGUI.getSpecialSetPricesPanel(), 
         vendingMachineGUI.getCollectMoneyPanel(), vendingMachineGUI.getReplenishMoneyPanel(), 
-        vendingMachineFactory);
+        vendingMachineGUI.getPrintTransactionsPanel(), vendingMachineFactory);
 
         new RestockItemsController(vendingMachineGUI.getRestockItemsPanel(), vendingMachineFactory);
         new SpecialRestockController(vendingMachineGUI.getSpecialRestockPanel(), vendingMachineFactory);
@@ -37,6 +38,7 @@ public class VendingMachineController{
         new SpecialSetPricesController(vendingMachineGUI.getSpecialSetPricesPanel(), vendingMachineFactory);
         new CollectMoneyController(vendingMachineGUI.getCollectMoneyPanel(), vendingMachineFactory);
         new ReplenishMoneyController(vendingMachineGUI.getReplenishMoneyPanel(), vendingMachineFactory);
+        new PrintTransactionsController(vendingMachineGUI.getPrintTransactionsPanel());
     }
 
 }

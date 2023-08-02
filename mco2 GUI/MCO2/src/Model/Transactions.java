@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 public class Transactions {
     private ArrayList<Item> itemsBought;
+    private ArrayList<SpecialItem> specialItemsBought;
     private int totalSales;
     private int startingInventory;
     private int endingInventory;
 
     public Transactions() {
         this.itemsBought = new ArrayList<>();
+        this.specialItemsBought = new ArrayList<>();
         this.startingInventory = 0;
         this.endingInventory = 0;
     }
@@ -17,6 +19,10 @@ public class Transactions {
     // Getters
     public ArrayList<Item> getItemsBought() {
         return itemsBought;
+    }
+
+    public ArrayList<SpecialItem> getSpecialItemsBought() {
+        return specialItemsBought;
     }
 
     public int getStartingInventory() {
@@ -34,6 +40,10 @@ public class Transactions {
     // Setters
     public void setItemsBought(ArrayList<Item> itemsBought) {
         this.itemsBought = itemsBought;
+    }
+
+    public void setSpecialItemsBought(ArrayList<SpecialItem> specialItemsBought) {
+        this.specialItemsBought = specialItemsBought;
     }
 
     public void setStartingInventory(int startingInventory) {

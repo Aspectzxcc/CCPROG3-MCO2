@@ -23,6 +23,7 @@ public class VendingMachineGUI extends JFrame {
     private SpecialSetPricesPanel specialSetPricesPanel;
     private CollectMoneyPanel collectMoneyPanel;
     private ReplenishMoneyPanel replenishMoneyPanel;
+    private PrintTransactionsPanel printTransactionsPanel;
 
     public VendingMachineGUI() {
         setTitle("Vending Machine Factory Simulator");
@@ -52,6 +53,7 @@ public class VendingMachineGUI extends JFrame {
         specialSetPricesPanel = new SpecialSetPricesPanel(cardLayout, mainPanel);
         collectMoneyPanel = new CollectMoneyPanel(cardLayout, mainPanel);
         replenishMoneyPanel = new ReplenishMoneyPanel(cardLayout, mainPanel);
+        printTransactionsPanel = new PrintTransactionsPanel(cardLayout, mainPanel);
 
         // Add panels to the main panel with unique names to identify them
         mainPanel.add(startingMenuPanel, "StartingMenu");
@@ -71,6 +73,7 @@ public class VendingMachineGUI extends JFrame {
         mainPanel.add(specialSetPricesPanel, "SpecialSetPrices");
         mainPanel.add(collectMoneyPanel, "CollectMoney");
         mainPanel.add(replenishMoneyPanel, "ReplenishMoney");
+        mainPanel.add(printTransactionsPanel, "PrintTransactions");
 
         add(mainPanel);
 
@@ -144,5 +147,9 @@ public class VendingMachineGUI extends JFrame {
 
     public ReplenishMoneyPanel getReplenishMoneyPanel() {
         return replenishMoneyPanel;
+    }
+    
+    public PrintTransactionsPanel getPrintTransactionsPanel() {
+        return printTransactionsPanel;
     }
 }
