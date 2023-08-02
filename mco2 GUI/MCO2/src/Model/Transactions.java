@@ -46,16 +46,30 @@ public class Transactions {
         this.specialItemsBought = specialItemsBought;
     }
 
-    public void setStartingInventory(int startingInventory) {
-        this.startingInventory = startingInventory;
-    }
-
     public void setTotalSales(int totalSales) {
         this.totalSales = totalSales;
     }
 
+    public void setStartingInventory(int startingInventory) {
+        this.startingInventory = startingInventory;
+    }
+
     public void setEndingInventory(int endingInventory) {
         this.endingInventory = endingInventory;
+    }
+
+    // Adders
+
+    public void addItemBought(Item item) {
+        this.itemsBought.add(item);
+    }
+
+    public void addSpecialItemBought(SpecialItem specialItem) {
+        this.specialItemsBought.add(specialItem);
+    }
+
+    public void addTotalSales(int totalSales) {
+        this.totalSales += totalSales;
     }
 }
     

@@ -39,6 +39,8 @@ public class ItemQuantityInputController {
                 ArrayList<String> selectedItems = itemQuantityInputPanel.getSelectedItems();
                 ArrayList<Integer> itemQuantities = itemQuantityInputPanel.getItemQuantities();
 
+                VendingMachine VendingMachine = getVendingMachine();
+
                 for (int i = 0; i < selectedItems.size(); i++) {
                     String itemName = selectedItems.get(i);
                     int quantity = itemQuantities.get(i);
@@ -53,13 +55,17 @@ public class ItemQuantityInputController {
                         for (int j = 0; j < quantity; j++) {
                             itemSlot.addItemToSlot(item);
                         }
+
                         // Add the item slot to the vending machine
-                        if (vendingMachineFactory.isSpecial() == false) {
-                            vendingMachineFactory.getNormalVM().addItemSlot(itemSlot);
-                        } else {
-                            vendingMachineFactory.getSpecialVM().addItemSlot(itemSlot);
-                        }
+                        VendingMachine.addItemSlot(itemSlot);
                     }
+
+                    // Add Starting Inventory
+                    Transactions transactions = VendingMachine.getTransactions();
+                    transactions.setStartingInventory(transactions.getStartingInventory() + quantity);
+
+                    // The ending inventory is the same as the starting inventory at the start
+                    transactions.setEndingInventory(transactions.getStartingInventory());
                 }
                 
                 if (vendingMachineFactory.isSpecial() == false) {
@@ -91,6 +97,15 @@ public class ItemQuantityInputController {
             }
         }
         return true;
+    }
+
+    // Helper method to get the current vending machine
+    public VendingMachine getVendingMachine() {
+        if (vendingMachineFactory.isSpecial() == false) {
+            return vendingMachineFactory.getNormalVM();
+        } else {
+            return vendingMachineFactory.getSpecialVM();
+        }
     }
     
 }

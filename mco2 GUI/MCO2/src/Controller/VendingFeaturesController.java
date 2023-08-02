@@ -117,6 +117,15 @@ public class VendingFeaturesController {
         } else {
             vendingFeaturesPanel.setItemData(vendingMachineFactory.getSpecialVM().getItemSlots());
         }
+        
+        // Add the item to items bought
+        getCurrentTransactions().addItemBought(itemToBuy);
+
+        // Update the total sales
+        getCurrentTransactions().addTotalSales(itemPrice);
+
+        // Update the ending inventory
+        getCurrentTransactions().setEndingInventory(getCurrentTransactions().getEndingInventory() - 1);
     
         // Update the inserted money label in the VendingFeaturesPanel
         vendingFeaturesPanel.updateInsertedMoney(getCurrentCashRegister().getInsertedAmount());
@@ -181,6 +190,15 @@ public class VendingFeaturesController {
             return vendingMachineFactory.getNormalVM().getCashRegister();
         } else {
             return vendingMachineFactory.getSpecialVM().getCashRegister();
+        }
+    }
+
+    // Helper method to get the current transactions based on whether the vending machine is normal or special
+    private Transactions getCurrentTransactions() {
+        if (!vendingMachineFactory.isSpecial()) {
+            return vendingMachineFactory.getNormalVM().getTransactions();
+        } else {
+            return vendingMachineFactory.getSpecialVM().getTransactions();
         }
     }
 

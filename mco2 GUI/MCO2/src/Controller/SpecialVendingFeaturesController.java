@@ -52,6 +52,7 @@ public class SpecialVendingFeaturesController {
     private void buyItemActionPerformed() {
         // Get the cash register and special vending machine
         CashRegister cashRegister = vendingMachineFactory.getSpecialVM().getCashRegister();
+        Transactions transactions = vendingMachineFactory.getSpecialVM().getTransactions();
         SpecialVendingMachine specialVendingMachine = vendingMachineFactory.getSpecialVM();
 
         // Get the selected row from the item table
@@ -113,6 +114,15 @@ public class SpecialVendingFeaturesController {
 
         // Remove the item from the List of Special Items
         selectedItem.remove(specialItem);
+        
+        // Add the item to items bought
+        transactions.addSpecialItemBought(specialItem);
+
+        // Update the total sales
+        transactions.addTotalSales(itemPrice);
+
+        // Update the ending inventory
+        transactions.setEndingInventory(transactions.getEndingInventory() - 1);
 
         // Update the option indicator for the item bought
         specialVendingFeaturesPanel.updateOptionIndicator(specialItem.getType(), specialItem.getItemName());
