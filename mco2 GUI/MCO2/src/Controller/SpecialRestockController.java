@@ -4,6 +4,7 @@ import View.SpecialRestockPanel;
 import Model.Item;
 import Model.ItemSlot;
 import Model.SpecialItem;
+import Model.Transactions;
 import Model.VendingMachineFactory;
 
 import java.util.ArrayList;
@@ -67,6 +68,19 @@ public class SpecialRestockController {
                             Item item = new Item(itemName);
                             itemSlot.addItemToSlot(item);
                         }
+
+                        // Reset the Items Bought
+                        getTransactions().setItemsBought(new ArrayList<Item>());
+
+                        // Update the total sales
+                        getTransactions().setTotalSales(0);
+
+                        // Update  the Starting Inventory
+                        getTransactions().setStartingInventory(getTransactions().getEndingInventory() + quantity);
+
+                        // Update the ending inventory
+                        getTransactions().setEndingInventory(getTransactions().getStartingInventory());
+
                         specialRestockPanel.setNormalItemData(vendingMachineFactory.getSpecialVM().getItemSlots());
                     } else if (selectedTab == 1) {
                         // Special Items Tab
@@ -76,6 +90,19 @@ public class SpecialRestockController {
                             SpecialItem item = new SpecialItem(itemName);
                             specialItemList.add(item);
                         }
+
+                        // Reset the Items Bought
+                        getTransactions().setSpecialItemsBought(new ArrayList<SpecialItem>());
+
+                        // Update the total sales
+                        getTransactions().setTotalSales(0);
+
+                        // Update the Starting Inventory
+                        getTransactions().setStartingInventory(getTransactions().getEndingInventory() + quantity);
+
+                        // Update the ending inventory
+                        getTransactions().setEndingInventory(getTransactions().getStartingInventory());
+
                         specialRestockPanel.setSpecialItemData(vendingMachineFactory.getSpecialVM().getSpecialItems());
                     }
                     JOptionPane.showMessageDialog(specialRestockPanel, "Successfully restocked " + quantity + " items of \"" + itemName + "\".", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -107,5 +134,9 @@ public class SpecialRestockController {
             }
         }
         return null;
+    }
+
+    private Transactions getTransactions() {
+        return vendingMachineFactory.getSpecialVM().getTransactions();
     }
 }

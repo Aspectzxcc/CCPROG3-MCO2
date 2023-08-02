@@ -89,6 +89,10 @@ public class ItemQuantityInputController {
                     JOptionPane.showMessageDialog(itemQuantityInputPanel, "Quantity for " + 
                     itemQuantityInputPanel.getSelectedItems().get(i) + " must be 10 or more.");
                     return false;
+                } else if (quantity > 20) {
+                    JOptionPane.showMessageDialog(itemQuantityInputPanel, "Quantity for " + 
+                    itemQuantityInputPanel.getSelectedItems().get(i) + " must be 20 or less.");
+                    return false;
                 }
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(itemQuantityInputPanel, "Invalid quantity for " + 

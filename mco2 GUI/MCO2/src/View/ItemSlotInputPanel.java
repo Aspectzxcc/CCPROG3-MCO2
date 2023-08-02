@@ -17,7 +17,6 @@ public class ItemSlotInputPanel extends JPanel {
         this.mainPanel = mainPanel;
 
         setLayout(new BorderLayout());
-        setBackground(Color.WHITE);
 
         titleLabel = new JLabel("Vending Machine Configuration");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
@@ -26,21 +25,38 @@ public class ItemSlotInputPanel extends JPanel {
         add(titleLabel, BorderLayout.NORTH);
 
         JPanel inputPanel = new JPanel();
-        inputPanel.setLayout(new GridLayout(2, 2, 10, 10));
+        inputPanel.setLayout(new GridBagLayout());
+        inputPanel.setBackground(new Color(235, 240, 240)); // Light gray background color
 
         slotsLabel = new JLabel("Number of Slots:");
         slotsLabel.setFont(new Font("Arial", Font.PLAIN, 18));
-        slotsTextField = new JTextField();
+        
+        slotsTextField = new JTextField(10); // Set the input field width
         slotsTextField.setFont(new Font("Arial", Font.PLAIN, 18));
         slotsTextField.setHorizontalAlignment(SwingConstants.CENTER); // Center the text in the box
-        continueButton = new JButton("Continue");
-        continueButton.setFont(new Font("Arial", Font.PLAIN, 18));
 
-        inputPanel.add(slotsLabel);
-        inputPanel.add(slotsTextField);
+        // Use GridBagConstraints to center the components vertically
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = GridBagConstraints.RELATIVE;
+        gbc.insets = new Insets(5, 0, 5, 0); // Add some spacing between components
+        inputPanel.add(slotsLabel, gbc);
+        inputPanel.add(slotsTextField, gbc);
+
+        continueButton = new JButton("Continue"); // Initialize the button
+        continueButton.setFont(new Font("Arial", Font.PLAIN, 18));
+        continueButton.setBackground(new Color(50, 150, 50)); // Green background color
+        continueButton.setForeground(Color.WHITE); // White text color
+        continueButton.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20)); // Add some padding
+        continueButton.setFocusPainted(false); // Remove focus border
+
+        // Set button styles
+        Font buttonFont = new Font("Arial", Font.BOLD, 20);
+        continueButton.setFont(buttonFont);
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(continueButton);
+        buttonPanel.setBackground(new Color(235, 240, 240)); // Light gray background color
 
         add(inputPanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);

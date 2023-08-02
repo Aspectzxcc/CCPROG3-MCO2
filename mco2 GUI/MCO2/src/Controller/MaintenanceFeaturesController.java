@@ -114,6 +114,7 @@ public class MaintenanceFeaturesController {
             printTransactionsPanel.setSpecialItems(vendingMachineFactory.getNormalVM().getTransactions().getSpecialItemsBought());
             printTransactionsPanel.setStartingInventory(vendingMachineFactory.getNormalVM().getTransactions().getStartingInventory());
             printTransactionsPanel.setEndingInventory(vendingMachineFactory.getNormalVM().getTransactions().getEndingInventory());
+            printTransactionsPanel.setTotalSales(vendingMachineFactory.getNormalVM().getTransactions().getTotalSales());
 
             maintenanceFeaturesPanel.getCardLayout().show(maintenanceFeaturesPanel.getMainPanel(), "PrintTransactions");
         } else {
@@ -121,6 +122,7 @@ public class MaintenanceFeaturesController {
             printTransactionsPanel.setSpecialItems(vendingMachineFactory.getSpecialVM().getTransactions().getSpecialItemsBought());
             printTransactionsPanel.setStartingInventory(vendingMachineFactory.getSpecialVM().getTransactions().getStartingInventory());
             printTransactionsPanel.setEndingInventory(vendingMachineFactory.getSpecialVM().getTransactions().getEndingInventory());
+            printTransactionsPanel.setTotalSales(vendingMachineFactory.getSpecialVM().getTransactions().getTotalSales());
 
             maintenanceFeaturesPanel.getCardLayout().show(maintenanceFeaturesPanel.getMainPanel(), "PrintTransactions");
         }

@@ -28,10 +28,20 @@ public class SpecialItemCheckBoxesPanel extends JPanel {
 
         // Back button
         backButton = new JButton("Back");
+        backButton.setFont(new Font("Arial", Font.PLAIN, 16));
+        backButton.setBackground(new Color(128, 0, 0)); // Dark red background color
+        backButton.setForeground(Color.WHITE); // White text color
+        backButton.setBorder(BorderFactory.createEmptyBorder(8, 20, 8, 20)); // Add some padding
+        backButton.setFocusPainted(false); // Remove focus border  
         add(backButton, BorderLayout.NORTH);
 
         // Create button
         createButton = new JButton("Create Special Vending Machine");
+        createButton.setFont(new Font("Arial", Font.PLAIN, 16));
+        createButton.setBackground(new Color(0, 128, 0)); // Dark green background color
+        createButton.setForeground(Color.WHITE); // White text color
+        createButton.setBorder(BorderFactory.createEmptyBorder(8, 20, 8, 20)); // Add some padding
+        createButton.setFocusPainted(false); // Remove focus border
         add(createButton, BorderLayout.SOUTH);
 
         // Create a panel for the options using GridBagLayout

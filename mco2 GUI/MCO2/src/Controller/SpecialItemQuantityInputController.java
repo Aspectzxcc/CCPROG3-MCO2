@@ -26,6 +26,17 @@ public class SpecialItemQuantityInputController {
         for (JTextField textField : quantityTextFields) {
             try {
                 int quantity = Integer.parseInt(textField.getText());
+
+                // Check if quantity is over 20
+                if (quantity > 20) {
+                    // Show an error message if the quantity is over 20
+                    JOptionPane.showMessageDialog(specialItemQuantityInputPanel,
+                            "Please enter a quantity less than or equal to 20 for each special item.",
+                            "Invalid Quantity",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                
                 specialItemQuantities.add(quantity);
             } catch (NumberFormatException ex) {
                 // Show an error message if the quantity is not a valid integer

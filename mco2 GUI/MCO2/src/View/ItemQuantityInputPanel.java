@@ -27,17 +27,25 @@ public class ItemQuantityInputPanel extends JPanel {
         titleLabel = new JLabel("Vending Machine Configuration - Regular Items");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        titleLabel.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0));
         add(titleLabel, BorderLayout.NORTH);
 
         inputPanel = new JPanel();
-        inputPanel.setLayout(new GridLayout(selectedItems.size(), 2));
+        inputPanel.setLayout(new GridLayout(selectedItems.size(), 2, 10, 10));
+        inputPanel.setBackground(new Color(235, 240, 240)); // Light gray background color
 
         JPanel buttonPanel = new JPanel();
         submitButton = new JButton("Submit");
+        submitButton.setFont(new Font("Arial", Font.PLAIN, 18));
+        submitButton.setBackground(new Color(0, 128, 0)); // Dark green background color
+        submitButton.setForeground(Color.WHITE); // White text color
+        submitButton.setBorder(BorderFactory.createEmptyBorder(8, 20, 8, 20)); // Add some padding
+        submitButton.setFocusPainted(false); // Remove focus border
         buttonPanel.add(submitButton);
 
         add(inputPanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
+        setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
     }
 
     public CardLayout getCardLayout() {

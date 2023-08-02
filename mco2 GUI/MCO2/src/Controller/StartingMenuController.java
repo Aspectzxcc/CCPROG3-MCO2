@@ -35,7 +35,10 @@ public class StartingMenuController {
     }
 
     private void exitActionPerformed() {
-        System.exit(0);
+        int option = JOptionPane.showConfirmDialog(startingMenuPanel, "Are you sure you want to exit?", "Confirm Exit", JOptionPane.YES_NO_OPTION);
+        if (option == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
     }
 
     private void resetCreateInputs() {

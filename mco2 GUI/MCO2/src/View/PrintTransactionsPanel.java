@@ -22,6 +22,7 @@ public class PrintTransactionsPanel extends JPanel {
     private JScrollPane specialItemsScrollPane;
     private JLabel startingInventoryLabel;
     private JLabel endingInventoryLabel;
+    private JLabel totalSalesLabel;
     private JButton backButton;
 
     public PrintTransactionsPanel(CardLayout cardLayout, JPanel mainPanel) {
@@ -55,6 +56,10 @@ public class PrintTransactionsPanel extends JPanel {
         endingInventoryLabel = new JLabel("Ending Inventory: 0");
         endingInventoryLabel.setFont(new Font("Arial", Font.BOLD, 16));
 
+        // Initialize the total sales label
+        totalSalesLabel = new JLabel("Total Sales: 0 PHP");
+        totalSalesLabel.setFont(new Font("Arial", Font.BOLD, 16));
+
         // Initialize the back button
         backButton = new JButton("Back");
         backButton.setFont(new Font("Arial", Font.BOLD, 16)); // Set custom font and size
@@ -63,11 +68,12 @@ public class PrintTransactionsPanel extends JPanel {
         backButton.setBorder(BorderFactory.createEmptyBorder(8, 20, 8, 20)); // Add some padding
         backButton.setFocusPainted(false); // Remove focus border
 
-        // Create a panel to hold the starting and ending inventory labels
+        // Create a panel to hold the starting and ending inventory and totalSales labels
         JPanel inventoryPanel = new JPanel();
-        inventoryPanel.setLayout(new GridLayout(2, 1, 5, 5));
+        inventoryPanel.setLayout(new GridLayout(3, 1, 5, 5));
         inventoryPanel.add(startingInventoryLabel);
         inventoryPanel.add(endingInventoryLabel);
+        inventoryPanel.add(totalSalesLabel);
 
         // Create a panel to hold the buttons
         JPanel buttonPanel = new JPanel();
@@ -114,6 +120,10 @@ public class PrintTransactionsPanel extends JPanel {
 
     public void setEndingInventory(int endingInventory) {
         endingInventoryLabel.setText("Ending Inventory: " + endingInventory);
+    }
+
+    public void setTotalSales(int totalSales) {
+        totalSalesLabel.setText("Total Sales: " + totalSales + " PHP");
     }
 
     public void addBackButtonListener(ActionListener listener) {

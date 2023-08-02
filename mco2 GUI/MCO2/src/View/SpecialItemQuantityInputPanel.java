@@ -27,13 +27,20 @@ public class SpecialItemQuantityInputPanel extends JPanel {
         titleLabel = new JLabel("Vending Machine Configuration - Special Items");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        titleLabel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0)); // Add some padding
         add(titleLabel, BorderLayout.NORTH);
 
         inputPanel = new JPanel();
-        inputPanel.setLayout(new GridLayout(selectedSpecialItems.size(), 2));
+        inputPanel.setLayout(new GridLayout(selectedSpecialItems.size(), 2, 10, 10)); // Add spacing between components
+        inputPanel.setBorder(BorderFactory.createEmptyBorder(10, 50, 10, 50)); // Add some padding
 
         JPanel buttonPanel = new JPanel();
         submitButton = new JButton("Submit");
+        submitButton.setFont(new Font("Arial", Font.PLAIN, 16));
+        submitButton.setBackground(new Color(0, 128, 0)); // Dark green background color
+        submitButton.setForeground(Color.WHITE); // White text color
+        submitButton.setBorder(BorderFactory.createEmptyBorder(8, 20, 8, 20)); // Add some padding
+        submitButton.setFocusPainted(false); // Remove focus border
         buttonPanel.add(submitButton);
 
         add(inputPanel, BorderLayout.CENTER);

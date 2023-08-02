@@ -73,6 +73,40 @@ public class VendingFeaturesPanel extends JPanel {
         // Initialize the exit button
         exitButton = new JButton("Exit to Test Menu");
         add(exitButton, BorderLayout.NORTH);
+
+        // Set color constants for buttons
+        Color buttonBackground = new Color(102, 153, 255);
+        Color buttonForeground = Color.WHITE;
+        Font buttonFont = new Font("Arial", Font.BOLD, 16);
+
+        // Customize the currency buttons
+        for (JButton button : currencyButtons) {
+            button.setBackground(buttonBackground);
+            button.setForeground(buttonForeground);
+            button.setFont(buttonFont);
+            button.setFocusPainted(false);
+            button.setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 15));
+        }
+
+        // Customize the buy item button
+        buyItemButton.setBackground(new Color(255, 10, 55)); // Red background color
+        buyItemButton.setForeground(buttonForeground);
+        buyItemButton.setFont(buttonFont);
+        buyItemButton.setFocusPainted(false);
+        buyItemButton.setBorder(BorderFactory.createEmptyBorder(8, 20, 8, 20));
+
+        // Customize the customize sandwich button
+        customizeSandwichButton.setBackground(buttonBackground);
+        customizeSandwichButton.setForeground(buttonForeground);
+        customizeSandwichButton.setFont(buttonFont);
+        customizeSandwichButton.setFocusPainted(false);
+        customizeSandwichButton.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+
+        // Customize the exit button
+        exitButton.setBackground(new Color(235, 240, 200));
+        exitButton.setFont(buttonFont);
+        exitButton.setFocusPainted(false);
+        exitButton.setBorder(BorderFactory.createEmptyBorder(8, 20, 8, 20));
     }
 
     public CardLayout getCardLayout() {

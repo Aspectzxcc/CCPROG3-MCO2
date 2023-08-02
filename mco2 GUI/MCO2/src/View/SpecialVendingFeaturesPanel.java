@@ -95,6 +95,40 @@ public class SpecialVendingFeaturesPanel extends JPanel {
         // Initialize the buy item button
         buyItemButton = new JButton("Buy Item");
 
+        // Set color constants for buttons
+        Color buttonBackground = new Color(102, 153, 255);
+        Color buttonForeground = Color.WHITE;
+        Font buttonFont = new Font("Arial", Font.BOLD, 16);
+
+        // Customize the currency buttons
+        for (JButton button : currencyButtons) {
+            button.setBackground(buttonBackground);
+            button.setForeground(buttonForeground);
+            button.setFont(buttonFont);
+            button.setFocusPainted(false);
+            button.setBorder(BorderFactory.createEmptyBorder(5, 15, 5, 15));
+        }
+
+        // Customize the buy item button
+        buyItemButton.setBackground(new Color(255, 10, 55)); // Red background color
+        buyItemButton.setForeground(buttonForeground);
+        buyItemButton.setFont(buttonFont);
+        buyItemButton.setFocusPainted(false);
+        buyItemButton.setBorder(BorderFactory.createEmptyBorder(8, 20, 8, 20));
+
+        // Customize the customize sandwich button
+        createCustomSandwichButton.setBackground(buttonBackground);
+        createCustomSandwichButton.setForeground(buttonForeground);
+        createCustomSandwichButton.setFont(buttonFont);
+        createCustomSandwichButton.setFocusPainted(false);
+        createCustomSandwichButton.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
+
+        // Customize the exit button
+        backButton.setBackground(new Color(235, 240, 200));
+        backButton.setFont(buttonFont);
+        backButton.setFocusPainted(false);
+        backButton.setBorder(BorderFactory.createEmptyBorder(8, 20, 8, 20));
+
         // Create a panel to hold the currency panel and the buy item button
         JPanel eastPanel = new JPanel(new BorderLayout());
         eastPanel.add(currencyPanel, BorderLayout.NORTH);

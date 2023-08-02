@@ -28,7 +28,8 @@ public class CashRegister {
     private void initializeDenominations() {
         // Initialize the cash register with all denominations set to 0
         for (int denomination : validDenominations) {
-            cashRegister.put(denomination, 100);
+            //cashRegister.put(denomination, 100);
+            cashRegister.put(denomination, 0);
             paymentReceived.put(denomination, 0);
         }
     }

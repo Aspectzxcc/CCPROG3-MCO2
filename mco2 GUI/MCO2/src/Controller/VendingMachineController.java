@@ -31,7 +31,6 @@ public class VendingMachineController{
         vendingMachineGUI.getSetItemPricesPanel(), vendingMachineGUI.getSpecialSetPricesPanel(), 
         vendingMachineGUI.getCollectMoneyPanel(), vendingMachineGUI.getReplenishMoneyPanel(), 
         vendingMachineGUI.getPrintTransactionsPanel(), vendingMachineFactory);
-
         new RestockItemsController(vendingMachineGUI.getRestockItemsPanel(), vendingMachineFactory);
         new SpecialRestockController(vendingMachineGUI.getSpecialRestockPanel(), vendingMachineFactory);
         new SetItemPricesController(vendingMachineGUI.getSetItemPricesPanel(), vendingMachineFactory);

@@ -15,21 +15,35 @@ public class CreateVendingMachinePanel extends JPanel {
         this.mainPanel = mainPanel;
 
         setLayout(new BorderLayout());
+        setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        setBackground(new Color(230, 230, 255)); // Set the background color to a light blue
 
         JLabel titleLabel = new JLabel("Create Vending Machine");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 28));
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         add(titleLabel, BorderLayout.NORTH);
 
         // Create panels for choosing regular or special vending machine
         JPanel chooseTypePanel = new JPanel();
-        chooseTypePanel.setLayout(new GridLayout(1, 2));
+        chooseTypePanel.setLayout(new GridLayout(1, 2, 20, 0));
+        chooseTypePanel.setBackground(new Color(235, 240, 240)); // Light gray background color
 
         regularVendingMachineButton = new JButton("Regular Vending Machine");
-        specialVendingMachineButton = new JButton("Special Vending Machine");
-
+        regularVendingMachineButton.setFont(new Font("Arial", Font.PLAIN, 20));
+        regularVendingMachineButton.setForeground(Color.WHITE); // Dark red text color
+        regularVendingMachineButton.setBackground(new Color(255, 0, 0)); // Light orange button color
         chooseTypePanel.add(regularVendingMachineButton);
+
+        specialVendingMachineButton = new JButton("Special Vending Machine");
+        specialVendingMachineButton.setFont(new Font("Arial", Font.PLAIN, 20));
+        specialVendingMachineButton.setForeground(Color.WHITE); // Dark red text color
+        specialVendingMachineButton.setBackground(new Color(33, 150, 243)); // Light orange button color
         chooseTypePanel.add(specialVendingMachineButton);
+
+        // Set button styles
+        Font buttonFont = new Font("Arial", Font.BOLD, 20);
+        regularVendingMachineButton.setFont(buttonFont);
+        specialVendingMachineButton.setFont(buttonFont);
 
         add(chooseTypePanel, BorderLayout.CENTER);
     }

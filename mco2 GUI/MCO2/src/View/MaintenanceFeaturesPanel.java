@@ -19,6 +19,8 @@ public class MaintenanceFeaturesPanel extends JPanel {
         this.mainPanel = mainPanel;
 
         setLayout(new GridLayout(6, 1, 10, 10));
+        setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        setBackground(new Color(230, 230, 255)); // Set the background color to a light blue
 
         // Initialize the buttons
         restockItemsButton = new JButton("Restock Items");
@@ -27,6 +29,25 @@ public class MaintenanceFeaturesPanel extends JPanel {
         replenishMoneyButton = new JButton("Replenish Money");
         printTransactionsButton = new JButton("Print Transactions");
         backButton = new JButton("Back To Test Menu"); // Initialize the back button
+
+        // Initialize the buttons with custom design and colors
+        restockItemsButton = createCustomButton("Restock Items");
+        restockItemsButton.setBackground(new Color(255, 165, 0)); 
+
+        setItemPricesButton = createCustomButton("Set Item Prices");
+        setItemPricesButton.setBackground(new Color(255, 50, 10)); 
+
+        collectMoneyButton = createCustomButton("Collect Money");
+        collectMoneyButton.setBackground(new Color(150, 234, 102));
+
+        replenishMoneyButton = createCustomButton("Replenish Money");
+        replenishMoneyButton.setBackground(new Color(0, 204, 255));
+
+        printTransactionsButton = createCustomButton("Print Transactions");
+        printTransactionsButton.setBackground(new Color(233, 55, 153));
+
+        backButton = createCustomButton("Back To Test Menu"); 
+        backButton.setBackground(new Color(15, 255, 55));
 
         // Add the buttons to the panel
         add(restockItemsButton);
@@ -43,6 +64,15 @@ public class MaintenanceFeaturesPanel extends JPanel {
 
     public JPanel getMainPanel() {
         return mainPanel;
+    }
+
+    // Helper method to create custom buttons
+    private JButton createCustomButton(String text) {
+        JButton button = new JButton(text);
+        button.setFont(new Font("Arial", Font.BOLD, 18));
+        button.setForeground(Color.WHITE);
+        button.setFocusPainted(false);
+        return button;
     }
 
     // Method to add action listener for the Restock Items button

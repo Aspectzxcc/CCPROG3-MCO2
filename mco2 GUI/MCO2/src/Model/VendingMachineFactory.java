@@ -9,8 +9,8 @@ public class VendingMachineFactory {
     public VendingMachineFactory() {
         normalVM = new VendingMachine();
         specialVM = new SpecialVendingMachine();
-        isCreated = true; // auto set to true for debugging purposes
-        isSpecial = true; // auto set to false for debugging purposes
+        isCreated = false; // set to true for debugging purposes
+        isSpecial = false; // set to false for debugging purposes
     }
 
     // Getters

@@ -13,6 +13,7 @@ public class VendingMachine {
 		transactions = new Transactions();
 
 		// Initialize Test ItemSlots
+		/* 
 		ItemSlot itemSlot1 = new ItemSlot();
 		ArrayList<Item> items1 = new ArrayList<>();
 		for (int i = 0; i < 10; i++) {
@@ -77,6 +78,7 @@ public class VendingMachine {
 		itemSlots.add(itemSlot6);
 		itemSlots.add(itemSlot7);
 		itemSlots.add(itemSlot8);
+		*/
 	}
 	
 	// getters

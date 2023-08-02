@@ -10,6 +10,7 @@ public class SpecialVendingMachine extends VendingMachine{
         specialItems = new ArrayList<>();
 
         // Initialize some test SpecialItem objects
+        /* 
         ArrayList<SpecialItem> specialItems1 = new ArrayList<>();
         specialItems1.add(new SpecialItem("White Bread"));
         specialItems1.add(new SpecialItem("White Bread"));
@@ -39,6 +40,7 @@ public class SpecialVendingMachine extends VendingMachine{
         specialItems5.add(new SpecialItem("Hummus"));
         specialItems5.add(new SpecialItem("Hummus"));
         specialItems.add(specialItems5);
+        */
 
     }
 

@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Item;
 import Model.ItemSlot;
+import Model.Transactions;
 import Model.VendingMachineFactory;
 import View.RestockItemsPanel;
 
@@ -64,9 +65,24 @@ public class RestockItemsController {
             Item item = new Item(itemName);
             itemSlot.addItemToSlot(item);
         }
+
+        // Reset the Items Bought
+        getCurrentTransactions().setItemsBought(new ArrayList<Item>());
+
+        // Update the total sales
+        getCurrentTransactions().setTotalSales(0);
+
+        // Update the Starting Inventory
+        getCurrentTransactions().setStartingInventory(getCurrentTransactions().getEndingInventory() + restockQuantity);
+
+        // Update the ending inventory
+        getCurrentTransactions().setEndingInventory(getCurrentTransactions().getStartingInventory());
         
         // Update the item table in the restockItemsPanel with the updated itemSlot data
         restockItemsPanel.setItemData(vendingMachineFactory.getNormalVM().getItemSlots());
+
+        // update the Starting and Ending Inventory
+        
 
         // Show a success message
         JOptionPane.showMessageDialog(restockItemsPanel, "Items restocked successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -86,5 +102,9 @@ public class RestockItemsController {
             }
         }
         return null;
+    }
+
+    private Transactions getCurrentTransactions() {
+            return vendingMachineFactory.getNormalVM().getTransactions();
     }
 }

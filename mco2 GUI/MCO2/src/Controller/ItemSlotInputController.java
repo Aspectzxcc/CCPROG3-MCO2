@@ -22,11 +22,13 @@ public class ItemSlotInputController {
             return;
         }
 
-        if (slotCount >= 8) {
+        if (slotCount >= 8 && slotCount <= 10) {
             // Proceed to create vending machine panel
             itemSlotInputPanel.getCardLayout().show(itemSlotInputPanel.getMainPanel(), "ItemCheckBoxes");
-        } else {
+        } else if (slotCount < 8) {
             JOptionPane.showMessageDialog(itemSlotInputPanel, "Please enter at least 8 slots.");
+        } else if (slotCount > 10) {
+            JOptionPane.showMessageDialog(itemSlotInputPanel, "Please enter at most 10 slots.");
         }
     }
 }
