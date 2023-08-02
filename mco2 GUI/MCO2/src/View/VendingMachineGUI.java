@@ -17,6 +17,8 @@ public class VendingMachineGUI extends JFrame {
     private VendingFeaturesPanel vendingFeaturesPanel;
     private SpecialVendingFeaturesPanel specialVendingFeaturesPanel;
     private MaintenanceFeaturesPanel maintenanceFeaturesPanel;
+    private RestockItemsPanel restockItemsPanel;
+    private SpecialRestockPanel specialRestockPanel;
 
     public VendingMachineGUI() {
         setTitle("Vending Machine Factory Simulator");
@@ -40,6 +42,8 @@ public class VendingMachineGUI extends JFrame {
         vendingFeaturesPanel = new VendingFeaturesPanel(cardLayout, mainPanel);
         specialVendingFeaturesPanel = new SpecialVendingFeaturesPanel(cardLayout, mainPanel);
         maintenanceFeaturesPanel = new MaintenanceFeaturesPanel(cardLayout, mainPanel);
+        restockItemsPanel = new RestockItemsPanel(cardLayout, mainPanel);
+        specialRestockPanel = new SpecialRestockPanel(cardLayout, mainPanel);
 
         // Add panels to the main panel with unique names to identify them
         mainPanel.add(startingMenuPanel, "StartingMenu");
@@ -53,6 +57,8 @@ public class VendingMachineGUI extends JFrame {
         mainPanel.add(vendingFeaturesPanel, "VendingFeatures");
         mainPanel.add(specialVendingFeaturesPanel, "SpecialVendingFeatures");
         mainPanel.add(maintenanceFeaturesPanel, "MaintenanceFeatures");
+        mainPanel.add(restockItemsPanel, "RestockItems");
+        mainPanel.add(specialRestockPanel, "SpecialRestock");
 
         add(mainPanel);
 
@@ -102,5 +108,13 @@ public class VendingMachineGUI extends JFrame {
 
     public MaintenanceFeaturesPanel getMaintenanceFeaturesPanel() {
         return maintenanceFeaturesPanel;
+    }
+
+    public RestockItemsPanel getRestockItemsPanel() {
+        return restockItemsPanel;
+    }
+
+    public SpecialRestockPanel getSpecialRestockPanel() {
+        return specialRestockPanel;
     }
 }
