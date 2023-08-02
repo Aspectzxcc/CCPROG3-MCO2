@@ -7,8 +7,6 @@ import View.RestockItemsPanel;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class RestockItemsController {
@@ -18,6 +16,9 @@ public class RestockItemsController {
     public RestockItemsController(RestockItemsPanel restockItemsPanel, VendingMachineFactory vendingMachineFactory) {
         this.restockItemsPanel = restockItemsPanel;
         this.vendingMachineFactory = vendingMachineFactory;
+
+        // Set the initial data for the item table
+        restockItemsPanel.setItemData(vendingMachineFactory.getNormalVM().getItemSlots());
 
         // Add action listeners to the buttons
         restockItemsPanel.addRestockButtonListener(e -> restockButtonActionPerformed());
@@ -49,15 +50,21 @@ public class RestockItemsController {
             return;
         }
 
-        // Get the new stock count for the item
-        int newStock = Integer.parseInt(tableModel.getValueAt(selectedRow, 3).toString());
+        // Get the quantity to restock from the input field
+        int restockQuantity = restockItemsPanel.getRestockQuantity();
 
-        // Add new items to the item slot to restock
-        for (int i = 0; i < newStock; i++) {
-            Item item = new Item(itemName); 
-            itemSlot.addItemToSlot(item);
+        // Check if the restock quantity is valid
+        if (restockQuantity <= 0) {
+            JOptionPane.showMessageDialog(restockItemsPanel, "Please enter a valid restock quantity.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
 
+        // Add new items to the item slot to restock
+        for (int i = 0; i < restockQuantity; i++) {
+            Item item = new Item(itemName);
+            itemSlot.addItemToSlot(item);
+        }
+        
         // Update the item table in the restockItemsPanel with the updated itemSlot data
         restockItemsPanel.setItemData(vendingMachineFactory.getNormalVM().getItemSlots());
 

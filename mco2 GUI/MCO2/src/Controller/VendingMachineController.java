@@ -25,6 +25,8 @@ public class VendingMachineController{
         new VendingFeaturesController(vendingMachineGUI.getVendingFeaturesPanel(), vendingMachineGUI.getSpecialVendingFeaturesPanel(), vendingMachineFactory);
         new SpecialVendingFeaturesController(vendingMachineGUI.getSpecialVendingFeaturesPanel(), vendingMachineFactory);
         new MaintenanceFeaturesController(vendingMachineGUI.getMaintenanceFeaturesPanel(), vendingMachineGUI.getRestockItemsPanel(), vendingMachineGUI.getSpecialRestockPanel(), vendingMachineFactory);
+        new RestockItemsController(vendingMachineGUI.getRestockItemsPanel(), vendingMachineFactory);
+        new SpecialRestockController(vendingMachineGUI.getSpecialRestockPanel(), vendingMachineFactory);
     }
 
 }

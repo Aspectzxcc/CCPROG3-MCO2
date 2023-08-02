@@ -46,7 +46,16 @@ public class MaintenanceFeaturesController {
     // Set Item Prices button action
     private void setItemPricesActionPerformed() {
         // Move to the SetItemPricesPanel
-        maintenanceFeaturesPanel.getCardLayout().show(maintenanceFeaturesPanel.getMainPanel(), "SetItemPrices");
+        if (vendingMachineFactory.isSpecial() == false) {
+            restockItemsPanel.setItemData(vendingMachineFactory.getNormalVM().getItemSlots());
+            
+            maintenanceFeaturesPanel.getCardLayout().show(maintenanceFeaturesPanel.getMainPanel(), "RestockItems");
+        } else {
+            specialRestockPanel.setNormalItemData(vendingMachineFactory.getSpecialVM().getItemSlots());
+            specialRestockPanel.setSpecialItemData(vendingMachineFactory.getSpecialVM().getSpecialItems());
+
+            maintenanceFeaturesPanel.getCardLayout().show(maintenanceFeaturesPanel.getMainPanel(), "SpecialRestock");
+        }
     }
 
     // Collect Money button action

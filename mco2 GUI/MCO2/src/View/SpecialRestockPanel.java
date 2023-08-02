@@ -2,11 +2,9 @@ package View;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-
 import Model.Item;
 import Model.ItemSlot;
 import Model.SpecialItem;
-
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -16,6 +14,7 @@ public class SpecialRestockPanel extends JPanel {
     private JPanel mainPanel;
     private JTable normalItemTable;
     private JTable specialItemTable;
+    private JTabbedPane tabbedPane;
     private DefaultTableModel normalTableModel;
     private DefaultTableModel specialTableModel;
     private JScrollPane normalTableScrollPane;
@@ -42,7 +41,7 @@ public class SpecialRestockPanel extends JPanel {
         specialTableScrollPane = new JScrollPane(specialItemTable);
 
         // Create a tabbed pane to display both normal and special item tables
-        JTabbedPane tabbedPane = new JTabbedPane();
+        tabbedPane = new JTabbedPane();
         tabbedPane.addTab("Normal Items", normalTableScrollPane);
         tabbedPane.addTab("Special Items", specialTableScrollPane);
 
@@ -90,15 +89,14 @@ public class SpecialRestockPanel extends JPanel {
         return specialItemTable;
     }
 
-    public DefaultTableModel getNormalTableModel() {
-        return normalTableModel;
-    }
-
     public DefaultTableModel getSpecialTableModel() {
         return specialTableModel;
     }
 
-    // Method to set the data for the normal item table
+    public int getSelectedTabIndex() {
+        return tabbedPane.getSelectedIndex();
+    }
+
     public void setNormalItemData(ArrayList<ItemSlot> itemSlots) {
         // Clear the existing data from the table
         normalTableModel.setRowCount(0);

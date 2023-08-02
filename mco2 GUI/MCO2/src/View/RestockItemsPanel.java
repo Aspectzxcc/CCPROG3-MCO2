@@ -3,8 +3,7 @@ package View;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-import Model.Item;
-import Model.ItemSlot;
+import Model.*;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -16,14 +15,16 @@ public class RestockItemsPanel extends JPanel {
     private JTable itemTable;
     private DefaultTableModel tableModel;
     private JScrollPane tableScrollPane;
-    private JButton backButton;
     private JButton restockButton;
+    private JButton backButton;
+    private JLabel restockLabel;
+    private JTextField restockTextField;
 
     public RestockItemsPanel(CardLayout cardLayout, JPanel mainPanel) {
         this.cardLayout = cardLayout;
         this.mainPanel = mainPanel;
+
         setLayout(new BorderLayout());
-        setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add some padding
 
         // Initialize the item table
         String[] columnNames = {"Item", "Price (PHP)", "Calories", "Stock"};
@@ -32,30 +33,23 @@ public class RestockItemsPanel extends JPanel {
         tableScrollPane = new JScrollPane(itemTable);
         add(tableScrollPane, BorderLayout.CENTER);
 
-        // Initialize the restock button
+        // Initialize the restock button and label
         restockButton = new JButton("Restock");
-        restockButton.setFont(new Font("Arial", Font.BOLD, 16)); // Set custom font and size
-        restockButton.setBackground(Color.GREEN); // Set button background color
-        restockButton.setForeground(Color.WHITE); // Set button text color
-        restockButton.setBorder(BorderFactory.createEmptyBorder(8, 20, 8, 20)); // Add some padding
-        restockButton.setFocusPainted(false); // Remove focus border
+        restockLabel = new JLabel("Enter quantity to restock:");
+        restockTextField = new JTextField(10);
+
+        // Create a panel to hold the restock label, text field, and button
+        JPanel restockPanel = new JPanel();
+        restockPanel.add(restockLabel);
+        restockPanel.add(restockTextField);
+        restockPanel.add(restockButton);
+
+        // Add the restock panel to the North of the RestockItemsPanel
+        add(restockPanel, BorderLayout.NORTH);
 
         // Initialize the back button
         backButton = new JButton("Back");
-        backButton.setFont(new Font("Arial", Font.BOLD, 16)); // Set custom font and size
-        backButton.setBackground(Color.RED); // Set button background color
-        backButton.setForeground(Color.WHITE); // Set button text color
-        backButton.setBorder(BorderFactory.createEmptyBorder(8, 20, 8, 20)); // Add some padding
-        backButton.setFocusPainted(false); // Remove focus border
-
-        // Create a panel to hold the buttons
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10)); // Align buttons in the center with some spacing
-        buttonPanel.add(restockButton);
-        buttonPanel.add(backButton);
-
-        // Add the button panel to the South of the RestockItemsPanel
-        add(buttonPanel, BorderLayout.SOUTH);
+        add(backButton, BorderLayout.SOUTH);
     }
 
     public CardLayout getCardLayout() {
@@ -68,10 +62,6 @@ public class RestockItemsPanel extends JPanel {
 
     public JTable getItemTable() {
         return itemTable;
-    }
-
-    public DefaultTableModel getTableModel() {
-        return tableModel;
     }
 
     // Method to set the data for the item table
@@ -101,5 +91,15 @@ public class RestockItemsPanel extends JPanel {
     // Method to add action listener for the back button
     public void addBackButtonListener(ActionListener listener) {
         backButton.addActionListener(listener);
+    }
+
+    // Method to get the quantity to restock
+    public int getRestockQuantity() {
+        String quantityText = restockTextField.getText();
+        try {
+            return Integer.parseInt(quantityText);
+        } catch (NumberFormatException e) {
+            return 0;
+        }
     }
 }
