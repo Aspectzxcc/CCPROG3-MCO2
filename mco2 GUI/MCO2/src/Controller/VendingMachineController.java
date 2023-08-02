@@ -40,4 +40,12 @@ public class VendingMachineController{
         new PrintTransactionsController(vendingMachineGUI.getPrintTransactionsPanel());
     }
 
+    public VendingMachineFactory getVendingMachineFactory() {
+        return vendingMachineFactory;
+    }
+
+    public VendingMachineGUI getVendingMachineGUI() {
+        return vendingMachineGUI;
+    }
+
 }
