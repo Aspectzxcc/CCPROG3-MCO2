@@ -3,13 +3,28 @@ package Controller;
 import Model.VendingMachineFactory;
 import View.VendingMachineGUI;
 
+/**
+ * The controller class that manages interactions between the model and the view for the Vending Machine Factory Simulator.
+ * This class connects various controllers with their corresponding panels in the GUI.
+ */
+
 public class VendingMachineController{
     private VendingMachineFactory vendingMachineFactory;
     private VendingMachineGUI vendingMachineGUI;
 
+     /**
+     * Constructor for the VendingMachineController class.
+     * Initializes the VendingMachineFactory and VendingMachineGUI instances and creates various controllers.
+     *
+     * @param vendingMachineFactory The VendingMachineFactory instance representing the model.
+     * @param vendingMachineGUI     The VendingMachineGUI instance representing the main GUI.
+     */
+
     public VendingMachineController(VendingMachineFactory vendingMachineFactory, VendingMachineGUI vendingMachineGUI) {
         this.vendingMachineFactory = vendingMachineFactory;
         this.vendingMachineGUI = vendingMachineGUI;
+
+        // Create Controllers
 
         // Create Controllers
         new StartingMenuController(vendingMachineGUI.getStartingMenuPanel(), vendingMachineGUI, vendingMachineFactory);
@@ -40,9 +55,21 @@ public class VendingMachineController{
         new PrintTransactionsController(vendingMachineGUI.getPrintTransactionsPanel());
     }
 
+    /**
+     * Get the VendingMachineFactory instance associated with this controller.
+     *
+     * @return The VendingMachineFactory instance.
+     */
+
     public VendingMachineFactory getVendingMachineFactory() {
         return vendingMachineFactory;
     }
+
+    /**
+     * Get the VendingMachineGUI instance associated with this controller.
+     *
+     * @return The VendingMachineGUI instance.
+     */
 
     public VendingMachineGUI getVendingMachineGUI() {
         return vendingMachineGUI;

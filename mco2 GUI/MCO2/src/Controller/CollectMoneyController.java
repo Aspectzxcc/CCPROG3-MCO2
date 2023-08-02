@@ -15,16 +15,19 @@ public class CollectMoneyController {
         this.collectMoneyPanel = collectMoneyPanel;
         this.vendingMachineFactory = vendingMachineFactory;
 
-        // Initialize the payment received data when the controller is created
-        updatePaymentReceivedData();
-
         // Add action listeners to the buttons
         collectMoneyPanel.addCollectButtonListener(e -> collectButtonActionPerformed());
         collectMoneyPanel.addBackButtonListener(e -> backButtonActionPerformed());
     }
 
-    private void updatePaymentReceivedData() {
+    private void updatePaymentReceivedData(int denomination, int quantityToCollect) {
         Map<Integer, Integer> paymentReceived = getCashRegister().getPaymentReceived();
+
+        // Remove the quantity of the denomination from the payment received map
+        int quantity = paymentReceived.get(denomination);
+        paymentReceived.put(denomination, quantity - quantityToCollect);
+
+        // Update the payment received data
         collectMoneyPanel.setPaymentReceivedData(paymentReceived);
     }
 
@@ -37,14 +40,22 @@ public class CollectMoneyController {
             if (input != null && !input.isEmpty()) {
                 try {
                     int quantityToCollect = Integer.parseInt(input);
+                    Map<Integer, Integer> paymentReceived = getCashRegister().getPaymentReceived();
+                    int currentQuantity = paymentReceived.getOrDefault(denomination, 0);
+
+                    if (quantityToCollect > currentQuantity) {
+                        JOptionPane.showMessageDialog(collectMoneyPanel, "Not enough " + "₱" + denomination + " to collect.", "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+
                     if (quantityToCollect > 0) {
                         int amount = getCashRegister().collectPayment(denomination, quantityToCollect);
                         if (amount > 0) {
-                            JOptionPane.showMessageDialog(collectMoneyPanel, "Collected " + amount + " " + denomination + ".", "Success", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(collectMoneyPanel, "Collected " + amount + " " + "₱" + denomination + ".", "Success", JOptionPane.INFORMATION_MESSAGE);
                             // Update the displayed payment received data after collection
-                            updatePaymentReceivedData();
+                            updatePaymentReceivedData(denomination, quantityToCollect);
                         } else {
-                            JOptionPane.showMessageDialog(collectMoneyPanel, "No " + denomination + " to collect.", "Error", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(collectMoneyPanel, "There is no " + "₱" + denomination + " to collect.", "Error", JOptionPane.ERROR_MESSAGE);
                         }
                     } else {
                         JOptionPane.showMessageDialog(collectMoneyPanel, "Please enter a positive quantity.", "Error", JOptionPane.ERROR_MESSAGE);
