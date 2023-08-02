@@ -3,18 +3,26 @@ package Controller;
 import Model.VendingMachineFactory;
 import View.MaintenanceFeaturesPanel;
 import View.RestockItemsPanel;
+import View.SetItemPricesPanel;
 import View.SpecialRestockPanel;
+import View.SpecialSetPricesPanel;
 
 public class MaintenanceFeaturesController {
     private MaintenanceFeaturesPanel maintenanceFeaturesPanel;
     private RestockItemsPanel restockItemsPanel;
     private SpecialRestockPanel specialRestockPanel;
+    private SetItemPricesPanel setItemPricesPanel;
+    private SpecialSetPricesPanel specialSetPricesPanel;
     private VendingMachineFactory vendingMachineFactory;
 
-    public MaintenanceFeaturesController(MaintenanceFeaturesPanel maintenanceFeaturesPanel, RestockItemsPanel restockItemsPanel, SpecialRestockPanel specialRestockPanel, VendingMachineFactory vendingMachineFactory) {
+    public MaintenanceFeaturesController(MaintenanceFeaturesPanel maintenanceFeaturesPanel, RestockItemsPanel restockItemsPanel, 
+    SpecialRestockPanel specialRestockPanel, SetItemPricesPanel setItemPricesPanel, SpecialSetPricesPanel specialSetPricesPanel,
+    VendingMachineFactory vendingMachineFactory) {
         this.maintenanceFeaturesPanel = maintenanceFeaturesPanel;
         this.restockItemsPanel = restockItemsPanel;
         this.specialRestockPanel = specialRestockPanel;
+        this.setItemPricesPanel = setItemPricesPanel;
+        this.specialSetPricesPanel = specialSetPricesPanel;
         this.vendingMachineFactory = vendingMachineFactory;
 
         // Add action listeners to the buttons
@@ -30,31 +38,33 @@ public class MaintenanceFeaturesController {
     private void restockItemsActionPerformed() {
         // Check if the vending machine is Special, then set item data accordingly
         if (vendingMachineFactory.isSpecial() == false) {
+            // Set the item data for the RestockItemsPanel
             restockItemsPanel.setItemData(vendingMachineFactory.getNormalVM().getItemSlots());
             
+            // Move to the RestockItemsPanel
             maintenanceFeaturesPanel.getCardLayout().show(maintenanceFeaturesPanel.getMainPanel(), "RestockItems");
         } else {
+            // Set the item data for the SpecialRestockPanel
             specialRestockPanel.setNormalItemData(vendingMachineFactory.getSpecialVM().getItemSlots());
             specialRestockPanel.setSpecialItemData(vendingMachineFactory.getSpecialVM().getSpecialItems());
 
+            // Move to the SpecialRestockPanel
             maintenanceFeaturesPanel.getCardLayout().show(maintenanceFeaturesPanel.getMainPanel(), "SpecialRestock");
         }
-
-        // Move to the RestockItemsPanel
     }
 
     // Set Item Prices button action
     private void setItemPricesActionPerformed() {
         // Move to the SetItemPricesPanel
         if (vendingMachineFactory.isSpecial() == false) {
-            restockItemsPanel.setItemData(vendingMachineFactory.getNormalVM().getItemSlots());
+            setItemPricesPanel.setItemData(vendingMachineFactory.getNormalVM().getItemSlots());
             
-            maintenanceFeaturesPanel.getCardLayout().show(maintenanceFeaturesPanel.getMainPanel(), "RestockItems");
+            setItemPricesPanel.getCardLayout().show(maintenanceFeaturesPanel.getMainPanel(), "SetItemPrices");
         } else {
-            specialRestockPanel.setNormalItemData(vendingMachineFactory.getSpecialVM().getItemSlots());
-            specialRestockPanel.setSpecialItemData(vendingMachineFactory.getSpecialVM().getSpecialItems());
+            specialSetPricesPanel.setNormalItemData(vendingMachineFactory.getSpecialVM().getItemSlots());
+            specialSetPricesPanel.setSpecialItemData(vendingMachineFactory.getSpecialVM().getSpecialItems());
 
-            maintenanceFeaturesPanel.getCardLayout().show(maintenanceFeaturesPanel.getMainPanel(), "SpecialRestock");
+            maintenanceFeaturesPanel.getCardLayout().show(maintenanceFeaturesPanel.getMainPanel(), "SpecialSetPrices");
         }
     }
 

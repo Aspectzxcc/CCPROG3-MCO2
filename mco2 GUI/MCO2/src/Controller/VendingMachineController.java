@@ -24,9 +24,15 @@ public class VendingMachineController{
         new TestMenuController(vendingMachineGUI.getTestMenuPanel(), vendingMachineGUI.getVendingFeaturesPanel(), vendingMachineFactory);
         new VendingFeaturesController(vendingMachineGUI.getVendingFeaturesPanel(), vendingMachineGUI.getSpecialVendingFeaturesPanel(), vendingMachineFactory);
         new SpecialVendingFeaturesController(vendingMachineGUI.getSpecialVendingFeaturesPanel(), vendingMachineFactory);
-        new MaintenanceFeaturesController(vendingMachineGUI.getMaintenanceFeaturesPanel(), vendingMachineGUI.getRestockItemsPanel(), vendingMachineGUI.getSpecialRestockPanel(), vendingMachineFactory);
+
+        new MaintenanceFeaturesController(vendingMachineGUI.getMaintenanceFeaturesPanel(), 
+        vendingMachineGUI.getRestockItemsPanel(), vendingMachineGUI.getSpecialRestockPanel(), 
+        vendingMachineGUI.getSetItemPricesPanel(), vendingMachineGUI.getSpecialSetPricesPanel(), vendingMachineFactory);
+
         new RestockItemsController(vendingMachineGUI.getRestockItemsPanel(), vendingMachineFactory);
         new SpecialRestockController(vendingMachineGUI.getSpecialRestockPanel(), vendingMachineFactory);
+        new SetItemPricesController(vendingMachineGUI.getSetItemPricesPanel(), vendingMachineFactory);
+        new SpecialSetPricesController(vendingMachineGUI.getSpecialSetPricesPanel(), vendingMachineFactory);
     }
 
 }
