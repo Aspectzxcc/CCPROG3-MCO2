@@ -25,8 +25,6 @@ public class VendingMachineController{
         this.vendingMachineGUI = vendingMachineGUI;
 
         // Create Controllers
-
-        // Create Controllers
         new StartingMenuController(vendingMachineGUI.getStartingMenuPanel(), vendingMachineGUI, vendingMachineFactory);
         new CreateVendingMachineController(vendingMachineGUI.getCreateVendingMachinePanel(), vendingMachineFactory);
         new ItemSlotInputController(vendingMachineGUI.getItemSlotInputPanel());

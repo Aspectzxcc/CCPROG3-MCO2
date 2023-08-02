@@ -209,15 +209,5 @@ public class CashRegister {
 
         return change;
     }
-
-
-    // Print a summary of transactions
-    public void printTransactionSummary() {
-        System.out.println("Transaction Summary:");
-        for (int denomination : validDenominations) {
-            int quantity = cashRegister.getOrDefault(denomination, 0);
-            System.out.println("Denomination: " + denomination + " - Quantity: " + quantity);
-        }
-    }
 }
 
