@@ -4,6 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+/**
+ * The StartingMenuPanel class represents a panel that displays the starting menu options for the vending machine program.
+ * It includes buttons for creating a vending machine, testing the vending machine, and exiting the program.
+ */
 public class StartingMenuPanel extends JPanel {
     private CardLayout cardLayout;
     private JPanel mainPanel;
@@ -11,6 +15,12 @@ public class StartingMenuPanel extends JPanel {
     private JButton testVendingMachineButton;
     private JButton exitButton;
 
+    /**
+     * Creates a new StartingMenuPanel with the specified CardLayout and mainPanel.
+     *
+     * @param cardLayout The CardLayout used for navigation.
+     * @param mainPanel  The main panel containing this StartingMenuPanel.
+     */
     public StartingMenuPanel(CardLayout cardLayout, JPanel mainPanel) {
         this.cardLayout = cardLayout;
         this.mainPanel = mainPanel;
@@ -69,22 +79,48 @@ public class StartingMenuPanel extends JPanel {
         add(exitButton, gbc);
     }
 
+    /**
+     * Gets the CardLayout used by this panel.
+     *
+     * @return The CardLayout used by this panel.
+     */
     public CardLayout getCardLayout() {
         return cardLayout;
     }
 
+    /**
+     * Gets the main panel containing this StartingMenuPanel.
+     *
+     * @return The main panel containing this StartingMenuPanel.
+     */
     public JPanel getMainPanel() {
         return mainPanel;
     }
+
+    /**
+     * Adds an ActionListener to the create vending machine button.
+     *
+     * @param listener The ActionListener to be added to the create vending machine button.
+     */
 
     public void addCreateVendingMachineButtonListener(ActionListener listener) {
         createVendingMachineButton.addActionListener(listener);
     }
 
+    /**
+     * Adds an ActionListener to the test vending machine button.
+     *
+     * @param listener The ActionListener to be added to the test vending machine button.
+     */
     public void addTestVendingMachineButtonListener(ActionListener listener) {
         testVendingMachineButton.addActionListener(listener);
     }
 
+    /**
+     * Adds an ActionListener to the exit button.
+     *
+     * @param listener The ActionListener to be added to the exit button.
+     */
     public void addExitButtonListener(ActionListener listener) {
         exitButton.addActionListener(listener);
     }

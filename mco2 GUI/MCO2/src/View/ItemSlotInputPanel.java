@@ -4,6 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+/**
+ * The ItemSlotInputPanel class represents a panel for entering the number of slots in the vending machine configuration.
+ * It provides a text field to input the number of slots and a "Continue" button to proceed to the next step.
+ */
 public class ItemSlotInputPanel extends JPanel {
     private CardLayout cardLayout;
     private JPanel mainPanel;
@@ -12,6 +16,12 @@ public class ItemSlotInputPanel extends JPanel {
     private JTextField slotsTextField;
     private JButton continueButton;
 
+    /**
+     * Creates a new ItemSlotInputPanel with the specified CardLayout and main panel.
+     *
+     * @param cardLayout the CardLayout used to switch between panels in the main frame
+     * @param mainPanel  the main panel that contains all the panels in the main frame
+     */
     public ItemSlotInputPanel(CardLayout cardLayout, JPanel mainPanel) {
         this.cardLayout = cardLayout;
         this.mainPanel = mainPanel;
@@ -30,7 +40,7 @@ public class ItemSlotInputPanel extends JPanel {
 
         slotsLabel = new JLabel("Number of Slots:");
         slotsLabel.setFont(new Font("Arial", Font.PLAIN, 18));
-        
+
         slotsTextField = new JTextField(10); // Set the input field width
         slotsTextField.setFont(new Font("Arial", Font.PLAIN, 18));
         slotsTextField.setHorizontalAlignment(SwingConstants.CENTER); // Center the text in the box
@@ -63,18 +73,38 @@ public class ItemSlotInputPanel extends JPanel {
         setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
     }
 
+    /**
+     * Gets the CardLayout used in the main frame.
+     *
+     * @return the CardLayout
+     */
     public CardLayout getCardLayout() {
         return cardLayout;
     }
 
+    /**
+     * Gets the main panel that contains all the panels in the main frame.
+     *
+     * @return the main panel
+     */
     public JPanel getMainPanel() {
         return mainPanel;
     }
 
+    /**
+     * Gets the text field used for entering the number of slots.
+     *
+     * @return the slots text field
+     */
     public JTextField getSlotsTextField() {
         return slotsTextField;
     }
 
+    /**
+     * Adds an ActionListener to the Continue button.
+     *
+     * @param listener the ActionListener to add
+     */
     public void addContinueButtonListener(ActionListener listener) {
         continueButton.addActionListener(listener);
     }

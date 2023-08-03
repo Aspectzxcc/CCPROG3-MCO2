@@ -9,6 +9,9 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * The RestockItemsPanel class represents the panel for restocking items in the vending machine configuration.
+ */
 public class RestockItemsPanel extends JPanel {
     private CardLayout cardLayout;
     private JPanel mainPanel;
@@ -20,6 +23,12 @@ public class RestockItemsPanel extends JPanel {
     private JLabel restockLabel;
     private JTextField restockTextField;
 
+    /**
+     * Creates a new RestockItemsPanel with the specified CardLayout and main panel.
+     *
+     * @param cardLayout the CardLayout used to switch between panels in the main frame
+     * @param mainPanel  the main panel that contains all the panels in the main frame
+     */
     public RestockItemsPanel(CardLayout cardLayout, JPanel mainPanel) {
         this.cardLayout = cardLayout;
         this.mainPanel = mainPanel;
@@ -52,19 +61,38 @@ public class RestockItemsPanel extends JPanel {
         add(backButton, BorderLayout.SOUTH);
     }
 
+    /**
+     * Gets the CardLayout used in the main frame.
+     *
+     * @return the CardLayout
+     */
     public CardLayout getCardLayout() {
         return cardLayout;
     }
 
+    /**
+     * Gets the main panel that contains all the panels in the main frame.
+     *
+     * @return the main panel
+     */
     public JPanel getMainPanel() {
         return mainPanel;
     }
 
+    /**
+     * Gets the item table used to display and restock items.
+     *
+     * @return the item table
+     */
     public JTable getItemTable() {
         return itemTable;
     }
 
-    // Method to set the data for the item table
+    /**
+     * Sets the data for the item table.
+     *
+     * @param itemSlots the list of item slots in the vending machine
+     */
     public void setItemData(ArrayList<ItemSlot> itemSlots) {
         // Clear the existing data from the table
         tableModel.setRowCount(0);
@@ -83,17 +111,29 @@ public class RestockItemsPanel extends JPanel {
         }
     }
 
-    // Method to add action listener for the restock button
+    /**
+     * Adds an ActionListener to the Restock button.
+     *
+     * @param listener the ActionListener to add
+     */
     public void addRestockButtonListener(ActionListener listener) {
         restockButton.addActionListener(listener);
     }
 
-    // Method to add action listener for the back button
+    /**
+     * Adds an ActionListener to the Back button.
+     *
+     * @param listener the ActionListener to add
+     */
     public void addBackButtonListener(ActionListener listener) {
         backButton.addActionListener(listener);
     }
 
-    // Method to get the quantity to restock
+    /**
+     * Gets the quantity to restock as an integer.
+     *
+     * @return the quantity to restock, or 0 if the input is not a valid integer
+     */
     public int getRestockQuantity() {
         String quantityText = restockTextField.getText();
         try {

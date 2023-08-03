@@ -10,6 +10,9 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * The SetItemPricesPanel class represents the panel for setting item prices in the vending machine configuration.
+ */
 public class SetItemPricesPanel extends JPanel {
     private CardLayout cardLayout;
     private JPanel mainPanel;
@@ -19,6 +22,12 @@ public class SetItemPricesPanel extends JPanel {
     private JButton backButton;
     private JButton setPricesButton;
 
+    /**
+     * Creates a new SetItemPricesPanel with the specified CardLayout and main panel.
+     *
+     * @param cardLayout the CardLayout used to switch between panels in the main frame
+     * @param mainPanel  the main panel that contains all the panels in the main frame
+     */
     public SetItemPricesPanel(CardLayout cardLayout, JPanel mainPanel) {
         this.cardLayout = cardLayout;
         this.mainPanel = mainPanel;
@@ -59,23 +68,47 @@ public class SetItemPricesPanel extends JPanel {
         add(buttonPanel, BorderLayout.SOUTH);
     }
 
+    /**
+     * Gets the CardLayout used in the main frame.
+     *
+     * @return the CardLayout
+     */
     public CardLayout getCardLayout() {
         return cardLayout;
     }
 
+    /**
+     * Gets the main panel that contains all the panels in the main frame.
+     *
+     * @return the main panel
+     */
     public JPanel getMainPanel() {
         return mainPanel;
     }
 
+    /**
+     * Gets the item table used to display and set item prices.
+     *
+     * @return the item table
+     */
     public JTable getItemTable() {
         return itemTable;
     }
 
+    /**
+     * Gets the table model used for the item table.
+     *
+     * @return the table model
+     */
     public DefaultTableModel getTableModel() {
         return tableModel;
     }
 
-    // Method to set the data for the item table
+    /**
+     * Sets the data for the item table.
+     *
+     * @param itemSlots the list of item slots in the vending machine
+     */
     public void setItemData(ArrayList<ItemSlot> itemSlots) {
         // Clear the existing data from the table
         tableModel.setRowCount(0);
@@ -94,12 +127,20 @@ public class SetItemPricesPanel extends JPanel {
         }
     }
 
-    // Method to add action listener for the set prices button
+    /**
+     * Adds an ActionListener to the Set Prices button.
+     *
+     * @param listener the ActionListener to add
+     */
     public void addSetPricesButtonListener(ActionListener listener) {
         setPricesButton.addActionListener(listener);
     }
 
-    // Method to add action listener for the back button
+    /**
+     * Adds an ActionListener to the Back button.
+     *
+     * @param listener the ActionListener to add
+     */
     public void addBackButtonListener(ActionListener listener) {
         backButton.addActionListener(listener);
     }

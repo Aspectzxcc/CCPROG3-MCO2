@@ -9,6 +9,10 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * The SpecialRestockPanel class represents a panel that displays the restocking options for normal and special items.
+ * It includes two JTables, a tabbed pane, restock button, and back button.
+ */
 public class SpecialRestockPanel extends JPanel {
     private CardLayout cardLayout;
     private JPanel mainPanel;
@@ -22,6 +26,12 @@ public class SpecialRestockPanel extends JPanel {
     private JButton backButton;
     private JButton restockButton;
 
+    /**
+     * Creates a new SpecialRestockPanel with the specified CardLayout and mainPanel.
+     *
+     * @param cardLayout The CardLayout used for navigation.
+     * @param mainPanel  The main panel containing this SpecialRestockPanel.
+     */
     public SpecialRestockPanel(CardLayout cardLayout, JPanel mainPanel) {
         this.cardLayout = cardLayout;
         this.mainPanel = mainPanel;
@@ -73,30 +83,65 @@ public class SpecialRestockPanel extends JPanel {
         add(buttonPanel, BorderLayout.SOUTH);
     }
 
+    /**
+     * Gets the CardLayout used by this panel.
+     *
+     * @return The CardLayout used by this panel.
+     */
     public CardLayout getCardLayout() {
         return cardLayout;
     }
 
+    /**
+     * Gets the main panel containing this SpecialRestockPanel.
+     *
+     * @return The main panel containing this SpecialRestockPanel.
+     */
     public JPanel getMainPanel() {
         return mainPanel;
     }
 
+    /**
+     * Gets the JTable displaying normal items' data.
+     *
+     * @return The JTable displaying normal items' data.
+     */
     public JTable getNormalItemTable() {
         return normalItemTable;
     }
 
+    /**
+     * Gets the JTable displaying special items' data.
+     *
+     * @return The JTable displaying special items' data.
+     */
     public JTable getSpecialItemTable() {
         return specialItemTable;
     }
 
+    /**
+     * Gets the DefaultTableModel used for the special item table.
+     *
+     * @return The DefaultTableModel used for the special item table.
+     */
     public DefaultTableModel getSpecialTableModel() {
         return specialTableModel;
     }
 
+    /**
+     * Gets the index of the selected tab in the tabbed pane.
+     *
+     * @return The index of the selected tab in the tabbed pane.
+     */
     public int getSelectedTabIndex() {
         return tabbedPane.getSelectedIndex();
     }
 
+    /**
+     * Sets the data for the normal item table.
+     *
+     * @param itemSlots The list of ItemSlot objects representing the available normal items in the vending machine.
+     */
     public void setNormalItemData(ArrayList<ItemSlot> itemSlots) {
         // Clear the existing data from the table
         normalTableModel.setRowCount(0);
@@ -115,7 +160,11 @@ public class SpecialRestockPanel extends JPanel {
         }
     }
 
-    // Method to set the data for the special item table
+    /**
+     * Sets the data for the special item table.
+     *
+     * @param specialItemsList The list of ArrayLists representing the available special items in the vending machine.
+     */
     public void setSpecialItemData(ArrayList<ArrayList<SpecialItem>> specialItemsList) {
         // Clear the existing data from the table
         specialTableModel.setRowCount(0);
@@ -134,12 +183,20 @@ public class SpecialRestockPanel extends JPanel {
         }
     }
 
-    // Method to add action listener for the restock button
+    /**
+     * Adds an ActionListener to the restock button.
+     *
+     * @param listener The ActionListener to be added to the restock button.
+     */
     public void addRestockButtonListener(ActionListener listener) {
         restockButton.addActionListener(listener);
     }
 
-    // Method to add action listener for the back button
+    /**
+     * Adds an ActionListener to the back button.
+     *
+     * @param listener The ActionListener to be added to the back button.
+     */
     public void addBackButtonListener(ActionListener listener) {
         backButton.addActionListener(listener);
     }

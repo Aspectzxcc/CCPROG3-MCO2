@@ -5,6 +5,10 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * The SpecialItemQuantityInputPanel class represents the panel for inputting quantities of selected special items
+ * in the vending machine configuration.
+ */
 public class SpecialItemQuantityInputPanel extends JPanel {
     private CardLayout cardLayout;
     private JPanel mainPanel;
@@ -15,6 +19,12 @@ public class SpecialItemQuantityInputPanel extends JPanel {
     private ArrayList<String> selectedSpecialItems;
     private ArrayList<Integer> specialItemQuantities;
 
+    /**
+     * Creates a new SpecialItemQuantityInputPanel with the specified CardLayout and main panel.
+     *
+     * @param cardLayout the CardLayout used to switch between panels in the main frame
+     * @param mainPanel  the main panel that contains all the panels in the main frame
+     */
     public SpecialItemQuantityInputPanel(CardLayout cardLayout, JPanel mainPanel) {
         this.cardLayout = cardLayout;
         this.mainPanel = mainPanel;
@@ -47,34 +57,72 @@ public class SpecialItemQuantityInputPanel extends JPanel {
         add(buttonPanel, BorderLayout.SOUTH);
     }
 
+    /**
+     * Gets the CardLayout used in the main frame.
+     *
+     * @return the CardLayout
+     */
     public CardLayout getCardLayout() {
         return cardLayout;
     }
 
+    /**
+     * Gets the main panel that contains all the panels in the main frame.
+     *
+     * @return the main panel
+     */
     public JPanel getMainPanel() {
         return mainPanel;
     }
 
+    /**
+     * Gets the list of selected special items.
+     *
+     * @return the list of selected special items
+     */
     public ArrayList<String> getSelectedSpecialItems() {
         return selectedSpecialItems;
     }
 
+    /**
+     * Gets the array of quantity input text fields.
+     *
+     * @return the array of quantity input text fields
+     */
     public JTextField[] getQuantityTextFields() {
         return quantityTextFields;
     }
 
+    /**
+     * Gets the list of special item quantities.
+     *
+     * @return the list of special item quantities
+     */
     public ArrayList<Integer> getSpecialItemQuantities() {
         return specialItemQuantities;
     }
 
+    /**
+     * Sets the special item quantities.
+     *
+     * @param specialItemQuantities the special item quantities to set
+     */
     public void setSpecialItemQuantities(ArrayList<Integer> specialItemQuantities) {
         this.specialItemQuantities = specialItemQuantities;
     }
 
+    /**
+     * Adds an ActionListener to the submit button.
+     *
+     * @param listener the ActionListener to add
+     */
     public void addSubmitButtonListener(ActionListener listener) {
         submitButton.addActionListener(listener);
     }
 
+    /**
+     * Creates the quantity input fields for selected special items.
+     */
     public void createQuantityInputFields() {
         quantityTextFields = new JTextField[selectedSpecialItems.size()];
 
@@ -95,10 +143,18 @@ public class SpecialItemQuantityInputPanel extends JPanel {
         repaint();
     }
 
+    /**
+     * Sets the list of selected special items.
+     *
+     * @param selectedSpecialItems the list of selected special items to set
+     */
     public void setSelectedSpecialItems(ArrayList<String> selectedSpecialItems) {
         this.selectedSpecialItems = selectedSpecialItems;
     }
 
+    /**
+     * Resets the panel by clearing the selected special items and their quantities, and removing the input fields.
+     */
     public void reset() {
         selectedSpecialItems = new ArrayList<>();
         specialItemQuantities = new ArrayList<>();

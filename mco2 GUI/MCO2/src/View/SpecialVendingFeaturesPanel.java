@@ -9,6 +9,11 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * The SpecialVendingFeaturesPanel class represents a panel for displaying special items and custom sandwich options.
+ * It includes a JTable, option indicators, labels for inserted money and total calories, currency buttons, buy item button,
+ * create custom sandwich button, and back button.
+ */
 public class SpecialVendingFeaturesPanel extends JPanel {
     private CardLayout cardLayout;
     private JPanel mainPanel;
@@ -26,6 +31,12 @@ public class SpecialVendingFeaturesPanel extends JPanel {
     private JLabel vegetableLabel;
     private JLabel sauceLabel;
 
+    /**
+     * Creates a new SpecialVendingFeaturesPanel with the specified CardLayout and mainPanel.
+     *
+     * @param cardLayout The CardLayout used for navigation.
+     * @param mainPanel  The main panel containing this SpecialVendingFeaturesPanel.
+     */
     public SpecialVendingFeaturesPanel(CardLayout cardLayout, JPanel mainPanel) {
         this.cardLayout = cardLayout;
         this.mainPanel = mainPanel;
@@ -137,40 +148,83 @@ public class SpecialVendingFeaturesPanel extends JPanel {
         add(eastPanel, BorderLayout.EAST);
     }
 
+    /**
+     * Gets the CardLayout used by this panel.
+     *
+     * @return The CardLayout used by this panel.
+     */
     public CardLayout getCardLayout() {
         return cardLayout;
     }
 
+    /**
+     * Gets the main panel containing this SpecialVendingFeaturesPanel.
+     *
+     * @return The main panel containing this SpecialVendingFeaturesPanel.
+     */
     public JPanel getMainPanel() {
         return mainPanel;
     }
 
+    /**
+     * Gets the JTable displaying special items' data.
+     *
+     * @return The JTable displaying special items' data.
+     */
     public JTable getItemTable() {
         return itemTable;
     }
 
-    // Getters for the option indicators
+    /**
+     * Gets the JLabel representing the bread option indicator.
+     *
+     * @return The JLabel representing the bread option indicator.
+     */
     public JLabel getBreadLabel() {
         return breadLabel;
     }
 
+    /**
+     * Gets the JLabel representing the meat option indicator.
+     *
+     * @return The JLabel representing the meat option indicator.
+     */
     public JLabel getMeatLabel() {
         return meatLabel;
     }
 
+    /**
+     * Gets the JLabel representing the cheese option indicator.
+     *
+     * @return The JLabel representing the cheese option indicator.
+     */
     public JLabel getCheeseLabel() {
         return cheeseLabel;
     }
 
+    /**
+     * Gets the JLabel representing the vegetable option indicator.
+     *
+     * @return The JLabel representing the vegetable option indicator.
+     */
     public JLabel getVegetableLabel() {
         return vegetableLabel;
     }
 
+    /**
+     * Gets the JLabel representing the sauce option indicator.
+     *
+     * @return The JLabel representing the sauce option indicator.
+     */
     public JLabel getSauceLabel() {
         return sauceLabel;
     }
 
-    // Method to set the data for the item table
+    /**
+     * Sets the data for the item table with special items.
+     *
+     * @param specialItemsList The list of ArrayLists representing the available special items in the vending machine.
+     */
     public void setItemData(ArrayList<ArrayList<SpecialItem>> specialItemsList) {
         // Clear the existing data from the table
         tableModel.setRowCount(0);
@@ -189,12 +243,21 @@ public class SpecialVendingFeaturesPanel extends JPanel {
         }
     }
 
-    // Method to update the inserted money label
+    /**
+     * Updates the inserted money label with the given amount.
+     *
+     * @param insertedMoney The amount of money inserted.
+     */
     public void updateInsertedMoney(int insertedMoney) {
         insertedMoneyLabel.setText("Inserted Money: " + insertedMoney + " PHP");
     }
 
-    // Method to check if an option indicator is already set
+    /**
+     * Checks if an option indicator for a specific type is already set.
+     *
+     * @param optionType The type of the option (e.g., "Bread", "Meat").
+     * @return true if the option indicator is already set, false otherwise.
+     */
     public boolean isOptionIndicatorSet(String optionType) {
         switch (optionType) {
             case "Bread":
@@ -213,7 +276,12 @@ public class SpecialVendingFeaturesPanel extends JPanel {
     }
 
 
-    // Method to update the option indicators for the custom sandwich
+    /**
+     * Updates the option indicators for the custom sandwich with the given option type and name.
+     *
+     * @param optionType The type of the option (e.g., "Bread", "Meat").
+     * @param optionName The name of the option (e.g., "Whole Wheat", "Chicken").
+     */
     public void updateOptionIndicator(String optionType, String optionName) {
         switch (optionType) {
             case "Bread":
@@ -234,7 +302,9 @@ public class SpecialVendingFeaturesPanel extends JPanel {
         }
     }
 
-    // Method to reset the option indicators for the custom sandwich
+    /**
+     * Resets all option indicators for the custom sandwich to their initial state.
+     */
     public void resetOptionIndicators() {
         breadLabel.setText("Bread: None");
         meatLabel.setText("Meat: None");
@@ -243,31 +313,60 @@ public class SpecialVendingFeaturesPanel extends JPanel {
         sauceLabel.setText("Sauce: None");
     }
 
-    // Method to update the total calories label
+    /**
+     * Updates the total calories label with the given total calories amount.
+     *
+     * @param totalCalories The total calories amount.
+     */
     public void updateTotalCalories(int totalCalories) {
         totalCaloriesLabel.setText("Total Calories: " + totalCalories);
     }
 
+    /**
+     * Adds the specified amount of calories to the total calories label.
+     *
+     * @param calories The calories amount to be added.
+     */
     public void addTotalCalories(int calories) {
         int totalCalories = Integer.parseInt(totalCaloriesLabel.getText().replace("Total Calories: ", ""));
         totalCalories += calories;
         updateTotalCalories(totalCalories);
     }
 
+    /**
+     * Adds an ActionListener to the currency buttons.
+     *
+     * @param listener The ActionListener to be added to the currency buttons.
+     */
     public void addCurrencyButtonListener(ActionListener listener) {
         for (JButton currencyButton : currencyButtons) {
             currencyButton.addActionListener(listener);
         }
     }
 
+    /**
+     * Adds an ActionListener to the buy item button.
+     *
+     * @param listener The ActionListener to be added to the buy item button.
+     */
     public void addBuyItemButtonListener(ActionListener listener) {
         buyItemButton.addActionListener(listener);
     }
 
+     /**
+     * Adds an ActionListener to the create custom sandwich button.
+     *
+     * @param listener The ActionListener to be added to the create custom sandwich button.
+     */
     public void addCreateCustomSandwichButtonListener(ActionListener listener) {
         createCustomSandwichButton.addActionListener(listener);
     }
 
+    /**
+     * Adds an ActionListener to the back button.
+     *
+     * @param listener The ActionListener to be added to the back button.
+     */
     public void addBackButtonListener(ActionListener listener) {
         backButton.addActionListener(listener);
     }

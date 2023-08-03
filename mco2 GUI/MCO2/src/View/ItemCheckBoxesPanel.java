@@ -4,6 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+/**
+ * The ItemCheckBoxesPanel class represents a panel for selecting items in the vending machine configuration.
+ * It provides checkboxes for each item and "Continue" and "Back" buttons for navigation.
+ */
 public class ItemCheckBoxesPanel extends JPanel {
     private CardLayout cardLayout;
     private JPanel mainPanel;
@@ -21,6 +25,12 @@ public class ItemCheckBoxesPanel extends JPanel {
     private JCheckBox roastBeefAndCheddarCheckBox;
     private JButton continueButton;
 
+    /**
+     * Creates a new ItemCheckBoxesPanel with the specified CardLayout and main panel.
+     *
+     * @param cardLayout the CardLayout used to switch between panels in the main frame
+     * @param mainPanel  the main panel that contains all the panels in the main frame
+     */
     public ItemCheckBoxesPanel(CardLayout cardLayout, JPanel mainPanel) {
         this.cardLayout = cardLayout;
         this.mainPanel = mainPanel;
@@ -119,6 +129,7 @@ public class ItemCheckBoxesPanel extends JPanel {
         add(buttonPanel, BorderLayout.SOUTH);
     }
 
+    // Getters
     public CardLayout getCardLayout() {
         return cardLayout;
     }
@@ -175,6 +186,9 @@ public class ItemCheckBoxesPanel extends JPanel {
         return roastBeefAndCheddarCheckBox;
     }
 
+    /**
+     * Resets all checkboxes to their initial state (unchecked).
+     */
     public void resetCheckBoxes() {
         classicBLTCheckBox.setSelected(false);
         turkeyClubCheckBox.setSelected(false);
@@ -188,10 +202,20 @@ public class ItemCheckBoxesPanel extends JPanel {
         roastBeefAndCheddarCheckBox.setSelected(false);
     }
 
+    /**
+     * Adds an ActionListener to the "Continue" button.
+     *
+     * @param listener the ActionListener to add
+     */
     public void addContinueButtonListener(ActionListener listener) {
         continueButton.addActionListener(listener);
     }
 
+    /**
+     * Adds an ActionListener to the "Back" button.
+     *
+     * @param listener the ActionListener to add
+     */
     public void addBackButtonListener(ActionListener listener) {
         backButton.addActionListener(listener);
     }

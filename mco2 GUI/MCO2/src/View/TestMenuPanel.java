@@ -4,6 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+/**
+ * The TestMenuPanel class represents a panel that displays the test menu options for the vending machine program.
+ * It includes buttons for accessing vending machine features, maintenance features, and returning to the starting menu.
+ */
 public class TestMenuPanel extends JPanel {
     private CardLayout cardLayout;
     private JPanel mainPanel;
@@ -11,6 +15,12 @@ public class TestMenuPanel extends JPanel {
     private JButton maintenanceButton;
     private JButton exitButton;
 
+    /**
+     * Creates a new TestMenuPanel with the specified CardLayout and mainPanel.
+     *
+     * @param cardLayout The CardLayout used for navigation.
+     * @param mainPanel  The main panel containing this TestMenuPanel.
+     */
     public TestMenuPanel(CardLayout cardLayout, JPanel mainPanel) {
         this.cardLayout = cardLayout;
         this.mainPanel = mainPanel;
@@ -49,22 +59,47 @@ public class TestMenuPanel extends JPanel {
         add(exitButton);
     }
 
+     /**
+     * Gets the CardLayout used by this panel.
+     *
+     * @return The CardLayout used by this panel.
+     */
     public CardLayout getCardLayout() {
         return cardLayout;
     }
 
+    /**
+     * Gets the main panel containing this TestMenuPanel.
+     *
+     * @return The main panel containing this TestMenuPanel.
+     */
     public JPanel getMainPanel() {
         return mainPanel;
     }
 
+    /**
+     * Adds an ActionListener to the vending features button.
+     *
+     * @param listener The ActionListener to be added to the vending features button.
+     */
     public void addVendingButtonListener(ActionListener listener) {
         vendingButton.addActionListener(listener);
     }
 
+    /**
+     * Adds an ActionListener to the maintenance features button.
+     *
+     * @param listener The ActionListener to be added to the maintenance features button.
+     */
     public void addMaintenanceButtonListener(ActionListener listener) {
         maintenanceButton.addActionListener(listener);
     }
 
+    /**
+     * Adds an ActionListener to the exit button.
+     *
+     * @param listener The ActionListener to be added to the exit button.
+     */
     public void addExitButtonListener(ActionListener listener) {
         exitButton.addActionListener(listener);
     }

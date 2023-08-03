@@ -10,6 +10,9 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * The PrintTransactionsPanel class represents the panel for printing transaction details.
+ */
 public class PrintTransactionsPanel extends JPanel {
     private CardLayout cardLayout;
     private JPanel mainPanel;
@@ -25,6 +28,12 @@ public class PrintTransactionsPanel extends JPanel {
     private JLabel totalSalesLabel;
     private JButton backButton;
 
+    /**
+     * Creates a new PrintTransactionsPanel with the specified CardLayout and main panel.
+     *
+     * @param cardLayout the CardLayout used to switch between panels in the main frame
+     * @param mainPanel  the main panel that contains all the panels in the main frame
+     */
     public PrintTransactionsPanel(CardLayout cardLayout, JPanel mainPanel) {
         this.cardLayout = cardLayout;
         this.mainPanel = mainPanel;
@@ -86,14 +95,29 @@ public class PrintTransactionsPanel extends JPanel {
         add(buttonPanel, BorderLayout.SOUTH);
     }
 
+    /**
+     * Gets the CardLayout used in the main frame.
+     *
+     * @return the CardLayout
+     */
     public CardLayout getCardLayout() {
         return cardLayout;
     }
 
+    /**
+     * Gets the main panel that contains all the panels in the main frame.
+     *
+     * @return the main panel
+     */
     public JPanel getMainPanel() {
         return mainPanel;
     }
 
+    /**
+     * Sets the data for the normal items table.
+     *
+     * @param normalItems the list of normal items to display in the table
+     */
     public void setNormalItems(ArrayList<Item> normalItems) {
         // Clear the existing data from the table
         normalItemsTableModel.setRowCount(0);
@@ -104,6 +128,11 @@ public class PrintTransactionsPanel extends JPanel {
         }
     }
 
+    /**
+     * Sets the data for the special items table.
+     *
+     * @param specialItems the list of special items to display in the table
+     */
     public void setSpecialItems(ArrayList<SpecialItem> specialItems) {
         // Clear the existing data from the table
         specialItemsTableModel.setRowCount(0);
@@ -114,18 +143,38 @@ public class PrintTransactionsPanel extends JPanel {
         }
     }
 
+    /**
+     * Sets the starting inventory label.
+     *
+     * @param startingInventory the starting inventory value
+     */
     public void setStartingInventory(int startingInventory) {
         startingInventoryLabel.setText("Starting Inventory: " + startingInventory);
     }
 
+    /**
+     * Sets the ending inventory label.
+     *
+     * @param endingInventory the ending inventory value
+     */
     public void setEndingInventory(int endingInventory) {
         endingInventoryLabel.setText("Ending Inventory: " + endingInventory);
     }
 
+    /**
+     * Sets the total sales label.
+     *
+     * @param totalSales the total sales value
+     */
     public void setTotalSales(int totalSales) {
         totalSalesLabel.setText("Total Sales: " + totalSales + " PHP");
     }
 
+    /**
+     * Adds an ActionListener to the Back button.
+     *
+     * @param listener the ActionListener to add
+     */
     public void addBackButtonListener(ActionListener listener) {
         backButton.addActionListener(listener);
     }

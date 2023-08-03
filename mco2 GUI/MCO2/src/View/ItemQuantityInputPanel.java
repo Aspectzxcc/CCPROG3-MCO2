@@ -5,6 +5,10 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * The ItemQuantityInputPanel class represents a panel for entering quantities of selected items in the vending machine configuration.
+ * It provides text fields for each selected item to input the quantity and a "Submit" button to save the quantities.
+ */
 public class ItemQuantityInputPanel extends JPanel {
     private CardLayout cardLayout;
     private JPanel mainPanel;
@@ -15,6 +19,12 @@ public class ItemQuantityInputPanel extends JPanel {
     private ArrayList<String> selectedItems;
     private ArrayList<Integer> itemQuantities;
 
+    /**
+     * Creates a new ItemQuantityInputPanel with the specified CardLayout and main panel.
+     *
+     * @param cardLayout the CardLayout used to switch between panels in the main frame
+     * @param mainPanel  the main panel that contains all the panels in the main frame
+     */
     public ItemQuantityInputPanel(CardLayout cardLayout, JPanel mainPanel) {
         this.cardLayout = cardLayout;
         this.mainPanel = mainPanel;
@@ -48,38 +58,81 @@ public class ItemQuantityInputPanel extends JPanel {
         setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
     }
 
+    /**
+     * Gets the CardLayout used in the main frame.
+     *
+     * @return the CardLayout
+     */
     public CardLayout getCardLayout() {
         return cardLayout;
     }
 
+    /**
+     * Gets the main panel that contains all the panels in the main frame.
+     *
+     * @return the main panel
+     */
     public JPanel getMainPanel() {
         return mainPanel;
     }
 
+    /**
+     * Gets the list of selected items.
+     *
+     * @return the list of selected items
+     */
     public ArrayList<String> getSelectedItems() {
         return selectedItems;
     }
 
+    /**
+     * Gets the array of quantity text fields.
+     *
+     * @return the array of quantity text fields
+     */
     public JTextField[] getQuantityTextFields() {
         return quantityTextFields;
     }
 
+    /**
+     * Gets the list of item quantities.
+     *
+     * @return the list of item quantities
+     */
     public ArrayList<Integer> getItemQuantities() {
         return itemQuantities;
     }
 
+    /**
+     * Sets the list of selected items.
+     *
+     * @param selectedItems the list of selected items
+     */
     public void setSelectedItems(ArrayList<String> selectedItems) {
         this.selectedItems = selectedItems;
     }
 
+    /**
+     * Sets the list of item quantities.
+     *
+     * @param itemQuantities the list of item quantities
+     */
     public void setItemQuantities(ArrayList<Integer> itemQuantities) {
         this.itemQuantities = itemQuantities;
     }
 
+    /**
+     * Adds an ActionListener to the Submit button.
+     *
+     * @param listener the ActionListener to add
+     */
     public void addSubmitButtonListener(ActionListener listener) {
         submitButton.addActionListener(listener);
     }
 
+    /**
+     * Creates quantity input fields for each selected item.
+     */
     public void createQuantityInputFields() {
         quantityTextFields = new JTextField[selectedItems.size()];
     
@@ -100,6 +153,9 @@ public class ItemQuantityInputPanel extends JPanel {
         repaint();
     }
 
+    /**
+     * Resets the panel by clearing the lists and removing the input fields.
+     */
     public void reset() {
         selectedItems.clear();
         itemQuantities.clear();

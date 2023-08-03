@@ -9,6 +9,9 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.Map;
 
+/**
+ * The ReplenishMoneyPanel class represents the panel for replenishing money in the cash register.
+ */
 public class ReplenishMoneyPanel extends JPanel {
     private CardLayout cardLayout;
     private JPanel mainPanel;
@@ -17,6 +20,12 @@ public class ReplenishMoneyPanel extends JPanel {
     private JButton backButton;
     private JButton[] currencyButtons;
 
+    /**
+     * Creates a new ReplenishMoneyPanel with the specified CardLayout and main panel.
+     *
+     * @param cardLayout the CardLayout used to switch between panels in the main frame
+     * @param mainPanel  the main panel that contains all the panels in the main frame
+     */
     public ReplenishMoneyPanel(CardLayout cardLayout, JPanel mainPanel) {
         this.cardLayout = cardLayout;
         this.mainPanel = mainPanel;
@@ -61,14 +70,29 @@ public class ReplenishMoneyPanel extends JPanel {
         add(buttonPanel, BorderLayout.SOUTH);
     }
 
+    /**
+     * Gets the CardLayout used in the main frame.
+     *
+     * @return the CardLayout
+     */
     public CardLayout getCardLayout() {
         return cardLayout;
     }
 
+    /**
+     * Gets the main panel that contains all the panels in the main frame.
+     *
+     * @return the main panel
+     */
     public JPanel getMainPanel() {
         return mainPanel;
     }
 
+    /**
+     * Updates the denominations table with the given denominations and their quantities.
+     *
+     * @param denominations a map containing the denominations as keys and their quantities as values
+     */
     public void updateDenominationsTable(Map<Integer, Integer> denominations) {
         // Clear the existing data from the table
         tableModel.setRowCount(0);
@@ -80,13 +104,23 @@ public class ReplenishMoneyPanel extends JPanel {
             tableModel.addRow(new Object[]{denomination, quantity});
         }
     }
-    
+
+    /**
+     * Adds an ActionListener to each currency button.
+     *
+     * @param listener the ActionListener to add
+     */
     public void addCurrencyButtonListener(ActionListener listener) {
         for (JButton button : currencyButtons) {
             button.addActionListener(listener);
         }
     }
 
+    /**
+     * Adds an ActionListener to the Back button.
+     *
+     * @param listener the ActionListener to add
+     */
     public void addBackButtonListener(ActionListener listener) {
         backButton.addActionListener(listener);
     }

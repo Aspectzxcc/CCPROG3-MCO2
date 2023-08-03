@@ -8,6 +8,11 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * The VendingFeaturesPanel class represents the panel that displays vending machine features.
+ * It includes a table showing available items, currency buttons, buy item button, customize sandwich button,
+ * exit button, and an inserted money label.
+ */
 public class VendingFeaturesPanel extends JPanel {
     private CardLayout cardLayout;
     private JPanel mainPanel;
@@ -21,6 +26,12 @@ public class VendingFeaturesPanel extends JPanel {
     private JLabel insertedMoneyLabel;
     private JPanel southPanel;
 
+    /**
+     * Creates a new VendingFeaturesPanel with the specified CardLayout and mainPanel.
+     *
+     * @param cardLayout The CardLayout used for navigation.
+     * @param mainPanel  The main panel containing this VendingFeaturesPanel.
+     */
     public VendingFeaturesPanel(CardLayout cardLayout, JPanel mainPanel) {
         this.cardLayout = cardLayout;
         this.mainPanel = mainPanel;
@@ -109,19 +120,38 @@ public class VendingFeaturesPanel extends JPanel {
         exitButton.setBorder(BorderFactory.createEmptyBorder(8, 20, 8, 20));
     }
 
+    /**
+     * Gets the CardLayout used by this panel.
+     *
+     * @return The CardLayout used by this panel.
+     */
     public CardLayout getCardLayout() {
         return cardLayout;
     }
 
+    /**
+     * Gets the main panel containing this VendingFeaturesPanel.
+     *
+     * @return The main panel containing this VendingFeaturesPanel.
+     */
     public JPanel getMainPanel() {
         return mainPanel;
     }
 
+    /**
+     * Gets the JTable displaying the item data.
+     *
+     * @return The JTable displaying the item data.
+     */
     public JTable getItemTable() {
         return itemTable;
     }
 
-    // Method to set the data for the item table
+    /**
+     * Sets the data for the item table.
+     *
+     * @param itemSlots The list of ItemSlot objects representing the available items in the vending machine.
+     */
     public void setItemData(ArrayList<ItemSlot> itemSlots) {
         // Clear the existing data from the table
         tableModel.setRowCount(0);
@@ -140,29 +170,49 @@ public class VendingFeaturesPanel extends JPanel {
         }
     }
 
-    // Method to update the inserted money label
+    /**
+     * Updates the inserted money label with the specified amount.
+     *
+     * @param insertedMoney The amount of money inserted into the vending machine.
+     */
     public void updateInsertedMoney(int insertedMoney) {
         insertedMoneyLabel.setText("Inserted Money: " + insertedMoney + " PHP");
     }
 
-    // Method to add action listener for the currency buttons
+    /**
+     * Adds an ActionListener to each currency button.
+     *
+     * @param listener The ActionListener to be added to the currency buttons.
+     */
     public void addCurrencyButtonListener(ActionListener listener) {
         for (JButton button : currencyButtons) {
             button.addActionListener(listener);
         }
     }
 
-    // Method to add action listener for the buy item button
+    /**
+     * Adds an ActionListener to the buy item button.
+     *
+     * @param listener The ActionListener to be added to the buy item button.
+     */
     public void addBuyItemButtonListener(ActionListener listener) {
         buyItemButton.addActionListener(listener);
     }
 
-    // Method to add action listener for the customize sandwich button
+    /**
+     * Adds an ActionListener to the customize sandwich button.
+     *
+     * @param listener The ActionListener to be added to the customize sandwich button.
+     */
     public void addCustomizeSandwichButtonListener(ActionListener listener) {
         customizeSandwichButton.addActionListener(listener);
     }
 
-    // Method to add action listener for the exit button
+    /**
+     * Adds an ActionListener to the exit button.
+     *
+     * @param listener The ActionListener to be added to the exit button.
+     */
     public void addExitButtonListener(ActionListener listener) {
         exitButton.addActionListener(listener);
     }

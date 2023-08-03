@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+/**
+ * The SpecialItemCheckBoxesPanel class represents the panel for selecting special item options in the vending machine configuration.
+ */
 public class SpecialItemCheckBoxesPanel extends JPanel {
     private CardLayout cardLayout;
     private JPanel mainPanel;
@@ -20,6 +23,12 @@ public class SpecialItemCheckBoxesPanel extends JPanel {
     private JCheckBox[] vegetableCheckBoxes;
     private JCheckBox[] sauceCheckBoxes;
 
+    /**
+     * Creates a new SpecialItemCheckBoxesPanel with the specified CardLayout and main panel.
+     *
+     * @param cardLayout the CardLayout used to switch between panels in the main frame
+     * @param mainPanel  the main panel that contains all the panels in the main frame
+     */
     public SpecialItemCheckBoxesPanel(CardLayout cardLayout, JPanel mainPanel) {
         this.cardLayout = cardLayout;
         this.mainPanel = mainPanel;
@@ -32,7 +41,7 @@ public class SpecialItemCheckBoxesPanel extends JPanel {
         backButton.setBackground(new Color(128, 0, 0)); // Dark red background color
         backButton.setForeground(Color.WHITE); // White text color
         backButton.setBorder(BorderFactory.createEmptyBorder(8, 20, 8, 20)); // Add some padding
-        backButton.setFocusPainted(false); // Remove focus border  
+        backButton.setFocusPainted(false); // Remove focus border
         add(backButton, BorderLayout.NORTH);
 
         // Create button
@@ -134,50 +143,111 @@ public class SpecialItemCheckBoxesPanel extends JPanel {
         add(optionsPanel, BorderLayout.CENTER);
     }
 
+    /**
+     * Gets the Create button used to create a special vending machine.
+     *
+     * @return the Create button
+     */
     public JButton getCreateButton() {
         return createButton;
     }
 
+    /**
+     * Gets the Back button used to go back to the previous panel.
+     *
+     * @return the Back button
+     */
     public JButton getBackButton() {
         return backButton;
     }
 
+    /**
+     * Gets the CardLayout used in the main frame.
+     *
+     * @return the CardLayout
+     */
     public CardLayout getCardLayout() {
         return cardLayout;
     }
 
+    /**
+     * Gets the main panel that contains all the panels in the main frame.
+     *
+     * @return the main panel
+     */
     public JPanel getMainPanel() {
         return mainPanel;
     }
 
+    /**
+     * Gets the array of bread options checkboxes.
+     *
+     * @return the array of bread options checkboxes
+     */
     public JCheckBox[] getBreadCheckBoxes() {
         return breadCheckBoxes;
     }
 
+    /**
+     * Gets the array of meat options checkboxes.
+     *
+     * @return the array of meat options checkboxes
+     */
     public JCheckBox[] getMeatCheckBoxes() {
         return meatCheckBoxes;
-    }   
+    }
 
+    /**
+     * Gets the array of cheese options checkboxes.
+     *
+     * @return the array of cheese options checkboxes
+     */
     public JCheckBox[] getCheeseCheckBoxes() {
         return cheeseCheckBoxes;
     }
 
+    /**
+     * Gets the array of vegetable options checkboxes.
+     *
+     * @return the array of vegetable options checkboxes
+     */
     public JCheckBox[] getVegetableCheckBoxes() {
         return vegetableCheckBoxes;
     }
 
+    /**
+     * Gets the array of sauce options checkboxes.
+     *
+     * @return the array of sauce options checkboxes
+     */
     public JCheckBox[] getSauceCheckBoxes() {
         return sauceCheckBoxes;
     }
 
+    /**
+     * Adds an ActionListener to the Create button.
+     *
+     * @param listener the ActionListener to add
+     */
     public void addCreateButtonListener(ActionListener listener) {
         createButton.addActionListener(listener);
     }
 
+    /**
+     * Adds an ActionListener to the Back button.
+     *
+     * @param listener the ActionListener to add
+     */
     public void addBackButtonListener(ActionListener listener) {
         backButton.addActionListener(listener);
     }
 
+    /**
+     * Checks if a specific bread option is selected.
+     *
+     * @param breadOption the bread option to check
+     * @return true if the bread option is selected, false otherwise
+     */
     public boolean isBreadSelected(String breadOption) {
         for (JCheckBox checkBox : breadCheckBoxes) {
             if (checkBox.getText().equals(breadOption) && checkBox.isSelected()) {
@@ -187,6 +257,12 @@ public class SpecialItemCheckBoxesPanel extends JPanel {
         return false;
     }
 
+    /**
+     * Checks if a specific meat option is selected.
+     *
+     * @param meatOption the meat option to check
+     * @return true if the meat option is selected, false otherwise
+     */
     public boolean isMeatSelected(String meatOption) {
         for (JCheckBox checkBox : meatCheckBoxes) {
             if (checkBox.getText().equals(meatOption) && checkBox.isSelected()) {
@@ -196,6 +272,12 @@ public class SpecialItemCheckBoxesPanel extends JPanel {
         return false;
     }
 
+    /**
+     * Checks if a specific cheese option is selected.
+     *
+     * @param cheeseOption the cheese option to check
+     * @return true if the cheese option is selected, false otherwise
+     */
     public boolean isCheeseSelected(String cheeseOption) {
         for (JCheckBox checkBox : cheeseCheckBoxes) {
             if (checkBox.getText().equals(cheeseOption) && checkBox.isSelected()) {
@@ -205,6 +287,12 @@ public class SpecialItemCheckBoxesPanel extends JPanel {
         return false;
     }
 
+    /**
+     * Checks if a specific vegetable option is selected.
+     *
+     * @param vegetableOption the vegetable option to check
+     * @return true if the vegetable option is selected, false otherwise
+     */
     public boolean isVegetableSelected(String vegetableOption) {
         for (JCheckBox checkBox : vegetableCheckBoxes) {
             if (checkBox.getText().equals(vegetableOption) && checkBox.isSelected()) {
@@ -214,6 +302,12 @@ public class SpecialItemCheckBoxesPanel extends JPanel {
         return false;
     }
 
+    /**
+     * Checks if a specific sauce option is selected.
+     *
+     * @param sauceOption the sauce option to check
+     * @return true if the sauce option is selected, false otherwise
+     */
     public boolean isSauceSelected(String sauceOption) {
         for (JCheckBox checkBox : sauceCheckBoxes) {
             if (checkBox.getText().equals(sauceOption) && checkBox.isSelected()) {
@@ -223,6 +317,9 @@ public class SpecialItemCheckBoxesPanel extends JPanel {
         return false;
     }
 
+    /**
+     * Resets all the checkboxes to be unselected.
+     */
     public void resetCheckBoxes() {
         for (JCheckBox checkBox : breadCheckBoxes) {
             checkBox.setSelected(false);

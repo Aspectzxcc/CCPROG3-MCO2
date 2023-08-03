@@ -4,12 +4,22 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+/**
+ * The CreateVendingMachinePanel class represents a panel for creating a vending machine.
+ * It allows the user to choose between a regular vending machine and a special vending machine.
+ */
 public class CreateVendingMachinePanel extends JPanel {
     private CardLayout cardLayout;
     private JPanel mainPanel;
     private JButton regularVendingMachineButton;
     private JButton specialVendingMachineButton;
 
+     /**
+     * Creates a new CreateVendingMachinePanel with the specified CardLayout and main panel.
+     *
+     * @param cardLayout the CardLayout used to switch between panels in the main frame
+     * @param mainPanel  the main panel that contains all the panels in the main frame
+     */
     public CreateVendingMachinePanel(CardLayout cardLayout, JPanel mainPanel) {
         this.cardLayout = cardLayout;
         this.mainPanel = mainPanel;
@@ -48,18 +58,38 @@ public class CreateVendingMachinePanel extends JPanel {
         add(chooseTypePanel, BorderLayout.CENTER);
     }
 
+    /**
+     * Returns the CardLayout used by this panel.
+     *
+     * @return the CardLayout
+     */
     public CardLayout getCardLayout() {
         return cardLayout;
     }
 
+    /**
+     * Returns the main panel that contains all the panels in the main frame.
+     *
+     * @return the main panel
+     */
     public JPanel getMainPanel() {
         return mainPanel;
     }
 
+    /**
+     * Adds an ActionListener to the "Regular Vending Machine" button.
+     *
+     * @param listener the ActionListener to add
+     */
     public void addRegularVendingMachineButtonListener(ActionListener listener) {
         regularVendingMachineButton.addActionListener(listener);
     }
 
+    /**
+     * Adds an ActionListener to the "Special Vending Machine" button.
+     *
+     * @param listener the ActionListener to add
+     */
     public void addSpecialVendingMachineButtonListener(ActionListener listener) {
         specialVendingMachineButton.addActionListener(listener);
     }

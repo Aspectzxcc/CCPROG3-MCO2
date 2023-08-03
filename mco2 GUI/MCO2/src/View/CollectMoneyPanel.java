@@ -6,6 +6,11 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.Map;
 
+/**
+ * The CollectMoneyPanel class represents a panel for displaying and collecting payments received.
+ * It provides a table to display the denominations and quantities of payments received,
+ * as well as buttons for collecting the payments and navigating back.
+ */
 public class CollectMoneyPanel extends JPanel {
     private CardLayout cardLayout;
     private JPanel mainPanel;
@@ -15,6 +20,12 @@ public class CollectMoneyPanel extends JPanel {
     private JButton collectButton;
     private JButton backButton;
 
+    /**
+     * Creates a new CollectMoneyPanel with the specified CardLayout and main panel.
+     *
+     * @param cardLayout the CardLayout used to switch between panels in the main frame
+     * @param mainPanel  the main panel that contains all the panels in the main frame
+     */
     public CollectMoneyPanel(CardLayout cardLayout, JPanel mainPanel) {
         this.cardLayout = cardLayout;
         this.mainPanel = mainPanel;
@@ -60,18 +71,38 @@ public class CollectMoneyPanel extends JPanel {
         add(buttonPanel, BorderLayout.SOUTH);
     }
 
+    /**
+     * Returns the CardLayout used by this panel.
+     *
+     * @return the CardLayout
+     */
     public CardLayout getCardLayout() {
         return cardLayout;
     }
 
+    /**
+     * Returns the main panel that contains all the panels in the main frame.
+     *
+     * @return the main panel
+     */
     public JPanel getMainPanel() {
         return mainPanel;
     }
 
+    /**
+     * Returns the payment table
+     *
+     * @return the payment table
+     */
     public JTable getPaymentTable() {
         return paymentTable;
     }
 
+    /**
+     * Sets the payment received data in the payment table.
+     *
+     * @param paymentReceived a map containing denominations and their corresponding quantities
+     */
     public void setPaymentReceivedData(Map<Integer, Integer> paymentReceived) {
         // Clear the existing data from the table
         tableModel.setRowCount(0);
@@ -83,10 +114,20 @@ public class CollectMoneyPanel extends JPanel {
         }
     }
 
+    /**
+     * Returns the index of the selected row in the payment table.
+     *
+     * @return the index of the selected row
+     */
     public int getSelectedRow() {
         return paymentTable.getSelectedRow();
     }
 
+    /**
+     * Prompts the user to enter the quantity to collect and returns the entered quantity.
+     *
+     * @return the quantity to collect, or -1 if the input is invalid or cancelled
+     */
     public int getQuantityToCollect() {
         String input = JOptionPane.showInputDialog(this, "Enter the quantity to collect:");
         if (input != null && !input.isEmpty()) {
@@ -99,10 +140,20 @@ public class CollectMoneyPanel extends JPanel {
         return -1; // Cancelled or empty input
     }
 
+    /**
+     * Adds an ActionListener to the "Collect" button.
+     *
+     * @param listener the ActionListener to add
+     */
     public void addCollectButtonListener(ActionListener listener) {
         collectButton.addActionListener(listener);
     }
 
+    /**
+     * Adds an ActionListener to the "Back" button.
+     *
+     * @param listener the ActionListener to add
+     */
     public void addBackButtonListener(ActionListener listener) {
         backButton.addActionListener(listener);
     }
