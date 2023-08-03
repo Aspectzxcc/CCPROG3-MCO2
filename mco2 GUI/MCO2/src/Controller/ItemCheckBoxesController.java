@@ -7,11 +7,24 @@ import View.ItemQuantityInputPanel;
 
 import java.util.ArrayList;
 
+/**
+ * The controller class that manages interactions with the ItemCheckBoxesPanel.
+ * This class handles actions performed by the user on the ItemCheckBoxesPanel,
+ * such as selecting items and continuing to the next step.
+ */
 public class ItemCheckBoxesController {
     private ItemSlotInputPanel itemSlotInputPanel;
     private ItemCheckBoxesPanel itemCheckBoxesPanel;
     private ItemQuantityInputPanel itemQuantityInputPanel;
 
+    /**
+     * Constructor for the ItemCheckBoxesController class.
+     * Initializes the controller and sets up action listeners for the buttons in the ItemCheckBoxesPanel.
+     *
+     * @param itemSlotInputPanel The ItemSlotInputPanel instance representing the panel for inputting the number of slots in the vending machine.
+     * @param itemCheckBoxesPanel The ItemCheckBoxesPanel instance representing the panel for selecting items to add to the vending machine.
+     * @param itemQuantityInputPanel The ItemQuantityInputPanel instance representing the panel for inputting item quantities.
+     */
     public ItemCheckBoxesController(ItemSlotInputPanel itemSlotInputPanel, ItemCheckBoxesPanel itemCheckBoxesPanel, ItemQuantityInputPanel 
     itemQuantityInputPanel) {
         this.itemSlotInputPanel = itemSlotInputPanel;
@@ -22,10 +35,19 @@ public class ItemCheckBoxesController {
         this.itemCheckBoxesPanel.addContinueButtonListener(e -> continueActionPerformed());
     }
 
+    /**
+     * Action performed when the user clicks the back button.
+     * Shows the previous panel in the card layout (StartingMenu).
+     */
     private void backButtonActionPerformed() {
         itemCheckBoxesPanel.getCardLayout().show(itemCheckBoxesPanel.getMainPanel(), "StartingMenu");
     }
 
+    /**
+     * Action performed when the user clicks the continue button.
+     * Validates the number of selected items and the number of available slots.
+     * If the input is valid, moves to the next panel (ItemQuantityInput).
+     */
     private void continueActionPerformed() {
         int selectedItemCount = 0;
         if (itemCheckBoxesPanel.getClassicBLTCheckBox().isSelected()) selectedItemCount++;
@@ -55,7 +77,11 @@ public class ItemCheckBoxesController {
         }
     }
 
-    // Helper method to get the list of selected items
+    /**
+     * Helper method to get the list of selected items from the ItemCheckBoxesPanel.
+     *
+     * @return An ArrayList of Strings representing the names of the selected items.
+     */
     private ArrayList<String> getSelectedItems() {
         ArrayList<String> selectedItems = new ArrayList<>();
         if (itemCheckBoxesPanel.getClassicBLTCheckBox().isSelected()) {

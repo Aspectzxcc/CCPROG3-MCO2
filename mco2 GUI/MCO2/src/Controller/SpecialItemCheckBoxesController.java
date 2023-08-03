@@ -7,10 +7,21 @@ import javax.swing.JOptionPane;
 import View.SpecialItemCheckBoxesPanel;
 import View.SpecialItemQuantityInputPanel;
 
+/**
+ * The controller class that manages interactions between the SpecialItemCheckBoxesPanel, SpecialItemQuantityInputPanel, and the user's selection of special items.
+ * This class handles actions performed by the user on the SpecialItemCheckBoxesPanel, such as selecting special items and creating new special items with specified quantities.
+ */
 public class SpecialItemCheckBoxesController {
     private SpecialItemCheckBoxesPanel specialItemCheckBoxesPanel;
     private SpecialItemQuantityInputPanel specialItemQuantityInputPanel;
 
+     /**
+     * Constructor for the SpecialItemCheckBoxesController class.
+     * Initializes the controller and sets up action listeners for the buttons in the SpecialItemCheckBoxesPanel.
+     *
+     * @param specialItemCheckBoxesPanel The SpecialItemCheckBoxesPanel instance representing the panel with checkboxes for special items.
+     * @param specialItemQuantityInputPanel The SpecialItemQuantityInputPanel instance representing the panel for entering quantities of special items.
+     */
     public SpecialItemCheckBoxesController(SpecialItemCheckBoxesPanel specialItemCheckBoxesPanel, SpecialItemQuantityInputPanel specialItemQuantityInputPanel) {
         this.specialItemCheckBoxesPanel = specialItemCheckBoxesPanel;
         this.specialItemQuantityInputPanel = specialItemQuantityInputPanel;
@@ -20,10 +31,12 @@ public class SpecialItemCheckBoxesController {
         this.specialItemCheckBoxesPanel.addCreateButtonListener(e -> createActionPerformed());
     }
 
+    // Method to handle back button click
     private void backActionPerformed() {
         specialItemCheckBoxesPanel.getCardLayout().show(specialItemCheckBoxesPanel.getMainPanel(), "StartingMenu");
     }
 
+    // Method to handle create button click
     private void createActionPerformed() {
         ArrayList<String> selectedItems = getSelectedSpecialItems();
         boolean breadSelected = false;
@@ -71,6 +84,11 @@ public class SpecialItemCheckBoxesController {
         specialItemCheckBoxesPanel.getCardLayout().show(specialItemCheckBoxesPanel.getMainPanel(), "SpecialItemQuantityInput");
     }
 
+    /**
+     * Get the selected special items from the checkboxes in the SpecialItemCheckBoxesPanel.
+     *
+     * @return An ArrayList of Strings representing the names of the selected special items.
+     */
     public ArrayList<String> getSelectedSpecialItems() {
         ArrayList<String> selectedItems = new ArrayList<>();
 

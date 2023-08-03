@@ -6,10 +6,21 @@ import Model.*;
 import javax.swing.*;
 import java.util.ArrayList;
 
+/**
+ * The controller class that manages interactions between the SetItemPricesPanel and the VendingMachineFactory.
+ * This class handles actions performed by the user on the SetItemPricesPanel, such as setting the prices for items.
+ */
 public class SetItemPricesController {
     private SetItemPricesPanel setItemPricesPanel;
     private VendingMachineFactory vendingMachineFactory;
 
+     /**
+     * Constructor for the SetItemPricesController class.
+     * Initializes the controller and sets up action listeners for the buttons in the SetItemPricesPanel.
+     *
+     * @param setItemPricesPanel The SetItemPricesPanel instance representing the panel with the table of items and buttons to set prices.
+     * @param vendingMachineFactory The VendingMachineFactory instance representing the vending machine factory that holds the data.
+     */
     public SetItemPricesController(SetItemPricesPanel setItemPricesPanel, VendingMachineFactory vendingMachineFactory) {
         this.setItemPricesPanel = setItemPricesPanel;
         this.vendingMachineFactory = vendingMachineFactory;
@@ -19,6 +30,11 @@ public class SetItemPricesController {
         setItemPricesPanel.addBackButtonListener(e -> backActionPerformed());
     }
 
+    /**
+     * Action performed when the "Set Prices" button is clicked on the SetItemPricesPanel.
+     * This method sets the price of the selected item in the table.
+     * If no item is selected or an invalid price is entered, appropriate error messages are shown.
+     */
     private void setPricesActionPerformed() {
         int selectedRow = setItemPricesPanel.getItemTable().getSelectedRow();
         if (selectedRow == -1) {
@@ -56,11 +72,21 @@ public class SetItemPricesController {
         }
     }
 
+    /**
+     * Action performed when the "Back" button is clicked on the SetItemPricesPanel.
+     * This method switches back to the main menu.
+     */
     private void backActionPerformed() {
         // Switch back to the main menu
         setItemPricesPanel.getCardLayout().show(setItemPricesPanel.getMainPanel(), "MaintenanceFeatures");
     }
 
+    /**
+     * Find the ItemSlot containing the specified item name.
+     *
+     * @param itemName The name of the item to find.
+     * @return The ItemSlot containing the specified item, or null if not found.
+     */
     private ItemSlot findItemSlotByItemName(String itemName) {
         for (ItemSlot itemSlot : vendingMachineFactory.getNormalVM().getItemSlots()) {
             ArrayList<Item> itemList = itemSlot.getItemList();
@@ -72,7 +98,5 @@ public class SetItemPricesController {
             }
         }
         return null;
-    }
-
-    
+    }   
 }

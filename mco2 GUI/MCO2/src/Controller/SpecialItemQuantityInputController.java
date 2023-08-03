@@ -6,10 +6,22 @@ import Model.*;
 import javax.swing.*;
 import java.util.ArrayList;
 
+/**
+ * The controller class that manages interactions between the SpecialItemQuantityInputPanel and the model (VendingMachineFactory)
+ * for adding special items to the Special Vending Machine with specified quantities.
+ * This class handles actions performed by the user on the special item quantity input panel, such as submitting the quantities and adding the special items to the vending machine.
+ */
 public class SpecialItemQuantityInputController {
     private SpecialItemQuantityInputPanel specialItemQuantityInputPanel;
     private VendingMachineFactory vendingMachineFactory;
 
+    /**
+     * Constructor for the SpecialItemQuantityInputController class.
+     * Initializes the controller and sets up an action listener for the submit button in the SpecialItemQuantityInputPanel.
+     *
+     * @param specialItemQuantityInputPanel The SpecialItemQuantityInputPanel instance representing the special item quantity input panel.
+     * @param vendingMachineFactory The VendingMachineFactory instance representing the model.
+     */
     public SpecialItemQuantityInputController(SpecialItemQuantityInputPanel specialItemQuantityInputPanel, VendingMachineFactory vendingMachineFactory) {
         this.specialItemQuantityInputPanel = specialItemQuantityInputPanel;
         this.vendingMachineFactory = vendingMachineFactory;
@@ -18,6 +30,7 @@ public class SpecialItemQuantityInputController {
         this.specialItemQuantityInputPanel.addSubmitButtonListener(e -> submitActionPerformed());
     }
 
+    // Handle Submit button click
     private void submitActionPerformed() {
         // Get the quantities entered by the user for each special item
         JTextField[] quantityTextFields = specialItemQuantityInputPanel.getQuantityTextFields();

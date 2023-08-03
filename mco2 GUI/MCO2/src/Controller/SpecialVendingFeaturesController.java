@@ -9,10 +9,21 @@ import javax.swing.JOptionPane;
 import Model.*;
 import View.SpecialVendingFeaturesPanel;
 
+/**
+ * The controller class that manages interactions between the SpecialVendingFeaturesPanel and the model (VendingMachineFactory) for the Special Vending Machine.
+ * This class handles actions performed by the user on the special vending features panel, such as inserting currency, buying special items, creating custom sandwiches, and going back to the vending features panel.
+ */
 public class SpecialVendingFeaturesController {
     private SpecialVendingFeaturesPanel specialVendingFeaturesPanel;
     private VendingMachineFactory vendingMachineFactory;
 
+    /**
+     * Constructor for the SpecialVendingFeaturesController class.
+     * Initializes the controller and sets up action listeners for the buttons in the SpecialVendingFeaturesPanel.
+     *
+     * @param specialVendingFeaturesPanel The SpecialVendingFeaturesPanel instance representing the special vending features panel.
+     * @param vendingMachineFactory       The VendingMachineFactory instance representing the model.
+     */
     public SpecialVendingFeaturesController(SpecialVendingFeaturesPanel specialVendingFeaturesPanel, VendingMachineFactory vendingMachineFactory) {
         this.specialVendingFeaturesPanel = specialVendingFeaturesPanel;
         this.vendingMachineFactory = vendingMachineFactory;
@@ -49,6 +60,7 @@ public class SpecialVendingFeaturesController {
         JOptionPane.showMessageDialog(specialVendingFeaturesPanel, "Inserted ₱" + denomination + ". Total inserted money: ₱" + totalInsertedMoney, "Inserted Money", JOptionPane.INFORMATION_MESSAGE);
     }
 
+    // Method to handle buy item button click
     private void buyItemActionPerformed() {
         // Get the cash register and special vending machine
         CashRegister cashRegister = vendingMachineFactory.getSpecialVM().getCashRegister();
@@ -140,6 +152,7 @@ public class SpecialVendingFeaturesController {
         JOptionPane.showMessageDialog(specialVendingFeaturesPanel, "Item bought successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
     }
 
+    // Method to handle create custom sandwich button click
     private void createCustomSandwichActionPerformed() {
         // Check if all option indicators are set
         if (specialVendingFeaturesPanel.isOptionIndicatorSet("Bread") || 
@@ -195,6 +208,7 @@ public class SpecialVendingFeaturesController {
         JOptionPane.showMessageDialog(specialVendingFeaturesPanel, "Your " + customSandwich.getItemName() + " has been Created!", "Custom Sandwich", JOptionPane.INFORMATION_MESSAGE);
     }
 
+    // Method to handle back button click
     private void backActionPerformed() {
         // Check if any option indicator is set
         if (!specialVendingFeaturesPanel.isOptionIndicatorSet("Bread") || 
@@ -209,6 +223,7 @@ public class SpecialVendingFeaturesController {
         specialVendingFeaturesPanel.getCardLayout().show(specialVendingFeaturesPanel.getMainPanel(), "VendingFeatures");
     }
 
+    // Helper method to find the List of Special Items that contains the item with the given name
     private ArrayList<SpecialItem> findSpecialItemArrayListByItemName(String itemName) {
     ArrayList<ArrayList<SpecialItem>> specialItemsList = vendingMachineFactory.getSpecialVM().getSpecialItems();
     for (ArrayList<SpecialItem> specialItems : specialItemsList) {

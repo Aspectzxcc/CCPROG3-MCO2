@@ -7,10 +7,22 @@ import View.CollectMoneyPanel;
 import javax.swing.*;
 import java.util.Map;
 
+/**
+ * The controller class that manages interactions with the CollectMoneyPanel.
+ * This class handles actions performed by the user on the CollectMoneyPanel,
+ * such as collecting money from the vending machine's cash register.
+ */
 public class CollectMoneyController {
     private CollectMoneyPanel collectMoneyPanel;
     private VendingMachineFactory vendingMachineFactory;
 
+    /**
+     * Constructor for the CollectMoneyController class.
+     * Initializes the controller and sets up action listeners for the buttons in the CollectMoneyPanel.
+     *
+     * @param collectMoneyPanel The CollectMoneyPanel instance representing the panel for collecting money from the cash register.
+     * @param vendingMachineFactory The VendingMachineFactory instance used to get the cash register of the vending machine.
+     */
     public CollectMoneyController(CollectMoneyPanel collectMoneyPanel, VendingMachineFactory vendingMachineFactory) {
         this.collectMoneyPanel = collectMoneyPanel;
         this.vendingMachineFactory = vendingMachineFactory;
@@ -20,6 +32,12 @@ public class CollectMoneyController {
         collectMoneyPanel.addBackButtonListener(e -> backButtonActionPerformed());
     }
 
+    /**
+     * Helper method to update the payment received data after collecting money from the cash register.
+     *
+     * @param denomination The denomination of the money being collected.
+     * @param quantityToCollect The quantity of money to collect for the given denomination.
+     */
     private void updatePaymentReceivedData(int denomination, int quantityToCollect) {
         Map<Integer, Integer> paymentReceived = getCashRegister().getPaymentReceived();
 
@@ -31,6 +49,9 @@ public class CollectMoneyController {
         collectMoneyPanel.setPaymentReceivedData(paymentReceived);
     }
 
+    /**
+     * Action performed when the user clicks the "Collect" button to collect money from the cash register.
+     */
     private void collectButtonActionPerformed() {
         int selectedRow = collectMoneyPanel.getSelectedRow();
         if (selectedRow != -1) {
@@ -69,12 +90,19 @@ public class CollectMoneyController {
         }
     }
 
+    /**
+     * Action performed when the user clicks the "Back" button to go back to the maintenance features panel.
+     */
     private void backButtonActionPerformed() {
         // Move back to the maintenance features panel
         collectMoneyPanel.getCardLayout().show(collectMoneyPanel.getMainPanel(), "MaintenanceFeatures");
     }
 
-    // Helper method to get the CashRegister object from the VendingMachineFactory
+    /**
+     * Helper method to get the CashRegister object from the VendingMachineFactory.
+     *
+     * @return The CashRegister object of the vending machine.
+     */
     private CashRegister getCashRegister() {
         if (vendingMachineFactory.isSpecial() == false) {
             return vendingMachineFactory.getNormalVM().getCashRegister();

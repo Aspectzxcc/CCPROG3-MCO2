@@ -3,15 +3,30 @@ package Controller;
 import View.ItemSlotInputPanel;
 import javax.swing.*;
 
+/**
+ * The controller class that manages interactions with the ItemSlotInputPanel.
+ * This class handles actions performed by the user on the ItemSlotInputPanel,
+ * such as continuing to create the vending machine panel with the specified number of slots.
+ */
 public class ItemSlotInputController {
     private ItemSlotInputPanel itemSlotInputPanel;
 
+    /**
+     * Constructor for the ItemSlotInputController class.
+     * Initializes the controller and sets up action listeners for the buttons in the ItemSlotInputPanel.
+     *
+     * @param itemSlotInputPanel The ItemSlotInputPanel instance representing the panel for inputting the number of slots.
+     */
     public ItemSlotInputController(ItemSlotInputPanel itemSlotInputPanel) {
         this.itemSlotInputPanel = itemSlotInputPanel;
 
         this.itemSlotInputPanel.addContinueButtonListener(e -> continueActionPerformed());
     }
 
+     /**
+     * Action performed when the user clicks the continue button.
+     * Validates the input for the number of slots and proceeds to create the vending machine panel if the input is valid.
+     */
     private void continueActionPerformed() {
         int slotCount = 0;
         try {

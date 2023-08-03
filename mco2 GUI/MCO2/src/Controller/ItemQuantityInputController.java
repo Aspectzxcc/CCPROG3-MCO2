@@ -5,10 +5,22 @@ import Model.*;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 
+/**
+ * The controller class that manages interactions with the ItemQuantityInputPanel.
+ * This class handles actions performed by the user on the ItemQuantityInputPanel,
+ * such as submitting the item quantities for creating the vending machine.
+ */
 public class ItemQuantityInputController {
     private ItemQuantityInputPanel itemQuantityInputPanel;
     private VendingMachineFactory vendingMachineFactory;
 
+    /**
+     * Constructor for the ItemQuantityInputController class.
+     * Initializes the controller and sets up action listeners for the buttons in the ItemQuantityInputPanel.
+     *
+     * @param itemQuantityInputPanel The ItemQuantityInputPanel instance representing the panel for inputting item quantities.
+     * @param vendingMachineFactory The VendingMachineFactory instance for creating the vending machine.
+     */
     public ItemQuantityInputController(ItemQuantityInputPanel itemQuantityInputPanel, VendingMachineFactory vendingMachineFactory) {
         this.itemQuantityInputPanel = itemQuantityInputPanel;
         this.vendingMachineFactory = vendingMachineFactory;
@@ -16,6 +28,10 @@ public class ItemQuantityInputController {
         this.itemQuantityInputPanel.addSubmitButtonListener(e -> submitActionPerformed());
     }
     
+    /**
+     * Action performed when the user clicks the submit button.
+     * Validates the item quantities and proceeds to create the vending machine if the input is valid.
+     */
     protected void submitActionPerformed() {
         if (validateQuantities()) {
             // Update the item quantities when the Submit button is clicked.
@@ -80,6 +96,11 @@ public class ItemQuantityInputController {
         }
     }
 
+    /**
+     * Validates the item quantities input by the user.
+     *
+     * @return True if the input is valid, False otherwise.
+     */
     private boolean validateQuantities() {
         for (int i = 0; i < itemQuantityInputPanel.getQuantityTextFields().length; i++) {
             String quantityText = itemQuantityInputPanel.getQuantityTextFields()[i].getText();
@@ -103,7 +124,11 @@ public class ItemQuantityInputController {
         return true;
     }
 
-    // Helper method to get the current vending machine
+    /**
+     * Helper method to get the current vending machine.
+     *
+     * @return The VendingMachine instance representing the current vending machine.
+     */
     public VendingMachine getVendingMachine() {
         if (vendingMachineFactory.isSpecial() == false) {
             return vendingMachineFactory.getNormalVM();

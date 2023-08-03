@@ -10,6 +10,11 @@ import View.SetItemPricesPanel;
 import View.SpecialRestockPanel;
 import View.SpecialSetPricesPanel;
 
+/**
+ * The controller class that manages interactions with the MaintenanceFeaturesPanel.
+ * This class handles actions performed by the user on the MaintenanceFeaturesPanel,
+ * such as navigating to different maintenance-related panels (e.g., restock items, set item prices).
+ */
 public class MaintenanceFeaturesController {
     private MaintenanceFeaturesPanel maintenanceFeaturesPanel;
     private RestockItemsPanel restockItemsPanel;
@@ -21,6 +26,20 @@ public class MaintenanceFeaturesController {
     private PrintTransactionsPanel printTransactionsPanel;
     private VendingMachineFactory vendingMachineFactory;
 
+    /**
+     * Constructor for the MaintenanceFeaturesController class.
+     * Initializes the controller and sets up action listeners for the buttons in the MaintenanceFeaturesPanel.
+     *
+     * @param maintenanceFeaturesPanel The MaintenanceFeaturesPanel instance representing the panel for maintenance features.
+     * @param restockItemsPanel The RestockItemsPanel instance representing the panel for restocking items.
+     * @param specialRestockPanel The SpecialRestockPanel instance representing the panel for restocking special items.
+     * @param setItemPricesPanel The SetItemPricesPanel instance representing the panel for setting item prices.
+     * @param specialSetPricesPanel The SpecialSetPricesPanel instance representing the panel for setting special item prices.
+     * @param collectMoneyPanel The CollectMoneyPanel instance representing the panel for collecting money.
+     * @param replenishMoneyPanel The ReplenishMoneyPanel instance representing the panel for replenishing money.
+     * @param printTransactionsPanel The PrintTransactionsPanel instance representing the panel for printing transactions.
+     * @param vendingMachineFactory The VendingMachineFactory instance representing the vending machine factory.
+     */
     public MaintenanceFeaturesController(MaintenanceFeaturesPanel maintenanceFeaturesPanel, RestockItemsPanel restockItemsPanel, 
     SpecialRestockPanel specialRestockPanel, SetItemPricesPanel setItemPricesPanel, SpecialSetPricesPanel specialSetPricesPanel,
     CollectMoneyPanel collectMoneyPanel, ReplenishMoneyPanel replenishMoneyPanel, PrintTransactionsPanel printTransactionsPanel,

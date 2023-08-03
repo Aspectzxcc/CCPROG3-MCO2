@@ -10,11 +10,23 @@ import java.util.Map;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
+/**
+ * The controller class that manages interactions between the VendingFeaturesPanel and the model (VendingMachineFactory).
+ * This class handles actions performed by the user on the VendingFeaturesPanel, such as inserting currency, buying items, customizing sandwiches, and exiting the vending machine.
+ */
 public class VendingFeaturesController {
     private VendingFeaturesPanel vendingFeaturesPanel;
     private SpecialVendingFeaturesPanel specialVendingFeaturesPanel;
     private VendingMachineFactory vendingMachineFactory;
 
+    /**
+     * Constructor for the VendingFeaturesController class.
+     * Initializes the controller and sets up action listeners for the buttons in the VendingFeaturesPanel.
+     *
+     * @param vendingFeaturesPanel         The VendingFeaturesPanel instance representing the main vending features panel.
+     * @param specialVendingFeaturesPanel  The SpecialVendingFeaturesPanel instance representing the special vending features panel.
+     * @param vendingMachineFactory        The VendingMachineFactory instance representing the model.
+     */
     public VendingFeaturesController(VendingFeaturesPanel vendingFeaturesPanel, SpecialVendingFeaturesPanel specialVendingFeaturesPanel, VendingMachineFactory vendingMachineFactory) {
         this.vendingFeaturesPanel = vendingFeaturesPanel;
         this.specialVendingFeaturesPanel = specialVendingFeaturesPanel;
@@ -52,6 +64,7 @@ public class VendingFeaturesController {
         JOptionPane.showMessageDialog(vendingFeaturesPanel, "Inserted ₱" + denomination + ". Total inserted money: ₱" + totalInsertedMoney, "Inserted Money", JOptionPane.INFORMATION_MESSAGE);
     }
 
+    // Method to handle buy item button click
     private void buyItemActionPerformed() {
         // Get the selected row in the JTable
         int selectedRow = vendingFeaturesPanel.getItemTable().getSelectedRow();

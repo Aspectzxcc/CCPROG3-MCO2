@@ -7,10 +7,21 @@ import View.ReplenishMoneyPanel;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
+/**
+ * The controller class that manages interactions between the ReplenishMoneyPanel and the VendingMachineFactory.
+ * This class handles actions performed by the user on the ReplenishMoneyPanel, such as replenishing money.
+ */
 public class ReplenishMoneyController {
     private ReplenishMoneyPanel replenishMoneyPanel;
     private VendingMachineFactory vendingMachineFactory;
 
+    /**
+     * Constructor for the ReplenishMoneyController class.
+     * Initializes the controller and sets up action listeners for the buttons in the ReplenishMoneyPanel.
+     *
+     * @param replenishMoneyPanel The ReplenishMoneyPanel instance representing the panel with the currency buttons and table.
+     * @param vendingMachineFactory The VendingMachineFactory instance representing the vending machine factory that holds the data.
+     */
     public ReplenishMoneyController(ReplenishMoneyPanel replenishMoneyPanel, VendingMachineFactory vendingMachineFactory) {
         this.replenishMoneyPanel = replenishMoneyPanel;
         this.vendingMachineFactory = vendingMachineFactory;
@@ -22,6 +33,13 @@ public class ReplenishMoneyController {
         replenishMoneyPanel.addCurrencyButtonListener(e -> currencyButtonActionPerformed(e));
     }
 
+    /**
+     * Action performed when a currency button is clicked on the ReplenishMoneyPanel.
+     * This method replenishes the selected denomination with the specified quantity.
+     * If an invalid quantity is entered, an appropriate error message is shown.
+     *
+     * @param e The ActionEvent representing the click on the currency button.
+     */
     private void currencyButtonActionPerformed(ActionEvent e) {
         JButton button = (JButton) e.getSource();
         String buttonText = button.getText(); // Get the text of the clicked button (e.g., "₱20")
@@ -48,12 +66,25 @@ public class ReplenishMoneyController {
         }
     }
 
+     /**
+     * Action performed when the "Back" button is clicked on the ReplenishMoneyPanel.
+     * This method switches back to the maintenance features panel.
+     *
+     * @param e The ActionEvent representing the click on the back button.
+     */
     private void backButtonActionPerformed() {
         // Move back to the maintenance features panel
         replenishMoneyPanel.getCardLayout().show(replenishMoneyPanel.getMainPanel(), "MaintenanceFeatures");
     }
 
-    // Helper method to get the CashRegister object from the VendingMachineFactory
+
+    /**
+     * Helper method to get the CashRegister object from the VendingMachineFactory.
+     * If the vending machine is a special vending machine, it gets the CashRegister from the special vending machine.
+     * Otherwise, it gets the CashRegister from the normal vending machine.
+     *
+     * @return The CashRegister object representing the cash register of the current vending machine.
+     */
     private CashRegister getCashRegister() {
         if (vendingMachineFactory.isSpecial()) {
             return vendingMachineFactory.getSpecialVM().getCashRegister();

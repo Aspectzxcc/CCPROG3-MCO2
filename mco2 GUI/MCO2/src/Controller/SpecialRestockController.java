@@ -11,10 +11,21 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+/**
+ * The controller class that manages interactions between the SpecialRestockPanel and the model (VendingMachineFactory) for restocking items in the Special Vending Machine.
+ * This class handles actions performed by the user on the special restock panel, such as restocking normal and special items and going back to the maintenance features panel.
+ */
 public class SpecialRestockController {
     private SpecialRestockPanel specialRestockPanel;
     private VendingMachineFactory vendingMachineFactory;
 
+    /**
+     * Constructor for the SpecialRestockController class.
+     * Initializes the controller and sets up action listeners for the buttons in the SpecialRestockPanel.
+     *
+     * @param specialRestockPanel The SpecialRestockPanel instance representing the special restock panel.
+     * @param vendingMachineFactory The VendingMachineFactory instance representing the model.
+     */
     public SpecialRestockController(SpecialRestockPanel specialRestockPanel, VendingMachineFactory vendingMachineFactory) {
         this.specialRestockPanel = specialRestockPanel;
         this.vendingMachineFactory = vendingMachineFactory;
@@ -23,6 +34,7 @@ public class SpecialRestockController {
         specialRestockPanel.addBackButtonListener(e -> backButtonActionPerformed());
     }
 
+     // Method to handle restock button click
     private void restockButtonActionPerformed() {
         // Get current tabbed pane
         int selectedTab = specialRestockPanel.getSelectedTabIndex();
@@ -47,11 +59,13 @@ public class SpecialRestockController {
         }
     }
 
+     // Method to handle back button click
     private void backButtonActionPerformed() {
         // Return to the main menu
         specialRestockPanel.getCardLayout().show(specialRestockPanel.getMainPanel(), "MaintenanceFeatures");
     }
 
+    // Method to ask the user for the quantity to restock and restock the selected item
     private void askAndRestock(String itemName) {
         int selectedTab = specialRestockPanel.getSelectedTabIndex();
         String input = JOptionPane.showInputDialog(specialRestockPanel, "Enter the quantity to restock for \"" + itemName + "\":");
@@ -115,6 +129,7 @@ public class SpecialRestockController {
         }
     }
 
+    // Helper method to find the ItemSlot that contains the item with the given name
     private ItemSlot findItemSlotByItemName(String itemName) {
         ArrayList<ItemSlot> itemSlots = vendingMachineFactory.getSpecialVM().getItemSlots();
         for (ItemSlot itemSlot : itemSlots) {
@@ -126,6 +141,7 @@ public class SpecialRestockController {
         return null;
     }
 
+    // Helper method to find the List of Special Items that contains the item with the given name
     private ArrayList<SpecialItem> findSpecialItemListByItemName(String itemName) {
         ArrayList<ArrayList<SpecialItem>> specialItemsList = vendingMachineFactory.getSpecialVM().getSpecialItems();
         for (ArrayList<SpecialItem> specialItems : specialItemsList) {
@@ -136,6 +152,7 @@ public class SpecialRestockController {
         return null;
     }
 
+    // Helper method to get the Transactions instance from the model
     private Transactions getTransactions() {
         return vendingMachineFactory.getSpecialVM().getTransactions();
     }

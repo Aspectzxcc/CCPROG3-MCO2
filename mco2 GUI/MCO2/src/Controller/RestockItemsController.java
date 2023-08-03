@@ -10,10 +10,21 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 
+/**
+ * The controller class that manages interactions between the RestockItemsPanel and the VendingMachineFactory.
+ * This class handles actions performed by the user on the RestockItemsPanel, such as restocking items.
+ */
 public class RestockItemsController {
     private RestockItemsPanel restockItemsPanel;
     private VendingMachineFactory vendingMachineFactory;
 
+    /**
+     * Constructor for the RestockItemsController class.
+     * Initializes the controller and sets up action listeners for the buttons in the RestockItemsPanel.
+     *
+     * @param restockItemsPanel The RestockItemsPanel instance representing the panel with the table of items and buttons to restock.
+     * @param vendingMachineFactory The VendingMachineFactory instance representing the vending machine factory that holds the data.
+     */
     public RestockItemsController(RestockItemsPanel restockItemsPanel, VendingMachineFactory vendingMachineFactory) {
         this.restockItemsPanel = restockItemsPanel;
         this.vendingMachineFactory = vendingMachineFactory;
@@ -26,6 +37,11 @@ public class RestockItemsController {
         restockItemsPanel.addBackButtonListener(e -> backButtonActionPerformed());
     }
 
+    /**
+     * Action performed when the "Restock" button is clicked on the RestockItemsPanel.
+     * This method restocks the selected item in the table with the specified quantity.
+     * If no item is selected or an invalid restock quantity is entered, appropriate error messages are shown.
+     */
     private void restockButtonActionPerformed() {
         JTable itemTable = restockItemsPanel.getItemTable();
         DefaultTableModel tableModel = (DefaultTableModel) itemTable.getModel();
@@ -88,11 +104,21 @@ public class RestockItemsController {
         JOptionPane.showMessageDialog(restockItemsPanel, "Items restocked successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
     }
 
+    /**
+     * Action performed when the "Back" button is clicked on the RestockItemsPanel.
+     * This method switches back to the maintenance menu.
+     */
     private void backButtonActionPerformed() {
         // Return to the maintenance menu
         restockItemsPanel.getCardLayout().show(restockItemsPanel.getMainPanel(), "MaintenanceFeatures");
     }
 
+     /**
+     * Find the ItemSlot containing the specified item name.
+     *
+     * @param itemName The name of the item to find.
+     * @return The ItemSlot containing the specified item, or null if not found.
+     */
     private ItemSlot findItemSlotByItemName(String itemName) {
         ArrayList<ItemSlot> itemSlots = vendingMachineFactory.getNormalVM().getItemSlots();
         for (ItemSlot itemSlot : itemSlots) {
@@ -104,6 +130,11 @@ public class RestockItemsController {
         return null;
     }
 
+    /**
+     * Get the current Transactions object from the VendingMachineFactory.
+     *
+     * @return The Transactions object representing the current transactions in the vending machine.
+     */
     private Transactions getCurrentTransactions() {
             return vendingMachineFactory.getNormalVM().getTransactions();
     }
