@@ -1,47 +1,79 @@
 package Model;
 
+/**
+ * The Item class represents a generic item that can be stored in the vending machine.
+ * Each item has attributes such as its name, price, and calories.
+ */
 public class Item {
 	// Attributes
 	protected String itemName;
 	protected int price, calories;
 	
 	/**
-	 * Constructor:
-	 * 
-	 * @param itemName
-	 * @param price
-	 * @param calories
-	 */
-
+     * Constructor for creating an Item object with the specified name.
+     * The price and calories are set based on the item name using the generateItemPreset method.
+     *
+     * @param itemName the name of the item
+     */
 	public Item(String itemName) {
 		this.itemName = itemName;
 		generateItemPreset();
 	}
 
+	/**
+     * Constructor for creating an Item object with the specified name, price, and calories.
+     *
+     * @param itemName the name of the item
+     * @param price    the price of the item
+     * @param calories the number of calories in the item
+     */
 	public Item(String itemName, int price, int calories) {
 		this.itemName = itemName;
 		this.price = price;
 		this.calories = calories;
 	}
 	
-	// Getters
+	/**
+     * Gets the name of the item.
+     *
+     * @return the name of the item
+     */
 	public String getItemName() {
 		return itemName;
 	}
 
+	/**
+     * Gets the price of the item.
+     *
+     * @return the price of the item
+     */
 	public int getPrice() {
 		return price;
 	}
+
+	/**
+     * Gets the number of calories in the item.
+     *
+     * @return the number of calories in the item
+     */
 	public int getCalories() {
 		return calories;
 	}
 	
-	//Set the price (MAINTENANCE FEATURE)
+	/**
+     * Sets the price of the item (maintenance feature).
+     *
+     * @param price the new price to set for the item
+     */
 	public void setPrice(int price)
 	{
 		this.price = price;
 	}
 
+	 /**
+     * Generates the default price and calories for the item based on its name.
+     * This method is called in the constructor when only the item name is provided.
+     */
 	public void generateItemPreset() {
 		if ("Classic BLT".equals(itemName)) {
 			this.calories = 450;

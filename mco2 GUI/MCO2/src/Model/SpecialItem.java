@@ -1,9 +1,20 @@
 package Model;
 
+/**
+ * The SpecialItem class represents a special item that can be used in sandwiches.
+ * Special items are typically ingredients like bread, meat, cheese, vegetables, and sauces.
+ * Each special item has specific attributes such as calories, price, type, and preparation message.
+ */
 public class SpecialItem extends Item{
     private String type;
     private String preparationMessage;
 
+    /**
+     * Constructs a new SpecialItem object with the specified item name.
+     * The type and preparationMessage will be set to empty strings by default.
+     *
+     * @param itemName the name of the special item
+     */
     public SpecialItem(String itemName) {
         super(itemName);
 
@@ -12,6 +23,14 @@ public class SpecialItem extends Item{
         generateItemPreset();
     }
 
+    /**
+     * Constructs a new SpecialItem object with the specified item name, price, and calories.
+     * The type will be set to "Sandwich" by default, and the preparationMessage will be set to an empty string.
+     *
+     * @param itemName   the name of the special item
+     * @param itemPrice  the price of the special item
+     * @param itemCalories the calorie count of the special item
+     */
     public SpecialItem(String itemName, int itemPrice, int itemCalories) {
         super(itemName, itemPrice, itemCalories);
 
@@ -20,14 +39,29 @@ public class SpecialItem extends Item{
         this.itemName = itemName;
     }
 
+    /**
+     * Gets the type of the special item (e.g., "Bread", "Meat", "Cheese", "Vegetable", or "Sauce").
+     *
+     * @return the type of the special item
+     */
     public String getType() {
         return type;
     }
 
+    /**
+     * Gets the preparation message for the special item.
+     * The preparation message describes how the item is prepared or served.
+     *
+     * @return the preparation message
+     */
     public String getPreparationMessage() {
         return preparationMessage;
     }
     
+    /**
+     * Generates the preset attributes of the special item based on its item name.
+     * The attributes such as calories, price, type, and preparation message are set accordingly.
+     */
     @Override
     public void generateItemPreset() {
         switch (this.itemName) {
@@ -257,7 +291,14 @@ public class SpecialItem extends Item{
     }
     
 
-    // Generate sandwich name by adding the type of bread and meat
+    /**
+     * Generates the name of a sandwich using the specified bread and meat names.
+     * The sandwich name is created by combining the bread name and meat name.
+     *
+     * @param breadName the name of the bread
+     * @param meatName  the name of the meat
+     * @return the name of the sandwich
+     */
     public String generateSandwichName(String breadName, String meatName) {
         String sandwichName = "";
         String breadNameWithoutBread = breadName.substring(0, breadName.indexOf(" Bread"));

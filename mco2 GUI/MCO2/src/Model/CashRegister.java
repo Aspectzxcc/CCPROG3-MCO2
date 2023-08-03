@@ -3,6 +3,10 @@ package Model;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The CashRegister class represents the cash register of the vending machine.
+ * It manages the money stored in the cash register and handles payments and change calculation.
+ */
 public class CashRegister {
     private static int[] validDenominations = {1000, 500, 200, 100, 50, 20, 10, 5, 1};
 
@@ -10,6 +14,10 @@ public class CashRegister {
     private Map<Integer, Integer> paymentReceived;
     private int insertedAmount;
 
+    /**
+     * Constructor for creating a CashRegister object.
+     * It initializes the cash register with all denominations set to 0.
+     */
     public CashRegister() {
         cashRegister = new HashMap<>();
         paymentReceived = new HashMap<>();
@@ -17,6 +25,7 @@ public class CashRegister {
         initializeDenominations();
     }
 
+    // Getters
     public Map<Integer, Integer> getCashRegister() {
         return cashRegister;
     }
@@ -25,6 +34,9 @@ public class CashRegister {
         return validDenominations;
     }
 
+    /**
+     * Initializes the cash register with all denominations set to 0.
+     */
     private void initializeDenominations() {
         // Initialize the cash register with all denominations set to 0
         for (int denomination : validDenominations) {
@@ -132,6 +144,7 @@ public class CashRegister {
         }
     }
 
+    // transfer bills from cash register to payment received
     public void transferBillsToPaymentReceived(int amount) {
         int[] denominations = validDenominations;
         
@@ -165,7 +178,13 @@ public class CashRegister {
     }
     
 
-        // Method to calculate the change to be given
+    /**
+     * Calculates the change to be given for a given change amount.
+     *
+     * @param changeAmount the amount of change to be given
+     * @return a map containing the denominations and their corresponding quantities for the change,
+     *         or null if there is not enough change in the cash register
+     */
     public Map<Integer, Integer> calculateChange(int changeAmount) {
         Map<Integer, Integer> change = new HashMap<>();
         int[] denominations = validDenominations;

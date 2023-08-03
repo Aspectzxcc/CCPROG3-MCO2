@@ -2,11 +2,19 @@ package Model;
 
 import java.util.ArrayList;
 
+/**
+ * The VendingMachine class represents a vending machine that contains multiple item slots,
+ * a cash register, and a transaction log.
+ */
 public class VendingMachine {
 	private ArrayList<ItemSlot> itemSlots;
 	private CashRegister cashRegister;
 	private Transactions transactions;
 	
+	/**
+     * Creates a new VendingMachine with default settings.
+     * The vending machine is initialized with empty item slots, a cash register, and an empty transaction log.
+     */
 	public VendingMachine() {
 		itemSlots = new ArrayList<ItemSlot>(8);
 		cashRegister = new CashRegister();
@@ -81,32 +89,65 @@ public class VendingMachine {
 		*/
 	}
 	
-	// getters
+	/**
+     * Gets the list of item slots in the vending machine.
+     *
+     * @return the list of item slots
+     */
 	public ArrayList<ItemSlot> getItemSlots() {
 		return itemSlots;
 	}
 
+	/**
+     * Gets the cash register of the vending machine.
+     *
+     * @return the cash register
+     */
 	public CashRegister getCashRegister() {
 		return cashRegister;
 	}
 
+	/**
+     * Gets the transaction log of the vending machine.
+     *
+     * @return the transaction log
+     */
 	public Transactions getTransactions() {
 		return transactions;
 	}
 
-	// setters
+	/**
+     * Adds an item slot to the vending machine.
+     *
+     * @param itemSlot the item slot to add
+     */
 	public void addItemSlot(ItemSlot itemSlot) {
 		itemSlots.add(itemSlot);
 	}
 	
+	/**
+     * Removes an item slot from the vending machine.
+     *
+     * @param itemSlot the item slot to remove
+     */
 	public void removeItemSlot(ItemSlot itemSlot) {
 		itemSlots.remove(itemSlot);
 	}
 
+	/**
+     * Sets the cash register of the vending machine.
+     *
+     * @param cashRegister the cash register to set
+     */
 	public void setCashRegister(CashRegister cashRegister) {
 		this.cashRegister = cashRegister;
 	}
 
+	/**
+     * Sets the transaction log of the vending machine.
+     *
+     * @param transactions the transaction log to set
+     */
 	public void setTransactions(Transactions transactions) {
 		this.transactions = transactions;
 	}
