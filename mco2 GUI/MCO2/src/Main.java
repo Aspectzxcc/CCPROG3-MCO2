@@ -1,7 +1,10 @@
-import Model.VendingMachineFactory;
-import Controller.VendingMachineController;
-import View.VendingMachineGUI;
+import Model.*;
+import Controller.*;
+import View.*;
 
+/**
+ * Main Class to run program
+ */
 public class Main {
     public static void main(String[] args) {
         // Create instances of the Model, View, and Controller
